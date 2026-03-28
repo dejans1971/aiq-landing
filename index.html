@@ -20,12 +20,13 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
 body {
   font-family: 'DM Sans', sans-serif;
   background: var(--navy);
   color: var(--white);
   overflow-x: hidden;
+  max-width: 100%;
 }
 
 body::before {
@@ -1026,6 +1027,53 @@ footer {
   .reg-row.header { display: none; }
   footer { flex-direction: column; gap: 16px; text-align: center; }
   .footer-note { text-align: center; }
+  .how-step { grid-template-columns: 48px 1fr; gap: 20px; }
+  .step-metric { display: none; }
+  .cta-form { flex-direction: column; max-width: 100%; }
+  .cta-input { width: 100%; }
+}
+
+@media (max-width: 640px) {
+  nav { padding: 12px 16px; }
+  .nav-logo-title { font-size: 0.9rem; }
+  .nav-logo-subtitle { display: none; }
+  h1 { font-size: 2.2rem; }
+  .hero { padding: 100px 16px 48px; }
+  section { padding: 56px 16px; }
+  .section-title { font-size: 1.8rem; }
+  .hero-sub { font-size: 1rem; }
+  .hero-actions { flex-direction: column; width: 100%; }
+  .hero-actions a { width: 100%; text-align: center; }
+  .module-cards { flex-direction: column; }
+  .module-card { width: 100%; }
+  .roles-grid { grid-template-columns: 1fr; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .roadmap-phases { grid-template-columns: 1fr; }
+  .modules-grid { grid-template-columns: 1fr; }
+  .problem-grid { grid-template-columns: 1fr; }
+  .ai-grid { grid-template-columns: 1fr; }
+  .vs-card { padding: 24px 20px; }
+  .pillar { padding: 32px 24px; }
+  .module-panel { padding: 32px 24px; }
+  .phase { padding: 28px 20px; }
+  .role-card { padding: 24px 20px; }
+  .how-step { grid-template-columns: 1fr; gap: 16px; padding: 32px 0; }
+  .step-num { font-size: 2rem; }
+  .step-metric { display: none; }
+  .cta-section { padding: 72px 16px; }
+  .cta-form { flex-direction: column; max-width: 100%; width: 100%; }
+  .cta-input { width: 100%; }
+  .cta-section .btn-primary { width: 100%; text-align: center; }
+  .reg-table { overflow-x: auto; }
+  .reg-row { grid-template-columns: 1fr; padding: 8px 0; }
+  .reg-cell { padding: 8px 16px; }
+  footer { padding: 32px 16px; }
+  .footer-note { font-size: 0.7rem; }
+  .hero-badge { font-size: 0.65rem; letter-spacing: 0.06em; }
+  .module-reg-badges { gap: 6px; }
+  .reg-pill { font-size: 0.65rem; padding: 3px 8px; }
+  .step-tags { gap: 6px; }
+  .step-tag { font-size: 0.65rem; }
 }
 </style>
 </head>
