@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIQ Suite — AI Quantified Risk Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0f1f3d;
+  --navy-mid: #1a3260;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --cream: #f5f0e8;
+  --cream-dark: #ede5d4;
+  --white: #ffffff;
+  --text-muted: #6b7a99;
+  --border: rgba(201,168,76,0.2);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.4;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(15,31,61,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.nav-logo img {
+  height: 40px;
+  width: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.nav-logo-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nav-logo-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.nav-logo-title span { color: var(--gold); }
+
+.nav-logo-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.62rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  display: inline-block;
+  transform: scaleX(0.88);
+  transform-origin: left center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+.nav-cta {
+  background: var(--gold);
+  color: var(--navy) !important;
+  padding: 10px 24px;
+  border-radius: 2px;
+  font-weight: 600 !important;
+  transition: background 0.2s !important;
+}
+
+.nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 60px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 80% at 10% 80%, rgba(26,50,96,0.8) 0%, transparent 60%);
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+.hero-content {
+  position: relative;
+  max-width: 680px;
+  z-index: 2;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.3);
+  padding: 6px 16px;
+  border-radius: 2px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 48px;
+  font-weight: 300;
+  max-width: 520px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--navy);
+  padding: 14px 32px;
+  border: none;
+  border-radius: 2px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+.btn-ghost {
+  color: rgba(255,255,255,0.7);
+  padding: 14px 32px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 2px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+.hero-visual {
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52%;
+  z-index: 1;
+  opacity: 0.9;
+}
+
+.hero-chart {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 8px;
+  padding: 32px;
+  backdrop-filter: blur(10px);
+}
+
+.chart-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.chart-bars { display: flex; flex-direction: column; gap: 10px; }
+
+.chart-row { display: flex; align-items: center; gap: 12px; }
+
+.chart-row-label {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.5);
+  width: 140px;
+  text-align: right;
+  font-family: 'DM Mono', monospace;
+}
+
+.chart-bar-wrap {
+  flex: 1;
+  height: 24px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.chart-bar {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 1.5s cubic-bezier(0.4,0,0.2,1);
+}
+
+.bar-navy { background: var(--navy-mid); }
+.bar-gold { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+.bar-blue { background: #2563eb; }
+
+.chart-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.5);
+  width: 60px;
+}
+
+.chart-highlight { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--gold); font-weight: 600; }
+
+.chart-section-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.7;
+  margin: 14px 0 6px;
+  padding-left: 152px;
+}
+
+.chart-callout {
+  margin-top: 20px;
+  padding: 12px 16px;
+  background: rgba(201,168,76,0.08);
+  border-left: 2px solid var(--gold);
+  border-radius: 2px;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.8);
+}
+
+.chart-callout strong { color: var(--gold); }
+
+/* MODULE CARDS */
+.module-cards {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+.module-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: rgba(201,168,76,0.06);
+  transition: border-color 0.2s;
+}
+
+.module-card:hover { border-color: rgba(201,168,76,0.5); }
+
+.module-card-icon {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.module-card-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--white);
+  white-space: nowrap;
+}
+
+.module-card-tag {
+  font-size: 0.65rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: 'DM Mono', monospace;
+}
+
+/* SECTION BASE */
+section { padding: 100px 60px; }
+
+.section-tag {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.section-sub {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  max-width: 580px;
+  font-weight: 300;
+}
+
+/* MODULES SECTION */
+.modules-section { background: #0a1628; }
+
+.modules-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 60px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.module-panel {
+  background: #0a1628;
+  padding: 52px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.module-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+}
+
+.module-panel-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.module-panel h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.module-panel h3 span { color: var(--gold); }
+
+.module-panel-tagline {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.4);
+  font-family: 'DM Mono', monospace;
+  margin-bottom: 28px;
+  letter-spacing: 0.04em;
+}
+
+.module-panel p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.55);
+  font-weight: 300;
+  margin-bottom: 28px;
+}
+
+.module-reg-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.reg-pill {
+  padding: 4px 12px;
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 2px;
+  font-size: 0.72rem;
+  color: var(--gold);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.06em;
+  background: rgba(201,168,76,0.06);
+}
+
+.module-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.module-features li {
+  font-size: 0.84rem;
+  color: rgba(255,255,255,0.45);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.module-features li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+/* PROBLEM */
+.problem { background: var(--cream); color: var(--navy); }
+.problem .section-tag { color: var(--navy-mid); opacity: 0.6; }
+.problem .section-title { color: var(--navy); }
+.problem .section-sub { color: rgba(15,31,61,0.6); }
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-top: 60px;
+  align-items: start;
+}
+
+.vs-card { padding: 40px; border-radius: 4px; }
+.vs-card.old { background: white; border: 1px solid #e0d8cc; }
+.vs-card.new { background: var(--navy); color: white; border: 1px solid var(--gold); }
+
+.vs-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.vs-card.new .vs-label { color: var(--gold); opacity: 1; }
+
+.vs-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+.vs-card.old .vs-quote { color: #c0392b; text-decoration: line-through; opacity: 0.7; }
+.vs-card.new .vs-quote { color: var(--gold); }
+.vs-desc { font-size: 0.9rem; line-height: 1.6; opacity: 0.65; }
+
+.heatmap { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin: 20px 0; }
+.hm-cell { height: 32px; border-radius: 2px; opacity: 0.7; }
+
+/* PILLARS */
+.pillars { background: var(--navy); }
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 60px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.pillar {
+  background: var(--navy);
+  padding: 48px 40px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s;
+}
+
+.pillar:hover { background: rgba(201,168,76,0.05); }
+
+.pillar-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: rgba(201,168,76,0.1);
+  line-height: 1;
+  margin-bottom: 20px;
+  transition: color 0.3s;
+}
+
+.pillar:hover .pillar-number { color: rgba(201,168,76,0.2); }
+
+.pillar h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--white);
+}
+
+.pillar p { font-size: 0.88rem; line-height: 1.7; color: rgba(255,255,255,0.5); font-weight: 300; }
+
+.step-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+
+.step-tag {
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 4px 12px;
+  border-radius: 2px;
+  font-size: 0.72rem;
+  color: var(--gold);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.05em;
+}
+
+/* HOW IT WORKS */
+.how { background: #0a1628; }
+
+.how-steps { margin-top: 60px; position: relative; }
+
+.how-step {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  padding: 48px 0;
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+}
+
+.how-step:last-child { border-bottom: none; }
+
+.step-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: rgba(201,168,76,0.2);
+  line-height: 1;
+  padding-top: 4px;
+}
+
+.step-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--white);
+}
+
+.step-content p { font-size: 0.9rem; line-height: 1.7; color: rgba(255,255,255,0.5); font-weight: 300; }
+
+.step-metric {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 4px;
+  padding: 24px;
+}
+
+.metric-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.metric-label { font-size: 0.8rem; color: rgba(255,255,255,0.4); font-weight: 300; line-height: 1.4; }
+
+.step-module-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 2px;
+  font-size: 0.65rem;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.badge-cyber { background: rgba(37,99,235,0.15); color: #60a5fa; border: 1px solid rgba(37,99,235,0.3); }
+.badge-or { background: rgba(201,168,76,0.12); color: var(--gold); border: 1px solid rgba(201,168,76,0.3); }
+.badge-shared { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.1); }
+
+/* ROLES */
+.roles { background: var(--navy); }
+
+.roles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 60px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.role-card {
+  background: var(--navy);
+  padding: 36px 28px;
+  transition: background 0.3s;
+}
+
+.role-card:hover { background: rgba(201,168,76,0.04); }
+
+.role-icon {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.role-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--white);
+}
+
+.role-or-label {
+  font-size: 0.68rem;
+  color: var(--gold);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.role-card p { font-size: 0.8rem; line-height: 1.6; color: rgba(255,255,255,0.4); font-weight: 300; }
+
+.role-card ul { margin-top: 12px; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+
+.role-card ul li {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+  padding-left: 12px;
+  position: relative;
+}
+
+.role-card ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  opacity: 0.6;
+  font-size: 0.65rem;
+}
+
+/* AI SECTION */
+.ai-section { background: #0a1628; }
+
+.ai-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-top: 60px;
+  align-items: center;
+}
+
+.ai-features { display: flex; flex-direction: column; gap: 24px; }
+
+.ai-feature {
+  display: flex;
+  gap: 20px;
+  padding: 24px;
+  border: 1px solid rgba(201,168,76,0.1);
+  border-radius: 4px;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.ai-feature:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.03); }
+
+.ai-feature-icon {
+  width: 40px; height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+}
+
+.ai-feature h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; color: var(--white); }
+.ai-feature p { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.6; font-weight: 300; }
+
+.ai-diagram {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 36px;
+}
+
+.ai-engine {
+  text-align: center;
+  padding: 24px;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+.ai-engine-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--gold); }
+.ai-engine-sub { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 4px; font-family: 'DM Mono', monospace; }
+
+.ai-io { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 0.78rem; }
+
+.ai-io-group h5 {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 8px;
+}
+
+.ai-io-item {
+  padding: 8px 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 2px;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 6px;
+}
+
+.ai-arrow { text-align: center; color: var(--gold); font-size: 1.2rem; margin: 12px 0; }
+
+/* REGULATORY */
+.regulatory { background: var(--cream); color: var(--navy); }
+.regulatory .section-tag { color: var(--navy-mid); opacity: 0.5; }
+.regulatory .section-title { color: var(--navy); }
+.regulatory .section-sub { color: rgba(15,31,61,0.6); }
+
+.reg-table { margin-top: 48px; border: 1px solid #d4c8b4; border-radius: 4px; overflow: hidden; }
+
+.reg-row {
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr 140px;
+  border-bottom: 1px solid #e0d8cc;
+}
+
+.reg-row:last-child { border-bottom: none; }
+.reg-row.header { background: var(--navy); color: white; }
+.reg-cell { padding: 18px 24px; font-size: 0.88rem; }
+
+.reg-row.header .reg-cell {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+}
+
+.reg-row:not(.header) { background: white; }
+.reg-row:not(.header):hover { background: #f9f4ec; }
+.reg-name { font-weight: 700; color: var(--navy); font-size: 0.9rem; }
+.reg-who { font-size: 0.78rem; color: rgba(15,31,61,0.45); margin-top: 3px; }
+
+.reg-badge {
+  display: inline-block;
+  background: rgba(15,31,61,0.08);
+  color: var(--navy-mid);
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.module-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: 'DM Mono', monospace;
+}
+
+.dot-cyber { width: 8px; height: 8px; border-radius: 50%; background: #2563eb; flex-shrink: 0; }
+.dot-or { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+.dot-both { width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, #2563eb 50%, var(--gold) 50%); flex-shrink: 0; }
+
+/* ROADMAP */
+.roadmap { background: #0a1628; }
+
+.roadmap-phases {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 60px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.phase { background: #0a1628; padding: 40px 32px; }
+
+.phase-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.phase-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+.phase h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.phase-items { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+.phase-item { display: flex; gap: 10px; align-items: flex-start; }
+
+.phase-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  margin-top: 6px;
+  opacity: 0.6;
+}
+
+.phase-item.done .phase-dot { opacity: 1; }
+.phase-item.done span { color: rgba(255,255,255,0.7); }
+.phase-item span { font-size: 0.82rem; color: rgba(255,255,255,0.35); line-height: 1.5; }
+
+.phase-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.status-live { background: rgba(34,197,94,0.12); color: #4ade80; border: 1px solid rgba(34,197,94,0.2); }
+.status-soon { background: rgba(201,168,76,0.12); color: var(--gold); border: 1px solid rgba(201,168,76,0.2); }
+.status-planned { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.08); }
+
+/* CTA */
+.cta-section {
+  background: var(--navy);
+  text-align: center;
+  padding: 120px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,168,76,0.07) 0%, transparent 70%);
+}
+
+.cta-section .section-title { margin: 0 auto 16px; max-width: 600px; }
+.cta-section .section-sub { margin: 0 auto 48px; max-width: 500px; color: rgba(255,255,255,0.45); }
+
+.cta-form { display: flex; gap: 12px; justify-content: center; max-width: 440px; margin: 0 auto; }
+
+.cta-input {
+  flex: 1;
+  padding: 14px 20px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 2px;
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.cta-input:focus { border-color: var(--gold); }
+.cta-input::placeholder { color: rgba(255,255,255,0.3); }
+.cta-note { margin-top: 16px; font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+
+/* FOOTER */
+footer {
+  background: #080f1e;
+  padding: 40px 60px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: rgba(255,255,255,0.5); }
+.footer-logo span { color: var(--gold); }
+.footer-note { font-size: 0.75rem; color: rgba(255,255,255,0.2); text-align: right; line-height: 1.6; }
+
+/* ANIMATIONS */
+.fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 1024px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 120px 24px 60px; }
+  .hero-visual { display: none; }
+  section { padding: 72px 24px; }
+  .problem-grid, .ai-grid { grid-template-columns: 1fr; gap: 32px; }
+  .pillars-grid, .roadmap-phases { grid-template-columns: 1fr; }
+  .roles-grid { grid-template-columns: 1fr 1fr; }
+  .modules-grid { grid-template-columns: 1fr; }
+  .reg-row { grid-template-columns: 1fr; }
+  .reg-row.header { display: none; }
+  footer { flex-direction: column; gap: 16px; text-align: center; }
+  .footer-note { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="logo.jpeg" alt="AIQ Suite" />
+    <div class="nav-logo-text">
+      <div class="nav-logo-title">AIQ <span>Suite</span></div>
+      <div class="nav-logo-subtitle">AI Quantified Risk Intelligence</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#modules">Modules</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#differentiators">Why AIQ Suite</a></li>
+    <li><a href="#see-it">See It</a></li>
+    <li><a href="#regulatory">Regulatory</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#demo" class="nav-cta">Early Access</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content fade-up">
+    <div class="hero-badge">DORA · NIS2 · Basel III OR · FAIR Methodology · European-built</div>
+    <h1>Quantify Cyber &amp; Operational Risk<br>in <em>Capital Impact Terms.</em></h1>
+    <p class="hero-sub">
+      Stop reporting risk. Start quantifying it. AIQ Suite translates ICT and
+      operational risk into board-ready capital impact percentages —
+      governed by a structured workflow built for DORA, NIS2, and Basel III environments.
+    </p>
+
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px;">
+      <div style="display:inline-flex; align-items:center; gap:6px; background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.25); padding:5px 14px; border-radius:2px; font-size:0.75rem; font-weight:600; letter-spacing:0.06em; color:var(--gold);">Board-ready outputs</div>
+      <div style="display:inline-flex; align-items:center; gap:6px; background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.25); padding:5px 14px; border-radius:2px; font-size:0.75rem; font-weight:600; letter-spacing:0.06em; color:var(--gold);">Capital impact %</div>
+      <div style="display:inline-flex; align-items:center; gap:6px; background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.25); padding:5px 14px; border-radius:2px; font-size:0.75rem; font-weight:600; letter-spacing:0.06em; color:var(--gold);">DORA · NIS2 · Basel context</div>
+    </div>
+
+    <div class="module-cards">
+      <div class="module-card">
+        <div class="module-card-icon">🛡️</div>
+        <div>
+          <div class="module-card-name">CyberRisk AIQ</div>
+          <div class="module-card-tag">DORA · NIS2</div>
+        </div>
+      </div>
+      <div class="module-card">
+        <div class="module-card-icon">⚖️</div>
+        <div>
+          <div class="module-card-name">OpRisk AIQ</div>
+          <div class="module-card-tag">Basel III OR · AMA</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#demo" class="btn-primary" style="padding:16px 36px; font-size:0.95rem; box-shadow:0 4px 20px rgba(201,168,76,0.3);">Request Early Access</a>
+      <a href="#modules" class="btn-ghost">Explore Modules →</a>
+    </div>
+    <p style="margin-top:16px; font-size:0.78rem; color:rgba(255,255,255,0.3); font-style:italic;">Early access currently prioritised for banks, financial institutions, and regulated organisations.</p>
+  </div>
+
+  <div class="hero-visual fade-up">
+    <div class="hero-chart">
+      <div class="chart-label">Portfolio Risk — Capital & OR Capital Impact</div>
+      <div class="chart-section-label">CyberRisk AIQ — ICT Scenarios</div>
+      <div class="chart-bars">
+        <div class="chart-row">
+          <div class="chart-row-label">Ransomware</div>
+          <div class="chart-bar-wrap"><div class="chart-bar bar-navy" style="width:78%"></div></div>
+          <div class="chart-val chart-highlight">1.84%</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-row-label">Data Exfiltration</div>
+          <div class="chart-bar-wrap"><div class="chart-bar bar-navy" style="width:55%"></div></div>
+          <div class="chart-val">1.12%</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-row-label">Phishing / BEC</div>
+          <div class="chart-bar-wrap"><div class="chart-bar bar-navy" style="width:34%"></div></div>
+          <div class="chart-val">0.68%</div>
+        </div>
+      </div>
+      <div class="chart-section-label" style="margin-top:16px;">OpRisk AIQ — Basel Event Types</div>
+      <div class="chart-bars">
+        <div class="chart-row">
+          <div class="chart-row-label">Settlement Error</div>
+          <div class="chart-bar-wrap"><div class="chart-bar bar-gold" style="width:62%"></div></div>
+          <div class="chart-val chart-highlight">1.41%</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-row-label">Payment Fraud</div>
+          <div class="chart-bar-wrap"><div class="chart-bar bar-gold" style="width:44%"></div></div>
+          <div class="chart-val">0.92%</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-row-label">System Outage</div>
+          <div class="chart-bar-wrap"><div class="chart-bar bar-gold" style="width:28%"></div></div>
+          <div class="chart-val">0.54%</div>
+        </div>
+      </div>
+      <div class="chart-callout">
+        <strong>Board-ready output:</strong> 3 scenarios exceed risk appetite —
+        capital impact expressed on a single defensible basis across Cyber and OR.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGNED FOR -->
+<section style="background:#080f1e; padding:48px 60px; border-top:1px solid rgba(201,168,76,0.08);">
+  <div style="max-width:900px; margin:0 auto; text-align:center;">
+    <div class="section-tag" style="text-align:center; margin-bottom:24px;">Designed For</div>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;">
+      <div style="padding:10px 24px; border:1px solid rgba(201,168,76,0.2); border-radius:2px; font-size:0.85rem; color:rgba(255,255,255,0.6);">🏦 Banks &amp; Credit Institutions</div>
+      <div style="padding:10px 24px; border:1px solid rgba(201,168,76,0.2); border-radius:2px; font-size:0.85rem; color:rgba(255,255,255,0.6);">🛡️ Insurance Companies</div>
+      <div style="padding:10px 24px; border:1px solid rgba(201,168,76,0.2); border-radius:2px; font-size:0.85rem; color:rgba(255,255,255,0.6);">🏛️ Public Sector under NIS2</div>
+      <div style="padding:10px 24px; border:1px solid rgba(201,168,76,0.2); border-radius:2px; font-size:0.85rem; color:rgba(255,255,255,0.6);">⚡ Critical Infrastructure Operators</div>
+      <div style="padding:10px 24px; border:1px solid rgba(201,168,76,0.2); border-radius:2px; font-size:0.85rem; color:rgba(255,255,255,0.6);">🏢 Regulated Corporates</div>
+      <div style="padding:10px 24px; border:1px solid rgba(201,168,76,0.2); border-radius:2px; font-size:0.85rem; color:rgba(255,255,255,0.6);">💳 Payment Institutions</div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section class="modules-section" id="modules">
+  <div class="section-tag">Platform Modules</div>
+  <h2 class="section-title fade-up">Two modules.<br>One integrated platform.</h2>
+  <p class="section-sub fade-up">Each module can be deployed independently or together as AIQ Suite. Both share the same AI engine, governance workflow, reporting infrastructure, and organisational data.</p>
+
+  <div class="modules-grid">
+    <div class="module-panel fade-up">
+      <div class="module-panel-label">Module 01</div>
+      <h3>CyberRisk <span>AIQ</span></h3>
+      <div class="module-panel-tagline">ICT & Cyber Risk Quantification</div>
+      <p>Quantifies ICT and cyber risk through FAIR methodology applied to ICT assets and threat scenarios. Produces capital impact percentages aligned with DORA ICT risk assessment requirements and NIS2 obligations.</p>
+      <div class="module-reg-badges">
+        <span class="reg-pill">DORA</span>
+        <span class="reg-pill">NIS2</span>
+        <span class="reg-pill">ISO 27002</span>
+        <span class="reg-pill">NIST CSF</span>
+        <span class="reg-pill">CIS Controls</span>
+      </div>
+      <ul class="module-features">
+        <li>ICT Asset Registry with risk intelligence tagging</li>
+        <li>354 controls — ISO 27002, NIST CSF 2.0, CIS v8 — import any framework via AI or CSV</li>
+        <li>Multiplicative control reduction model — realistic compounding, no inflation</li>
+        <li>DORA ICT Risk Report — structured per DORA Annex</li>
+        <li>NIS2 ICT Risk Report for public sector and corporate</li>
+        <li>Capital / Budget / Equity Impact calculation and reporting</li>
+        <li>Investment Optimizer — ROI-ranked controls per scenario</li>
+        <li>AI analyst assessment — jurisdiction-aware, editable, human-signed</li>
+        <li>BO Decision Guidance — ROI flags, governance checklist, Tier 1 DORA banner</li>
+      </ul>
+    </div>
+
+    <div class="module-panel fade-up">
+      <div class="module-panel-label">Module 02</div>
+      <h3>OpRisk <span>AIQ</span></h3>
+      <div class="module-panel-tagline">Operational Risk Quantification</div>
+      <p>Quantifies operational risk using FAIR methodology applied to business processes and Basel Event Type scenarios. Supports Advanced Measurement Approach (AMA) scenario analysis endorsed by ECB internal model guidance.</p>
+      <div class="module-reg-badges">
+        <span class="reg-pill">Basel III OR</span>
+        <span class="reg-pill">CRD IV</span>
+        <span class="reg-pill">AMA</span>
+        <span class="reg-pill">Solvency II</span>
+      </div>
+      <ul class="module-features">
+        <li>Business Process Registry with asset dependency mapping</li>
+        <li>Basel Event Type scenario categories (7 categories)</li>
+        <li>OR Capital Charge calculation per process</li>
+        <li>Operational Risk Manager / Risk Coordinator governance roles for OR workflow</li>
+        <li>Basel III AMA-aligned OR reporting</li>
+        <li>Process ↔ ICT Asset integration for cross-domain risk view</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="section-tag">The Problem</div>
+  <h2 class="section-title fade-up">Boards don't speak<br>heat maps.</h2>
+  <p class="section-sub fade-up">
+    Qualitative risk matrices leave organisations indefensible under regulatory scrutiny.
+    Capital, compliance, and accountability demand a different language — for both Cyber and Operational Risk.
+  </p>
+
+  <div class="problem-grid">
+    <div class="vs-card old fade-up">
+      <div class="vs-label">Before</div>
+      <div class="vs-quote">"This is a High risk on our heat map."</div>
+      <div class="heatmap">
+        <div class="hm-cell" style="background:#c0392b"></div>
+        <div class="hm-cell" style="background:#e67e22"></div>
+        <div class="hm-cell" style="background:#c0392b"></div>
+        <div class="hm-cell" style="background:#e74c3c"></div>
+        <div class="hm-cell" style="background:#e67e22"></div>
+        <div class="hm-cell" style="background:#e67e22"></div>
+        <div class="hm-cell" style="background:#f39c12"></div>
+        <div class="hm-cell" style="background:#e67e22"></div>
+        <div class="hm-cell" style="background:#27ae60"></div>
+        <div class="hm-cell" style="background:#f39c12"></div>
+        <div class="hm-cell" style="background:#27ae60"></div>
+        <div class="hm-cell" style="background:#27ae60"></div>
+        <div class="hm-cell" style="background:#f39c12"></div>
+        <div class="hm-cell" style="background:#27ae60"></div>
+        <div class="hm-cell" style="background:#27ae60"></div>
+      </div>
+      <div class="vs-desc">Subjective. Indefensible. Means different things to different people. Fails DORA, Basel III, and NIS2 regulatory scrutiny.</div>
+    </div>
+
+    <div class="vs-card new fade-up">
+      <div class="vs-label">After — AIQ Suite</div>
+      <div class="vs-quote">"Our Cyber + OR capital exposure is 2.76% of Tier-1 capital."</div>
+      <div style="margin: 20px 0; font-family: 'DM Mono', monospace; font-size: 0.82rem; line-height: 2; color: rgba(255,255,255,0.6);">
+        Cyber Expected Loss: <span style="color: var(--gold);">€3,200,000</span><br>
+        OR Capital Charge: <span style="color: var(--gold);">€4,100,000</span><br>
+        Combined Capital Impact: <span style="color: var(--gold);">2.76%</span><br>
+        Residual (w/ controls): <span style="color: #4ade80;">€1,800,000</span>
+      </div>
+      <div class="vs-desc" style="color: rgba(255,255,255,0.5);">Defensible. Auditable. FAIR-based. Board-ready. Covers DORA, NIS2, and Basel III OR in one integrated view.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars" id="pillars">
+  <div class="section-tag">Core Capabilities</div>
+  <h2 class="section-title fade-up">Three pillars.<br>Two modules. One governance platform.</h2>
+
+  <div class="pillars-grid">
+    <div class="pillar fade-up">
+      <div class="pillar-number">01</div>
+      <h3>Defensible Mathematics</h3>
+      <p>FAIR methodology inputs processed through 10,000-run Monte Carlo simulation — for both ICT scenarios (CyberRisk AIQ) and Basel Event Type scenarios (OpRisk AIQ). Multiplicative control reduction model ensures realistic compounding. Outputs include Expected Loss, P50/P90/P95 confidence intervals, Loss Exceedance Curve, and capital impact percentage.</p>
+      <div class="step-tags">
+        <span class="step-tag">FAIR</span>
+        <span class="step-tag">Monte Carlo</span>
+        <span class="step-tag">Capital Impact</span>
+        <span class="step-tag">OR Capital Charge</span>
+        <span class="step-tag">Loss Exceedance Curve</span>
+      </div>
+    </div>
+
+    <div class="pillar fade-up">
+      <div class="pillar-number">02</div>
+      <h3>Jurisdiction-Aware AI</h3>
+      <p>Anthropic Claude AI delivers analysis calibrated to your sector, capital base, and jurisdiction. A bank in Montenegro receives CBCG-framed guidance. A bank in Croatia receives DORA and HNB context. A public body in Germany receives NIS2 and BSI framing. 44 European jurisdictions mapped — regulatory references serve as context and benchmark, never a compliance checklist.</p>
+      <div class="step-tags">
+        <span class="step-tag">44 Jurisdictions</span>
+        <span class="step-tag">Anthropic Claude</span>
+        <span class="step-tag">Regulatory Context</span>
+        <span class="step-tag">Local Regulators</span>
+      </div>
+    </div>
+
+    <div class="pillar fade-up">
+      <div class="pillar-number">03</div>
+      <h3>Integrated 3LoD Governance</h3>
+      <p>End-to-end accountability from analyst assessment to board escalation. 1LoD: Analyst + ICT Custodian + Business Owner. 2LoD: CISO — methodological review and action plan oversight. Full audit trail, structured rework flow, BO Decision Guidance with ROI flags, Tier 1 DORA escalation banner. One workflow engine built around the governance model regulators expect.</p>
+      <div class="step-tags">
+        <span class="step-tag">3LoD Model</span>
+        <span class="step-tag">Role Workflow</span>
+        <span class="step-tag">Action Plans</span>
+        <span class="step-tag">Audit Log</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-tag">Workflow</div>
+  <h2 class="section-title fade-up">From threat to<br>governed decision.</h2>
+  <p class="section-sub fade-up">A structured governance workflow — shared across both modules — that converts qualitative threat intelligence into quantified, auditable risk decisions.</p>
+
+  <div class="how-steps">
+    <div class="how-step fade-up">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-module-badge badge-shared">Both Modules</div>
+        <h3>Analyst prepares quantitative assessment</h3>
+        <p>For Cyber: selects ICT asset with risk intelligence tags, assigns threat scenario with editable description and threat actor, inputs FAIR parameters. For OR: selects business process with asset dependencies, assigns Basel Event Type scenario. AI suggests calibrated FAIR ranges for both.</p>
+        <div class="step-tags">
+          <span class="step-tag">Asset / Process Tagging</span>
+          <span class="step-tag">AI FAIR Calibration</span>
+          <span class="step-tag">Loss Modelling</span>
+        </div>
+      </div>
+      <div class="step-metric">
+        <div class="metric-val">10,000</div>
+        <div class="metric-label">Monte Carlo runs per assessment — Cyber and OR — producing P50/P90/P95 confidence intervals</div>
+      </div>
+    </div>
+
+    <div class="how-step fade-up">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-module-badge badge-cyber">CyberRisk AIQ</div>
+        <h3>ICT Custodian / Risk Coordinator rates control effectiveness</h3>
+        <p>For Cyber: ICT Custodian rates existing controls from ISO 27002, NIST CSF 2.0, and CIS Controls v8 on a 0–5 scale, with bulk multi-select and duplicate detection. For OR: Risk Coordinator rates process controls effectiveness. Platform calculates residual risk reduction.</p>
+        <div class="step-tags">
+          <span class="step-tag">ISO 27002:2022</span>
+          <span class="step-tag">NIST CSF 2.0</span>
+          <span class="step-tag">CIS Controls v8</span>
+          <span class="step-tag">Process Controls</span>
+        </div>
+      </div>
+      <div class="step-metric">
+        <div class="metric-val">354</div>
+        <div class="metric-label">Controls across ISO 27002, NIST CSF 2.0, CIS v8 — toggleable per organisation</div>
+      </div>
+    </div>
+
+    <div class="how-step fade-up">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-module-badge badge-shared">Both Modules</div>
+        <h3>CISO / Operational Risk Manager performs methodological review</h3>
+        <p>For Cyber: CISO validates ICT risk methodology, reviews analyst's treatment recommendation and business risk narrative, and adds their own commentary. For OR: Operational Risk Manager performs the equivalent review. Both act as second-line quality gates before the business decision stage.</p>
+        <div class="step-tags">
+          <span class="step-tag">Quality Gate</span>
+          <span class="step-tag">Analyst Review</span>
+          <span class="step-tag">Return for Rework</span>
+        </div>
+      </div>
+      <div class="step-metric">
+        <div class="metric-val">Second Line</div>
+        <div class="metric-label">CISO / Operational Risk Manager act as methodological quality gates, not risk treatment decision-makers</div>
+      </div>
+    </div>
+
+    <div class="how-step fade-up">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="step-module-badge badge-shared">Both Modules</div>
+        <h3>Business Owner / Process Owner makes treatment decision</h3>
+        <p>With AI analysis, analyst recommendation, and CISO/Operational Risk Manager commentary all visible, the risk owner accepts, mitigates, transfers, or avoids the risk. For OR: Process Owner holds formal accountability. Risks exceeding mandate trigger Board escalation.</p>
+        <div class="step-tags">
+          <span class="step-tag">Accept</span>
+          <span class="step-tag">Mitigate</span>
+          <span class="step-tag">Transfer</span>
+          <span class="step-tag">Avoid</span>
+          <span class="step-tag">Escalate</span>
+        </div>
+      </div>
+      <div class="step-metric">
+        <div class="metric-val">Risk Owner</div>
+        <div class="metric-label">Formal accountability for treatment decision — Cyber and OR — with complete audit trail</div>
+      </div>
+    </div>
+
+    <div class="how-step fade-up">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <div class="step-module-badge badge-shared">Both Modules</div>
+        <h3>Structured action plan drives execution</h3>
+        <p>Treatment decisions generate structured action plans. ICT Custodian adds controls from the framework library, AI suggestions, or custom entries — with improvement opportunities for existing under-performing controls. All tracked in a unified central view.</p>
+        <div class="step-tags">
+          <span class="step-tag">Technical Specification</span>
+          <span class="step-tag">Cost Tracking</span>
+          <span class="step-tag">Progress Monitoring</span>
+        </div>
+      </div>
+      <div class="step-metric">
+        <div class="metric-val">Full Trace</div>
+        <div class="metric-label">Every action linked to the risk that triggered it — from governance to execution, Cyber and OR</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROLES -->
+<section class="roles" id="roles">
+  <div class="section-tag">Governance Model</div>
+  <h2 class="section-title fade-up">Six roles.<br>Clear accountability across both modules.</h2>
+
+  <div class="roles-grid">
+    <div class="role-card fade-up">
+      <div class="role-icon">📊</div>
+      <h4>Analyst</h4>
+      <div class="role-or-label">Cyber & OR — Both Modules</div>
+      <p>Prepares quantitative risk assessments end-to-end for both ICT and operational risk domains.</p>
+      <ul>
+        <li>Asset & process selection</li>
+        <li>FAIR input modelling</li>
+        <li>Loss component analysis</li>
+        <li>AI analysis generation & editing</li>
+        <li>Action plan management</li>
+      </ul>
+    </div>
+
+    <div class="role-card fade-up">
+      <div class="role-icon">🔒</div>
+      <h4>ICT Custodian / Risk Coordinator</h4>
+      <div class="role-or-label">ICT Custodian (Cyber) · Risk Coordinator (OR)</div>
+      <p>Provides technical input on control effectiveness and builds the action plan control set.</p>
+      <ul>
+        <li>Control effectiveness rating</li>
+        <li>Bulk control selection</li>
+        <li>Action plan controls</li>
+        <li>Security posture validation</li>
+      </ul>
+    </div>
+
+    <div class="role-card fade-up">
+      <div class="role-icon">🎯</div>
+      <h4>CISO / Operational Risk Manager</h4>
+      <div class="role-or-label">CISO (Cyber) · Operational Risk Manager (OR)</div>
+      <p>Second-line methodological review and quality gate — reviews analyst recommendation and narrative before BO decision.</p>
+      <ul>
+        <li>Methodology validation</li>
+        <li>Analyst review commentary</li>
+        <li>Return for rework</li>
+        <li>Portfolio oversight</li>
+      </ul>
+    </div>
+
+    <div class="role-card fade-up">
+      <div class="role-icon">💼</div>
+      <h4>Business Owner / Process Owner</h4>
+      <div class="role-or-label">ICT Asset Owner (Cyber) · Process Owner (OR)</div>
+      <p>Risk owner making the formal treatment decision with full AI and human context available.</p>
+      <ul>
+        <li>Treatment decision</li>
+        <li>Escalation to Board</li>
+        <li>Risk acceptance accountability</li>
+      </ul>
+    </div>
+
+    <div class="role-card fade-up">
+      <div class="role-icon">🗂️</div>
+      <h4>Asset Manager</h4>
+      <div class="role-or-label">CyberRisk AIQ</div>
+      <p>Maintains the ICT asset registry — creation, tagging, business owner assignment, decommissioning.</p>
+      <ul>
+        <li>Asset CRUD</li>
+        <li>Tag management</li>
+        <li>Bulk CSV import</li>
+        <li>Decommission workflow</li>
+      </ul>
+    </div>
+
+    <div class="role-card fade-up">
+      <div class="role-icon">⚙️</div>
+      <h4>Administrator</h4>
+      <div class="role-or-label">Both Modules</div>
+      <p>Platform configuration, module activation, and governance setup.</p>
+      <ul>
+        <li>Module activation</li>
+        <li>User & role management</li>
+        <li>AI provider config</li>
+        <li>Risk thresholds & frameworks</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- AI -->
+<section class="ai-section" id="ai">
+  <div class="section-tag">AI Engine</div>
+  <h2 class="section-title fade-up">Intelligence calibrated<br>to your jurisdiction, sector, and capital context.</h2>
+  <p class="section-sub fade-up">Not generic advice. Every AI output is contextualised to your organisation's type, capital base, regulatory obligations, and jurisdiction — whether it's a DORA-scope bank in Croatia or a public authority in Montenegro.</p>
+
+  <div class="ai-grid">
+    <div class="ai-features">
+      <div class="ai-feature fade-up">
+        <div class="ai-feature-icon">🎯</div>
+        <div>
+          <h4>FAIR Input Calibration — Cyber & OR</h4>
+          <p>Suggests TEF and Vulnerability ranges calibrated to ICT asset criticality and threat actor profiles (Cyber), or to business process type and Basel Event Type category (OR). Confidence levels and value bands signal where human judgement is most needed.</p>
+        </div>
+      </div>
+      <div class="ai-feature fade-up">
+        <div class="ai-feature-icon">🌍</div>
+        <div>
+          <h4>Jurisdiction-Aware Regulatory Context</h4>
+          <p>44 European jurisdictions mapped. AI analysis references the frameworks actually applicable to your organisation — CBCG for Montenegrin banks, DORA and HNB for Croatian institutions, NBS for Serbian entities. Regulatory references provide context and benchmark, never a compliance checklist.</p>
+        </div>
+      </div>
+      <div class="ai-feature fade-up">
+        <div class="ai-feature-icon">⚡</div>
+        <div>
+          <h4>Capital-Tier Treatment Recommendation</h4>
+          <p>Deterministic treatment recommendation at temperature=0, anchored to your 4-tier capital impact framework. Tier thresholds configured per tenant. Tier 1 risks trigger Management Board escalation guidance aligned with DORA Article 5 requirements.</p>
+        </div>
+      </div>
+      <div class="ai-feature fade-up">
+        <div class="ai-feature-icon">📋</div>
+        <div>
+          <h4>Analyst Assessment — AI Draft, Human Signature</h4>
+          <p>AI generates a structured analyst assessment using regulatory benchmarks and industry context — editable in a rich text editor. The analyst reviews, refines, and saves. What reaches the CISO and Board carries human accountability, not raw AI output.</p>
+        </div>
+      </div>
+      <div class="ai-feature fade-up">
+        <div class="ai-feature-icon">🔧</div>
+        <div>
+          <h4>Configurable AI Provider</h4>
+          <p>Use Anthropic Claude (default), Azure OpenAI, or standard OpenAI. Provider configured per tenant in Admin Panel. Master AI switch enables full manual operation when AI is not required or available.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-diagram fade-up">
+      <div style="font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px;">AI Context Inputs — Both Modules</div>
+      <div class="ai-io">
+        <div class="ai-io-group">
+          <h5>Organisation Profile</h5>
+          <div class="ai-io-item">Sector & Jurisdiction</div>
+          <div class="ai-io-item">Capital Base / Budget</div>
+          <div class="ai-io-item">Risk Appetite Tiers</div>
+          <div class="ai-io-item">Regulatory Frameworks</div>
+        </div>
+        <div class="ai-io-group">
+          <h5>Asset / Process Context</h5>
+          <div class="ai-io-item">Criticality & Classification</div>
+          <div class="ai-io-item">Asset Dependencies</div>
+          <div class="ai-io-item">Risk Type (Cyber / OR)</div>
+          <div class="ai-io-item">Regulatory Scope Tags</div>
+        </div>
+      </div>
+      <div class="ai-arrow">↓</div>
+      <div class="ai-engine">
+        <div class="ai-engine-name">Anthropic Claude AI Engine</div>
+        <div class="ai-engine-sub">claude-sonnet · jurisdiction-aware · dual-module · governance-focused</div>
+      </div>
+      <div class="ai-arrow">↓</div>
+      <div class="ai-io">
+        <div class="ai-io-group">
+          <h5>Cyber Outputs</h5>
+          <div class="ai-io-item" style="border-color: rgba(37,99,235,0.3); color: rgba(255,255,255,0.7);">ICT FAIR calibration</div>
+          <div class="ai-io-item" style="border-color: rgba(37,99,235,0.3); color: rgba(255,255,255,0.7);">Analyst Assessment draft</div>
+          <div class="ai-io-item" style="border-color: rgba(37,99,235,0.3); color: rgba(255,255,255,0.7);">DORA/NIS2 context</div>
+        </div>
+        <div class="ai-io-group">
+          <h5>OR Outputs</h5>
+          <div class="ai-io-item" style="border-color: rgba(201,168,76,0.3); color: rgba(255,255,255,0.7);">Basel Event analysis</div>
+          <div class="ai-io-item" style="border-color: rgba(201,168,76,0.3); color: rgba(255,255,255,0.7);">Process control gaps</div>
+          <div class="ai-io-item" style="border-color: rgba(201,168,76,0.3); color: rgba(255,255,255,0.7);">AMA documentation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIATORS -->
+<section class="pillars" id="differentiators" style="background:#080f1e;">
+  <div class="section-tag">Why AIQ Suite</div>
+  <h2 class="section-title fade-up">What sets AIQ Suite apart.</h2>
+  <p class="section-sub fade-up">Purpose-built for European regulated organisations — combining capabilities that are typically available only separately, at enterprise price points, or not at all.</p>
+
+  <div class="pillars-grid" style="grid-template-columns: repeat(3,1fr); margin-top:60px;">
+
+    <div class="pillar fade-up">
+      <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">⚡</div>
+      <h3>Workflow + Quantification in One</h3>
+      <p>Most quantification tools are calculators — they produce a number but leave coordination to email and spreadsheets. AIQ Suite embeds the complete governance workflow: analyst preparation, ICT/process control rating, CISO review, business owner decision, action plan, and approval — all in one platform, with full audit trail.</p>
+    </div>
+
+    <div class="pillar fade-up">
+      <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">🔗</div>
+      <h3>CR + OR on One Capital Basis</h3>
+      <p>Cyber risk and operational risk are typically managed in separate silos. AIQ Suite quantifies both on the same capital basis — same assets, same users, same reporting infrastructure, same executive dashboard. A bank sees its ransomware risk and its settlement error risk side-by-side as capital impact percentages.</p>
+    </div>
+
+    <div class="pillar fade-up">
+      <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">🗺️</div>
+      <h3>Built for European Regulation</h3>
+      <p>All major quantification platforms originate in North America. AIQ Suite is designed from the ground up for European regulatory requirements — DORA, NIS2, Basel III, EBA Guidelines, and 44 national jurisdictions including local regulators (CBCG, NBS, HNB, BaFin, FMA, FINMA). Not an afterthought — the architecture.</p>
+    </div>
+
+    <div class="pillar fade-up">
+      <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">🔍</div>
+      <h3>Full Calculation Transparency</h3>
+      <p>Every input, every control rating, every Monte Carlo output is visible and auditable. FAIR inputs, loss components, control reduction calculations, capital impact formula — all accessible for regulatory review. No black box. Designed to withstand supervisory scrutiny under DORA Article 6 and EBA internal model requirements.</p>
+    </div>
+
+    <div class="pillar fade-up">
+      <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">👤</div>
+      <h3>Accessible Without Certification</h3>
+      <p>FAIR methodology typically requires specialist training or external consultants. AIQ Suite makes FAIR accessible to any risk analyst through AI-assisted calibration, scenario context panels, industry benchmark guidance, and structured workflow. Expertise is embedded in the platform — not a prerequisite for using it.</p>
+    </div>
+
+    <div class="pillar fade-up">
+      <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">📊</div>
+      <h3>Industry Benchmarking</h3>
+      <p>See how your organisation's capital impact compares to sector peers. Benchmark data sourced from Verizon DBIR, ENISA Threat Landscape, IBM X-Force, and Ponemon Institute — by organisation type, sector, and company size. Gives CISO and board concrete context: are we above or below industry average for this risk?</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- REGULATORY -->
+<section class="regulatory" id="regulatory">
+  <div class="section-tag">Compliance Coverage</div>
+  <h2 class="section-title fade-up">Purpose-built for regulated sectors.</h2>
+  <p class="section-sub fade-up">AIQ Suite structurally aligns internal risk governance with external auditing demands across major regulatory frameworks — through two purpose-built modules.</p>
+
+  <div class="reg-table fade-up">
+    <div class="reg-row header">
+      <div class="reg-cell">Framework</div>
+      <div class="reg-cell">Applicable Sectors</div>
+      <div class="reg-cell">Platform Coverage</div>
+      <div class="reg-cell">Module</div>
+    </div>
+    <div class="reg-row">
+      <div class="reg-cell"><div class="reg-name">DORA</div><div class="reg-who">Digital Operational Resilience Act</div></div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444; display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding:18px 24px;">
+        <span class="reg-badge">Banks</span><span class="reg-badge">Insurers</span><span class="reg-badge">Investment Firms</span><span class="reg-badge">Payment Institutions</span>
+      </div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444;">ICT risk quantification, capital impact, governance workflow, DORA ICT Risk Report per Annex requirements</div>
+      <div class="reg-cell"><div class="module-indicator"><span class="dot-cyber"></span> CyberRisk AIQ</div></div>
+    </div>
+    <div class="reg-row">
+      <div class="reg-cell"><div class="reg-name">Basel III / CRR</div><div class="reg-who">Operational Risk — AMA</div></div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444; display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding:18px 24px;">
+        <span class="reg-badge">Banks</span><span class="reg-badge">Credit Institutions</span>
+      </div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444;">FAIR-based AMA scenario analysis, OR capital charge quantification, Basel Event Type categorisation, ECB-aligned internal model documentation</div>
+      <div class="reg-cell"><div class="module-indicator"><span class="dot-or"></span> OpRisk AIQ</div></div>
+    </div>
+    <div class="reg-row">
+      <div class="reg-cell"><div class="reg-name">NIS2</div><div class="reg-who">Network & Information Security Directive</div></div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444; display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding:18px 24px;">
+        <span class="reg-badge">Critical Infrastructure</span><span class="reg-badge">Energy</span><span class="reg-badge">Health</span><span class="reg-badge">Public Sector</span>
+      </div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444;">Risk identification and treatment workflow, control effectiveness evidence, NIS2 ICT Risk Report with Budget Impact terminology for public sector</div>
+      <div class="reg-cell"><div class="module-indicator"><span class="dot-cyber"></span> CyberRisk AIQ</div></div>
+    </div>
+    <div class="reg-row">
+      <div class="reg-cell"><div class="reg-name">Solvency II</div><div class="reg-who">Insurance Prudential Regulation</div></div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444; display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding:18px 24px;">
+        <span class="reg-badge">Insurance Companies</span>
+      </div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444;">Operational risk quantification (OR module), ICT risk for DORA-in-scope insurers (Cyber module), capital adequacy context</div>
+      <div class="reg-cell"><div class="module-indicator"><span class="dot-both"></span> Both Modules</div></div>
+    </div>
+    <div class="reg-row">
+      <div class="reg-cell"><div class="reg-name">ISO 27001</div><div class="reg-who">Information Security Management</div></div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444; display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding:18px 24px;">
+        <span class="reg-badge">Any Organisation</span>
+      </div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444;">ISO 27002:2022 controls library (aligned, not reproduced), ISMS-compatible risk assessment process</div>
+      <div class="reg-cell"><div class="module-indicator"><span class="dot-cyber"></span> CyberRisk AIQ</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="roadmap" id="roadmap">
+  <div class="section-tag">Product Roadmap</div>
+  <h2 class="section-title fade-up">A living platform,<br>continuously deepened.</h2>
+  <p class="section-sub fade-up">Both CyberRisk AIQ and OpRisk AIQ are live. Intelligence, enterprise, and scale features are in active development.</p>
+
+  <div class="roadmap-phases">
+    <div class="phase fade-up">
+      <div class="phase-label">CyberRisk AIQ</div>
+      <span class="phase-status status-live">● Live</span>
+      <ul class="phase-items">
+        <li class="phase-item done"><div class="phase-dot"></div><span>FAIR-based quantification engine (multiplicative control model)</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>10,000-run Monte Carlo — P50/P90/P95 + capital impact</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>9-role 3LoD governance workflow</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>354 controls — ISO 27002, NIST CSF 2.0, CIS v8</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Controls import — Framework AI, Document AI, CSV</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Jurisdiction-aware AI — 44 European countries</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Investment Optimizer — ROI per control</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>DORA + NIS2 regulatory reports</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Asset Risk Map — portfolio heatmap</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>CISO Board Summary — AI-generated, editable</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>PDF export — assessment + board pack</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>BO Decision Guidance with ROI and governance flags</span></li>
+      </ul>
+    </div>
+
+    <div class="phase fade-up">
+      <div class="phase-label">OpRisk AIQ</div>
+      <span class="phase-status status-live">● Live</span>
+      <ul class="phase-items">
+        <li class="phase-item done"><div class="phase-dot"></div><span>Business Process Registry with asset dependencies</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Basel Event Type scenarios (7 categories)</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>OR Capital Charge quantification</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Operational Risk Manager / Risk Coordinator roles</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Basel III AMA reporting</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>OR Risk Register + ORM summaries</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Integrated Cyber + OR Executive Dashboard</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Org-type capital labels — Tier 1 / Budget / Equity</span></li>
+      </ul>
+    </div>
+
+    <div class="phase fade-up">
+      <div class="phase-label">Intelligence & Enterprise</div>
+      <span class="phase-status status-soon">◑ In Development</span>
+      <ul class="phase-items">
+        <li class="phase-item done"><div class="phase-dot"></div><span>Multi-language UI — AI-assisted translation</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Tenant branding + configurable role labels</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Org Units — hierarchical organisation structure</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Industry Peer Benchmarking — DBIR, ENISA, Ponemon</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Custom Report Builder — CR &amp; OR, role-based visibility, AI summary</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Designated Representative — delegate BO/Process Owner tasks</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>TOTP two-factor authentication (Google/Microsoft Authenticator)</span></li>
+        <li class="phase-item"><div class="phase-dot"></div><span>Loss Exceedance Curve — full distribution visualisation</span></li>
+        <li class="phase-item"><div class="phase-dot"></div><span>Industry Scenario Library with benchmark FAIR inputs</span></li>
+        <li class="phase-item"><div class="phase-dot"></div><span>Risk Register Migration Assistant — import from Excel/PDF</span></li>
+        <li class="phase-item"><div class="phase-dot"></div><span>Multi-tenant architecture + offline licence management</span></li>
+        <li class="phase-item"><div class="phase-dot"></div><span>Holding + subsidiaries multi-group architecture</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FAKE DEMO -->
+<section style="background:#0a1628; padding:100px 60px;" id="see-it">
+  <div class="section-tag">See It In Action</div>
+  <h2 class="section-title fade-up">From threat to <em style="color:var(--gold); font-family:'Playfair Display',serif;">capital impact</em><br>in one defensible view.</h2>
+  <p class="section-sub fade-up">A simplified scenario — Core Banking System under ransomware threat — quantified through FAIR methodology and 10,000 Monte Carlo runs.</p>
+
+  <div style="max-width:900px; margin:48px auto 0; background:rgba(255,255,255,0.02); border:1px solid rgba(201,168,76,0.15); border-radius:8px; padding:40px;" class="fade-up">
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:32px;">
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:4px; padding:20px;">
+        <div style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:8px;">Asset</div>
+        <div style="font-size:1rem; font-weight:600; color:var(--white);">Core Banking System</div>
+        <div style="font-size:0.8rem; color:rgba(255,255,255,0.4); margin-top:4px;">Criticality: Critical · DORA scope</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:4px; padding:20px;">
+        <div style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:8px;">Scenario</div>
+        <div style="font-size:1rem; font-weight:600; color:var(--white);">Ransomware Attack</div>
+        <div style="font-size:0.8rem; color:rgba(255,255,255,0.4); margin-top:4px;">TEF: 0.8/yr · Vulnerability: 45%</div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:32px;">
+      <div style="text-align:center; padding:20px; background:rgba(201,168,76,0.06); border:1px solid rgba(201,168,76,0.2); border-radius:4px;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; color:var(--gold);" id="demo-capital">1.84%</div>
+        <div style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-top:4px;">Capital Impact</div>
+      </div>
+      <div style="text-align:center; padding:20px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:4px;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; color:var(--white);" id="demo-loss">€4.6M</div>
+        <div style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-top:4px;">Expected Loss</div>
+      </div>
+      <div style="text-align:center; padding:20px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:4px;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; color:var(--white);" id="demo-p90">€9.2M</div>
+        <div style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-top:4px;">P90 Loss</div>
+      </div>
+      <div style="text-align:center; padding:20px; background:rgba(220,38,38,0.08); border:1px solid rgba(220,38,38,0.2); border-radius:4px;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; color:#f87171;" id="demo-tier">Tier 1</div>
+        <div style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-top:4px;">Risk Tier</div>
+      </div>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:4px; padding:20px; margin-bottom:24px;">
+      <div style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:12px;">Active Controls</div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;" id="demo-controls">
+        <span style="padding:4px 12px; background:rgba(37,99,235,0.12); border:1px solid rgba(37,99,235,0.25); border-radius:2px; font-size:0.75rem; color:#93c5fd;">Firewall · 4/5</span>
+        <span style="padding:4px 12px; background:rgba(37,99,235,0.12); border:1px solid rgba(37,99,235,0.25); border-radius:2px; font-size:0.75rem; color:#93c5fd;">Backup &amp; Recovery · 3/5</span>
+        <span style="padding:4px 12px; background:rgba(37,99,235,0.12); border:1px solid rgba(37,99,235,0.25); border-radius:2px; font-size:0.75rem; color:#93c5fd;">Incident Response · 2/5</span>
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <button onclick="applyControls()" id="demo-btn" style="background:var(--gold); color:var(--navy); padding:12px 28px; border:none; border-radius:2px; font-family:'DM Sans',sans-serif; font-size:0.88rem; font-weight:600; cursor:pointer; letter-spacing:0.04em; transition:all 0.2s;">
+        ✦ Apply Additional Controls
+      </button>
+      <p style="margin-top:12px; font-size:0.75rem; color:rgba(255,255,255,0.25);">See how MFA + EDR reduce capital impact</p>
+    </div>
+
+    <div id="demo-result" style="display:none; margin-top:24px; padding:20px; background:rgba(34,197,94,0.06); border:1px solid rgba(34,197,94,0.2); border-radius:4px;">
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; text-align:center;">
+        <div>
+          <div style="font-size:0.68rem; color:rgba(255,255,255,0.3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Capital Impact</div>
+          <div style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:#4ade80;">0.72% <span style="font-size:0.9rem; color:rgba(255,255,255,0.3);">↓ from 1.84%</span></div>
+        </div>
+        <div>
+          <div style="font-size:0.68rem; color:rgba(255,255,255,0.3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Expected Loss</div>
+          <div style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:#4ade80;">€1.8M <span style="font-size:0.9rem; color:rgba(255,255,255,0.3);">↓ from €4.6M</span></div>
+        </div>
+        <div>
+          <div style="font-size:0.68rem; color:rgba(255,255,255,0.3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Risk Tier</div>
+          <div style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:#4ade80;">Tier 3 <span style="font-size:0.9rem; color:rgba(255,255,255,0.3);">↓ from Tier 1</span></div>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:16px; font-size:0.82rem; color:rgba(255,255,255,0.45);">MFA (5/5) + EDR (4/5) reduce capital impact by 61% — investment justified by risk reduction ROI of 8.4:1</p>
+    </div>
+  </div>
+
+  <p style="text-align:center; margin-top:24px; font-size:0.82rem; color:rgba(255,255,255,0.25);" class="fade-up">This is a simplified scenario. See your organisation's real risk profile with actual assets and controls.</p>
+  <div style="text-align:center; margin-top:16px;" class="fade-up">
+    <a href="#demo" class="btn-primary" style="box-shadow:0 4px 20px rgba(201,168,76,0.25);">Request Early Access</a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="demo">
+  <div class="cta-bg"></div>
+  <div style="position:relative; z-index:2;">
+    <div class="section-tag" style="text-align:center;">Early Access</div>
+    <h2 class="section-title fade-up">See your organisation's risk<br>expressed as <em style="color:var(--gold);font-family:'Playfair Display',serif;">capital impact %.</em></h2>
+    <p class="section-sub fade-up">Request early access and we'll show you how AIQ Suite quantifies your Cyber and Operational Risk in terms your board and regulators can act on.</p>
+    <div class="cta-form fade-up">
+      <input type="email" class="cta-input" placeholder="your@organisation.com">
+      <button class="btn-primary" style="box-shadow:0 4px 20px rgba(201,168,76,0.3); font-size:0.95rem; padding:14px 28px;">Request Early Access</button>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:20px;" class="fade-up">
+      <span style="font-size:0.72rem; color:rgba(255,255,255,0.25); padding:4px 12px; border:1px solid rgba(255,255,255,0.08); border-radius:2px;">Early access only</div>
+      <span style="font-size:0.72rem; color:rgba(255,255,255,0.25); padding:4px 12px; border:1px solid rgba(255,255,255,0.08); border-radius:2px;">EU data centres</span>
+      <span style="font-size:0.72rem; color:rgba(255,255,255,0.25); padding:4px 12px; border:1px solid rgba(255,255,255,0.08); border-radius:2px;">On-prem option</span>
+      <span style="font-size:0.72rem; color:rgba(255,255,255,0.25); padding:4px 12px; border:1px solid rgba(255,255,255,0.08); border-radius:2px;">Configurable AI provider</span>
+      <span style="font-size:0.72rem; color:rgba(255,255,255,0.25); padding:4px 12px; border:1px solid rgba(255,255,255,0.08); border-radius:2px;">DORA + NIS2 + Basel III aligned</span>
+    </div>
+    <div class="cta-note fade-up" style="margin-top:12px;">Priority access for banks, financial institutions, insurers, critical infrastructure and public sector organisations.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">AIQ <span>Suite</span> — CyberRisk AIQ · OpRisk AIQ</div>
+  <div class="footer-note">
+    Based on FAIR methodology (The Open Group) · Aligned with ISO 27002:2022 · NIST CSF 2.0 · CIS Controls v8 · Basel III AMA<br>
+    ISO 27002 is a trademark of ISO. Controls library independently developed and aligned with ISO 27002:2022 — not reproduced from the standard.<br>
+    NIST, CIS, and Basel frameworks referenced for informational purposes. AIQ Suite supports DORA ICT risk assessment requirements — not a full DORA compliance tool.
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) el.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+window.addEventListener('load', () => {
+  document.querySelectorAll('.chart-bar').forEach(bar => {
+    const width = bar.style.width;
+    bar.style.width = '0';
+    setTimeout(() => { bar.style.width = width; }, 500);
+  });
+});
+
+function applyControls() {
+  const btn = document.getElementById('demo-btn');
+  const result = document.getElementById('demo-result');
+  const controls = document.getElementById('demo-controls');
+
+  btn.textContent = '✓ Controls Applied';
+  btn.style.background = '#4ade80';
+  btn.style.color = '#0f1f3d';
+  btn.disabled = true;
+
+  controls.innerHTML = `
+    <span style="padding:4px 12px; background:rgba(37,99,235,0.12); border:1px solid rgba(37,99,235,0.25); border-radius:2px; font-size:0.75rem; color:#93c5fd;">Firewall · 4/5</span>
+    <span style="padding:4px 12px; background:rgba(37,99,235,0.12); border:1px solid rgba(37,99,235,0.25); border-radius:2px; font-size:0.75rem; color:#93c5fd;">Backup &amp; Recovery · 3/5</span>
+    <span style="padding:4px 12px; background:rgba(37,99,235,0.12); border:1px solid rgba(37,99,235,0.25); border-radius:2px; font-size:0.75rem; color:#93c5fd;">Incident Response · 2/5</span>
+    <span style="padding:4px 12px; background:rgba(34,197,94,0.12); border:1px solid rgba(34,197,94,0.25); border-radius:2px; font-size:0.75rem; color:#4ade80;">+ MFA · 5/5</span>
+    <span style="padding:4px 12px; background:rgba(34,197,94,0.12); border:1px solid rgba(34,197,94,0.25); border-radius:2px; font-size:0.75rem; color:#4ade80;">+ EDR Solution · 4/5</span>
+  `;
+
+  result.style.display = 'block';
+  result.style.opacity = '0';
+  result.style.transform = 'translateY(10px)';
+  result.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+
+  setTimeout(() => {
+    result.style.opacity = '1';
+    result.style.transform = 'translateY(0)';
+  }, 100);
+}
+</script>
+</body>
+</html>
