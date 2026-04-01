@@ -1020,7 +1020,7 @@ footer {
   .hero-visual { display: none; }
   section { padding: 72px 24px; }
   .problem-grid, .ai-grid { grid-template-columns: 1fr; gap: 32px; }
-  .pillars-grid, .roadmap-phases { grid-template-columns: 1fr; }
+  .pillars-grid, .roadmap-phases { grid-template-columns: 1fr !important; }
   .roles-grid { grid-template-columns: 1fr 1fr; }
   .modules-grid { grid-template-columns: 1fr; }
   .reg-row { grid-template-columns: 1fr; }
@@ -1031,6 +1031,8 @@ footer {
   .step-metric { display: none; }
   .cta-form { flex-direction: column; max-width: 100%; }
   .cta-input { width: 100%; }
+  .differentiators-featured-inner { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .differentiators-featured { padding: 36px 28px !important; }
 }
 
 @media (max-width: 640px) {
@@ -1047,7 +1049,7 @@ footer {
   .module-cards { flex-direction: column; }
   .module-card { width: 100%; }
   .roles-grid { grid-template-columns: 1fr; }
-  .pillars-grid { grid-template-columns: 1fr; }
+  .pillars-grid { grid-template-columns: 1fr !important; }
   .roadmap-phases { grid-template-columns: 1fr; }
   .modules-grid { grid-template-columns: 1fr; }
   .problem-grid { grid-template-columns: 1fr; }
@@ -1080,6 +1082,8 @@ footer {
   .demo-result-grid { grid-template-columns: 1fr !important; }
   .pillar p { overflow-wrap: break-word; hyphens: auto; }
   .pillar h3 { overflow-wrap: break-word; }
+  .differentiators-featured-inner { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .differentiators-featured { padding: 28px 16px !important; }
 }
 </style>
 </head>
@@ -1681,7 +1685,7 @@ footer {
   </div>
 
   <!-- Featured full-width card -->
-  <div style="
+  <div class="differentiators-featured" style="
     margin-top:2px;
     border:1px solid var(--border);
     border-top:3px solid var(--gold);
@@ -1701,7 +1705,7 @@ footer {
       pointer-events:none;
     "></div>
 
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; position:relative; z-index:1;">
+    <div class="differentiators-featured-inner" style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; position:relative; z-index:1;">
 
       <!-- Left: text content -->
       <div>
