@@ -1637,9 +1637,10 @@ footer {
 <section class="pillars" id="differentiators" style="background:#080f1e;">
   <div class="section-tag">Why AIQ Suite</div>
   <h2 class="section-title fade-up">What sets AIQ Suite apart.</h2>
-  <p class="section-sub fade-up">Purpose-built for European regulated organisations — combining capabilities that are typically available only separately, at enterprise price points, or not at all.</p>
+  <p class="section-sub fade-up">Purpose-built for European regulated organisations — combining capabilities that are typically available only separately, at enterprise price points, or not at all. Now including group-level risk intelligence for multi-entity organisations.</p>
 
-  <div class="pillars-grid" style="margin-top:60px;">
+  <!-- Rows 1+2: standard 3-column grid -->
+  <div class="pillars-grid" style="margin-top:60px; grid-template-columns: repeat(3, 1fr);">
 
     <div class="pillar fade-up">
       <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">⚡</div>
@@ -1678,6 +1679,94 @@ footer {
     </div>
 
   </div>
+
+  <!-- Featured full-width card -->
+  <div style="
+    margin-top:2px;
+    border:1px solid var(--border);
+    border-top:3px solid var(--gold);
+    background: linear-gradient(135deg, rgba(201,168,76,0.06) 0%, rgba(15,31,61,0.95) 60%);
+    padding:52px 60px;
+    position:relative;
+    overflow:hidden;
+  " class="fade-up">
+
+    <!-- background decorative element -->
+    <div style="
+      position:absolute;
+      right:-40px; top:-40px;
+      width:300px; height:300px;
+      border-radius:50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events:none;
+    "></div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; position:relative; z-index:1;">
+
+      <!-- Left: text content -->
+      <div>
+        <div style="
+          display:inline-flex; align-items:center; gap:8px;
+          background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.3);
+          padding:4px 14px; border-radius:2px;
+          font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase;
+          color:var(--gold); font-weight:600; margin-bottom:20px;
+        ">✦ Unique to AIQ Suite</div>
+
+        <div style="font-size:2rem; color:rgba(201,168,76,0.25); line-height:1; margin-bottom:16px;">🏛️</div>
+        <h3 style="
+          font-family:'Playfair Display',serif;
+          font-size:1.6rem; font-weight:700;
+          color:var(--gold); margin-bottom:16px; line-height:1.2;
+        ">Group Risk Intelligence<br>for Multi-Entity Organisations</h3>
+
+        <p style="font-size:0.92rem; line-height:1.75; color:rgba(255,255,255,0.55); font-weight:300; margin-bottom:24px;">
+          Organisations with multiple entities — holding groups, subsidiaries, regional divisions,
+          or public sector bodies — can consolidate CR and OR capital exposure across all units
+          in a single view. Because AIQ Suite holds both ICT/cyber and operational risk data
+          under one roof, it identifies areas where both risk types are simultaneously elevated
+          across entities. No silo. No manual consolidation. One capital basis, group-wide.
+        </p>
+
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <span style="padding:5px 14px; border:1px solid rgba(201,168,76,0.4); border-radius:2px; font-size:0.72rem; color:var(--gold); font-family:'DM Mono',monospace; letter-spacing:0.05em;">Group CRO</span>
+          <span style="padding:5px 14px; border:1px solid rgba(201,168,76,0.4); border-radius:2px; font-size:0.72rem; color:var(--gold); font-family:'DM Mono',monospace; letter-spacing:0.05em;">Group CISO</span>
+          <span style="padding:5px 14px; border:1px solid rgba(201,168,76,0.4); border-radius:2px; font-size:0.72rem; color:var(--gold); font-family:'DM Mono',monospace; letter-spacing:0.05em;">Group ORM</span>
+          <span style="padding:5px 14px; border:1px solid rgba(201,168,76,0.4); border-radius:2px; font-size:0.72rem; color:var(--gold); font-family:'DM Mono',monospace; letter-spacing:0.05em;">Parent + Subsidiaries</span>
+        </div>
+      </div>
+
+      <!-- Right: feature list -->
+      <div style="display:flex; flex-direction:column; gap:16px;">
+
+        <div style="display:flex; gap:16px; align-items:flex-start; padding:16px 20px; border:1px solid rgba(201,168,76,0.12); border-radius:4px; background:rgba(255,255,255,0.02);">
+          <div style="font-size:1.2rem; flex-shrink:0; margin-top:2px;">📊</div>
+          <div>
+            <div style="font-size:0.88rem; font-weight:600; color:var(--white); margin-bottom:4px;">Consolidated Capital Dashboard</div>
+            <div style="font-size:0.8rem; color:rgba(255,255,255,0.4); line-height:1.5;">Total CR + OR capital at risk across all entities — P50, P90, P95 — on a single screen. DORA ICT exposure and AMA operational capital charge consolidated in one view.</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:16px; align-items:flex-start; padding:16px 20px; border:1px solid rgba(201,168,76,0.12); border-radius:4px; background:rgba(255,255,255,0.02);">
+          <div style="font-size:1.2rem; flex-shrink:0; margin-top:2px;">🎯</div>
+          <div>
+            <div style="font-size:0.88rem; font-weight:600; color:var(--white); margin-bottom:4px;">Group Risk Concentration Matrix</div>
+            <div style="font-size:0.8rem; color:rgba(255,255,255,0.4); line-height:1.5;">Identifies processes and business units where both ICT/cyber and operational risk are elevated simultaneously — the highest-priority concentration points for group-level treatment and resource allocation.</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:16px; align-items:flex-start; padding:16px 20px; border:1px solid rgba(201,168,76,0.12); border-radius:4px; background:rgba(255,255,255,0.02);">
+          <div style="font-size:1.2rem; flex-shrink:0; margin-top:2px;">🤖</div>
+          <div>
+            <div style="font-size:0.88rem; font-weight:600; color:var(--white); margin-bottom:4px;">Group Executive Summary — AI Generated</div>
+            <div style="font-size:0.8rem; color:rgba(255,255,255,0.4); line-height:1.5;">AI-generated board-level narrative synthesising risk posture, key exposures, and recommended priorities across all entities — ready for the Group Board, Supervisory Committee, or senior management.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <!-- REGULATORY -->
@@ -1740,7 +1829,7 @@ footer {
 <section class="roadmap" id="roadmap">
   <div class="section-tag">Product Roadmap</div>
   <h2 class="section-title fade-up">A living platform,<br>continuously deepened.</h2>
-  <p class="section-sub fade-up">Both CyberRisk AIQ and OpRisk AIQ are live. Intelligence, enterprise, and scale features are in active development.</p>
+  <p class="section-sub fade-up">CyberRisk AIQ, OpRisk AIQ, and the Enterprise Scale tier are all live. Multi-tenant, holding architecture, and group risk intelligence are now in production.</p>
 
   <div class="roadmap-phases">
     <div class="phase fade-up">
@@ -1811,10 +1900,23 @@ footer {
 
     <div class="phase fade-up">
       <div class="phase-label">Enterprise Scale</div>
-      <span class="phase-status status-soon">◑ In Development</span>
+      <span class="phase-status status-live">● Live</span>
       <ul class="phase-items">
-        <li class="phase-item"><div class="phase-dot"></div><span>Multi-tenant architecture + licence management</span></li>
-        <li class="phase-item"><div class="phase-dot"></div><span>Holding + subsidiaries multi-group architecture</span></li>
+        <!-- Multi-tenant -->
+        <li class="phase-item done"><div class="phase-dot"></div><span>Multi-tenant SaaS architecture — schema-per-tenant isolation</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Super-admin panel — tenant provisioning, licence management, system health</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>RSA-signed JWT licensing — offline, tier-based, no phone-home</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>On-premise + SaaS + holding deployment modes</span></li>
+        <!-- Holding -->
+        <li class="phase-item done"><div class="phase-dot"></div><span>Operating holding model — holding entity with own workspace</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Group roles — Group CISO, Group ORM, Group CRO</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Consolidated Risk Summary — CR + OR capital across all subsidiaries</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>DORA Group Overview — applicability and ICT exposure by subsidiary</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Basel AMA Group — OR capital charge consolidated view</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Group Risk Concentration — cross-entity CR+OR process-asset matrix</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Group Executive Summary — AI-generated board narrative across subsidiaries</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Subsidiary benchmarking — ranked entities by combined capital at risk</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Group Administration panel — group user management, subsidiary inclusion control</span></li>
       </ul>
     </div>
   </div>
