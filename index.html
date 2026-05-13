@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AIQ Suite — AI Quantified Risk Intelligence</title>
+<title>AIQ Suite — Digital Operational Resilience for European Financial Institutions</title>
+<meta name="description" content="Quantify cyber, operational, and third-party risk on one defensible capital basis. CyberRisk AIQ + OpRisk AIQ + TPPRisk AIQ. DORA Article 28 RoI · Basel III · NIS2." />
+<meta property="og:title" content="AIQ Suite — Digital Operational Resilience for European Financial Institutions" />
+<meta property="og:description" content="Quantify cyber, operational, and third-party risk on one defensible capital basis. CyberRisk AIQ + OpRisk AIQ + TPPRisk AIQ. DORA Article 28 RoI · Basel III · NIS2." />
 <link rel="alternate" hreflang="en" href="https://www.cyberriskaiq.com/" />
 <link rel="alternate" hreflang="cnr" href="https://www.cyberriskaiq.com/me/" />
 <link rel="alternate" hreflang="x-default" href="https://www.cyberriskaiq.com/" />
@@ -424,7 +427,7 @@ section { padding: 100px 60px; }
 
 .modules-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2px;
   margin-top: 60px;
   background: var(--border);
@@ -573,7 +576,7 @@ section { padding: 100px 60px; }
 
 .pillars-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1px;
   margin-top: 60px;
   background: var(--border);
@@ -817,7 +820,7 @@ section { padding: 100px 60px; }
 .ai-engine-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--gold); }
 .ai-engine-sub { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 4px; font-family: 'DM Mono', monospace; }
 
-.ai-io { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 0.78rem; }
+.ai-io { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; font-size: 0.78rem; }
 
 .ai-io-group h5 {
   font-size: 0.68rem;
@@ -892,14 +895,17 @@ section { padding: 100px 60px; }
 
 .dot-cyber { width: 8px; height: 8px; border-radius: 50%; background: #2563eb; flex-shrink: 0; }
 .dot-or { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+.dot-tpp { width: 8px; height: 8px; border-radius: 50%; background: var(--gold-light); flex-shrink: 0; }
 .dot-both { width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, #2563eb 50%, var(--gold) 50%); flex-shrink: 0; }
+.dot-cyber-tpp { width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, #2563eb 50%, var(--gold-light) 50%); flex-shrink: 0; }
+.dot-all { width: 8px; height: 8px; border-radius: 50%; background: conic-gradient(#2563eb 0deg 120deg, var(--gold) 120deg 240deg, var(--gold-light) 240deg 360deg); flex-shrink: 0; }
 
 /* ROADMAP */
 .roadmap { background: #0a1628; }
 
 .roadmap-phases {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   margin-top: 60px;
   background: var(--border);
@@ -1066,6 +1072,9 @@ footer {
   .pillars-grid, .roadmap-phases { grid-template-columns: 1fr !important; }
   .roles-grid { grid-template-columns: 1fr 1fr; }
   .modules-grid { grid-template-columns: 1fr; }
+  .ai-io { grid-template-columns: 1fr; }
+  .tpp-portfolio-table { overflow-x: auto; }
+  .tpp-portfolio-table > div { min-width: 640px; }
   .reg-row { grid-template-columns: 1fr; }
   .reg-row.header { display: none; }
   footer { flex-direction: column; gap: 16px; text-align: center; }
@@ -1163,12 +1172,12 @@ footer {
   <div class="hero-grid"></div>
 
   <div class="hero-content fade-up">
-    <div class="hero-badge">DORA · NIS2 · Basel III OR · FAIR · Quantitative RCSA · European-built</div>
-    <h1>Quantify Cyber &amp; Operational Risk<br>in <em>Capital Impact Terms.</em></h1>
+    <div class="hero-badge">DORA · DORA Article 28 RoI · NIS2 · Basel III OR · FAIR-based Quantification · European-built</div>
+    <h1>Quantify Cyber, Operational &amp; Third-Party Risk<br>on One Defensible <em>Capital Basis.</em></h1>
     <p class="hero-sub">
-      Stop reporting risk. Start quantifying it. AIQ Suite translates ICT and
-      operational risk into board-ready capital impact percentages —
-      governed by a structured workflow built for DORA, NIS2, and Basel III environments.
+      AIQ Suite translates ICT, operational, and third-party provider risk into
+      board-ready capital impact, concentration exposure, and regulatory evidence —
+      through one governed platform built for European financial-sector operational resilience.
     </p>
 
     <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px;">
@@ -1189,7 +1198,14 @@ footer {
         <div class="module-card-icon">⚖️</div>
         <div>
           <div class="module-card-name">OpRisk AIQ</div>
-          <div class="module-card-tag">Basel III OR · Quantitative RCSA</div>
+          <div class="module-card-tag">Basel III · RCSA · ICAAP</div>
+        </div>
+      </div>
+      <div class="module-card">
+        <div class="module-card-icon">🔗</div>
+        <div>
+          <div class="module-card-name">TPPRisk AIQ</div>
+          <div class="module-card-tag">DORA Article 28 RoI · Concentration</div>
         </div>
       </div>
     </div>
@@ -1240,9 +1256,31 @@ footer {
           <div class="chart-val">0.54%</div>
         </div>
       </div>
+      <div class="chart-section-label" style="margin-top:16px;">TPPRisk AIQ — Top ICT Provider Concentration</div>
+      <div class="chart-bars">
+        <div class="chart-row">
+          <div class="chart-row-label">Cloud Hosting (Primary)</div>
+          <div class="chart-bar-wrap"><div class="chart-bar bar-navy" style="width:84%; background:linear-gradient(90deg,#c9a84c,#e8c97a);"></div></div>
+          <div class="chart-val chart-highlight">€8.4M</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-row-label">Payment Gateway</div>
+          <div class="chart-bar-wrap"><div class="chart-bar bar-navy" style="width:61%; background:linear-gradient(90deg,#c9a84c,#e8c97a);"></div></div>
+          <div class="chart-val">€6.1M</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-row-label">Core Banking Vendor</div>
+          <div class="chart-bar-wrap"><div class="chart-bar bar-navy" style="width:27%; background:linear-gradient(90deg,#c9a84c,#e8c97a);"></div></div>
+          <div class="chart-val">€2.7M</div>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px; padding:8px 12px; background:rgba(201,168,76,0.06); border:1px solid rgba(201,168,76,0.15); border-radius:3px; font-size:0.78rem;">
+        <span style="color:rgba(255,255,255,0.55);">P95 exposure · CIF mapped per provider</span>
+        <span style="color:var(--gold); font-weight:600;">RoI Completeness 99.7%</span>
+      </div>
       <div class="chart-callout">
-        <strong>Board-ready output:</strong> 3 scenarios exceed risk appetite —
-        capital impact expressed on a single defensible basis across Cyber and OR.
+        <strong>Board-ready output:</strong> 3 risks above appetite. Top provider concentration covers 5 critical functions. Register of Information ready for submission.
+        <strong style="color:var(--gold-light);">Three layers of operational resilience, one defensible view.</strong>
       </div>
     </div>
   </div>
@@ -1266,15 +1304,15 @@ footer {
 <!-- MODULES -->
 <section class="modules-section" id="modules">
   <div class="section-tag">Platform Modules</div>
-  <h2 class="section-title fade-up">Two modules.<br>One integrated platform.</h2>
-  <p class="section-sub fade-up">Each module can be deployed independently or together as AIQ Suite. Both share the same AI engine, governance workflow, reporting infrastructure, and organisational data.</p>
+  <h2 class="section-title fade-up">Three modules.<br>One operational resilience platform.</h2>
+  <p class="section-sub fade-up">Each module can be deployed independently or together as AIQ Suite. All three share the same governance workflow, organisational data, AI infrastructure, reporting layer, audit trail, and capital-impact logic — giving banks one consistent view of ICT risk, operational risk, and third-party dependency risk.</p>
 
   <div class="modules-grid">
     <div class="module-panel fade-up">
       <div class="module-panel-label">Module 01</div>
       <h3>CyberRisk <span>AIQ</span></h3>
       <div class="module-panel-tagline">ICT & Cyber Risk Quantification</div>
-      <p>Quantifies ICT and cyber risk through FAIR methodology applied to ICT assets and threat scenarios. Produces capital impact percentages aligned with DORA ICT risk assessment requirements and NIS2 obligations.</p>
+      <p>Quantifies ICT and cyber risk through FAIR-based methodology applied to ICT assets, threat scenarios, control effectiveness, and loss components. Produces board-ready capital impact metrics aligned with DORA ICT risk management and NIS2 expectations.</p>
       <div class="module-reg-badges">
         <span class="reg-pill">DORA</span>
         <span class="reg-pill">NIS2</span>
@@ -1299,11 +1337,12 @@ footer {
       <div class="module-panel-label">Module 02</div>
       <h3>OpRisk <span>AIQ</span></h3>
       <div class="module-panel-tagline">Operational Risk Quantification</div>
-      <p>Quantifies operational risk through a Quantitative Risk and Control Self-Assessment (RCSA) approach with FAIR-based Monte Carlo simulation. Applied to business processes and Basel III Event Type scenarios. Produces capital impact estimates that support Pillar II ICAAP narrative and EBA internal governance expectations.</p>
+      <p>Quantifies operational risk through FAIR-based scenario analysis applied to business processes, Basel III Event Type categories, internal loss data, and process controls. Supports RCSA, ICAAP narrative, management reporting, and operational risk capital impact analysis.</p>
       <div class="module-reg-badges">
         <span class="reg-pill">Basel III OR</span>
         <span class="reg-pill">CRD IV</span>
         <span class="reg-pill">Quantitative RCSA</span>
+        <span class="reg-pill">ICAAP</span>
         <span class="reg-pill">Solvency II</span>
       </div>
       <ul class="module-features">
@@ -1315,16 +1354,45 @@ footer {
         <li>Process ↔ ICT Asset integration for cross-domain risk view</li>
       </ul>
     </div>
+
+    <div class="module-panel fade-up">
+      <div class="module-panel-label">Module 03</div>
+      <h3>TPPRisk <span>AIQ</span></h3>
+      <div class="module-panel-tagline">ICT Third-Party Provider Risk &amp; DORA Register of Information</div>
+      <p>Manages ICT third-party provider risk across the full DORA lifecycle: provider registry, ICT services, contracts, critical or important functions, exit strategies, subcontracting, dependency mapping, concentration risk, data quality, and Register of Information export.</p>
+      <div class="module-reg-badges">
+        <span class="reg-pill">DORA Article 28</span>
+        <span class="reg-pill">EBA RoI ITS</span>
+        <span class="reg-pill">ICT Providers</span>
+        <span class="reg-pill">Concentration Risk</span>
+      </div>
+      <ul class="module-features">
+        <li>ICT Third-Party Provider Register — EBA ITS B_05.01 aligned</li>
+        <li>ICT Services and Functions Registry — EBA ITS B_06.01 with closed-list service types</li>
+        <li>Contract Register with CIF/non-CIF classification and CIF assessment status</li>
+        <li>Exit strategy and substitutability tracking — DPM closed-list (ZZ:x959–x962)</li>
+        <li>Critical or Important Function (CIF) assessments — 5-step wizard</li>
+        <li>Dependency mapping — provider → service → function → asset</li>
+        <li>Supply chain dependencies (B_03.03) and intra-group ICT services (B_03.02)</li>
+        <li>Single-provider P95 and group concentration analytics</li>
+        <li>Data quality framework — HIGH / MEDIUM / LOW bands with actionable drill-down</li>
+        <li>DORA Register of Information completeness checks and validation gates</li>
+        <li>RoI export package with frozen snapshots and submission history</li>
+        <li>CRO approval workflow and audit trail</li>
+        <li>Vendor Manager role with role-restricted deactivation</li>
+        <li>AI-assisted FAIR calibration for substitutability and exit-cost ranges</li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <!-- PROBLEM -->
 <section class="problem" id="problem">
   <div class="section-tag">The Problem</div>
-  <h2 class="section-title fade-up">Boards don't speak<br>heat maps.</h2>
+  <h2 class="section-title fade-up">Boards don't speak heat maps.<br>Regulators don't accept spreadsheets.</h2>
   <p class="section-sub fade-up">
-    Qualitative risk matrices leave organisations indefensible under regulatory scrutiny.
-    Capital, compliance, and accountability demand a different language — for both Cyber and Operational Risk.
+    Qualitative risk matrices, scattered vendor registers, and manual outsourcing spreadsheets are no longer defensible under DORA, NIS2, and Basel III.
+    Banks need a single governed view of risk, capital impact, third-party dependency, and regulatory evidence.
   </p>
 
   <div class="problem-grid">
@@ -1348,7 +1416,11 @@ footer {
         <div class="hm-cell" style="background:#27ae60"></div>
         <div class="hm-cell" style="background:#27ae60"></div>
       </div>
-      <div class="vs-desc">Subjective. Indefensible. Means different things to different people. Fails DORA, Basel III, and NIS2 regulatory scrutiny.</div>
+      <div style="margin-top:18px; padding:14px 16px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:3px; font-family:'DM Mono',monospace; font-size:0.78rem; line-height:1.9; color:rgba(255,255,255,0.55);">
+        <span style="color:rgba(255,255,255,0.4);">+</span> "We keep the vendor list in procurement."<br>
+        <span style="color:rgba(255,255,255,0.4);">+</span> "The DORA Register of Information is in a manual spreadsheet."
+      </div>
+      <div class="vs-desc">Subjective. Fragmented. Indefensible. Fails DORA, Basel III, and NIS2 regulatory scrutiny.</div>
     </div>
 
     <div class="vs-card new fade-up">
@@ -1360,7 +1432,11 @@ footer {
         Combined Capital Impact: <span style="color: var(--gold);">2.76%</span><br>
         Residual (w/ controls): <span style="color: #4ade80;">€1,800,000</span>
       </div>
-      <div class="vs-desc" style="color: rgba(255,255,255,0.5);">Defensible. Auditable. FAIR-based. Board-ready. Covers DORA, NIS2, and Basel III OR in one integrated view.</div>
+      <div style="margin-top:8px; padding:14px 16px; background:rgba(201,168,76,0.06); border:1px solid rgba(201,168,76,0.18); border-radius:3px; font-family:'DM Mono',monospace; font-size:0.78rem; line-height:1.9; color:rgba(255,255,255,0.65);">
+        <span style="color:var(--gold);">+</span> "Top ICT provider concentration: <span style="color:var(--gold-light);">€8.4M P95</span> across 5 critical functions."<br>
+        <span style="color:var(--gold);">+</span> "DORA Register of Information: <span style="color:var(--gold-light);">99.7% complete</span>, zero critical validation gaps."
+      </div>
+      <div class="vs-desc" style="color: rgba(255,255,255,0.5);">Defensible. Auditable. Quantified. Regulator-ready. Covers DORA, NIS2, Basel III OR, and DORA Article 28 third-party risk in one integrated view.</div>
     </div>
   </div>
 </section>
@@ -1368,13 +1444,13 @@ footer {
 <!-- PILLARS -->
 <section class="pillars" id="pillars">
   <div class="section-tag">Core Capabilities</div>
-  <h2 class="section-title fade-up">Three pillars.<br>Two modules. One governance platform.</h2>
+  <h2 class="section-title fade-up">Four pillars. Three modules.<br>One operational resilience platform.</h2>
 
   <div class="pillars-grid">
     <div class="pillar fade-up">
       <div class="pillar-number">01</div>
-      <h3>Defensible Mathematics</h3>
-      <p>FAIR methodology inputs processed through 10,000-run Monte Carlo simulation — for both ICT scenarios (CyberRisk AIQ) and Basel Event Type scenarios (OpRisk AIQ). Multiplicative control reduction model ensures realistic compounding. Outputs include Expected Loss, P50/P90/P95 confidence intervals, Loss Exceedance Curve, and capital impact percentage.</p>
+      <h3>Defensible Risk Quantification</h3>
+      <p>FAIR-based inputs processed through 10,000-run Monte Carlo simulation — for ICT scenarios (CyberRisk AIQ), Basel Event Type scenarios (OpRisk AIQ), and third-party provider exposure portfolios (TPPRisk AIQ). Multiplicative control reduction model ensures realistic compounding. Outputs include Expected Loss, P50/P90/P95 confidence intervals, Loss Exceedance Curve, and capital impact percentage.</p>
       <div class="step-tags">
         <span class="step-tag">FAIR</span>
         <span class="step-tag">Monte Carlo</span>
@@ -1386,6 +1462,19 @@ footer {
 
     <div class="pillar fade-up">
       <div class="pillar-number">02</div>
+      <h3>Third-Party Dependency Intelligence</h3>
+      <p>Maps ICT providers to services, contracts, critical functions, internal assets, and quantified exposure. Identifies single-provider concentration, substitutability gaps, missing exit strategies, and group-level vendor dependencies. Generates DORA Register of Information aligned with EBA ITS templates and Commission Implementing Regulation 2024/2956.</p>
+      <div class="step-tags">
+        <span class="step-tag">Provider Mapping</span>
+        <span class="step-tag">Concentration Analytics</span>
+        <span class="step-tag">DORA Article 28</span>
+        <span class="step-tag">RoI ITS</span>
+        <span class="step-tag">CIF Assessment</span>
+      </div>
+    </div>
+
+    <div class="pillar fade-up">
+      <div class="pillar-number">03</div>
       <h3>Jurisdiction-Aware AI</h3>
       <p>Anthropic Claude AI delivers analysis calibrated to your sector, capital base, and jurisdiction. A bank in Montenegro receives CBCG-framed guidance. A bank in Croatia receives DORA and HNB context. A public body in Germany receives NIS2 and BSI framing. 44 European jurisdictions mapped — regulatory references serve as context and benchmark, never a compliance checklist.</p>
       <div class="step-tags">
@@ -1397,14 +1486,15 @@ footer {
     </div>
 
     <div class="pillar fade-up">
-      <div class="pillar-number">03</div>
+      <div class="pillar-number">04</div>
       <h3>Integrated 3LoD Governance</h3>
-      <p>End-to-end accountability from analyst assessment to board escalation. 1LoD: Analyst + ICT Custodian + Business Owner. 2LoD: CISO — methodological review and action plan oversight. Full audit trail, structured rework flow, BO Decision Guidance with ROI flags, Tier 1 DORA escalation banner. One workflow engine built around the governance model regulators expect.</p>
+      <p>End-to-end accountability from analyst assessment to board escalation, across all three modules. 1LoD: Analyst + ICT Custodian / Risk Coordinator / Vendor Manager. 2LoD: CISO + OR Manager + CRO. Full audit trail, structured rework flow, BO Decision Guidance, Tier 1 DORA escalation, signed RoI snapshots. One workflow engine across CR, OR, and TPP.</p>
       <div class="step-tags">
         <span class="step-tag">3LoD Model</span>
         <span class="step-tag">Role Workflow</span>
         <span class="step-tag">Action Plans</span>
         <span class="step-tag">Audit Log</span>
+        <span class="step-tag">Snapshot Governance</span>
       </div>
     </div>
   </div>
@@ -1413,8 +1503,14 @@ footer {
 <!-- HOW IT WORKS -->
 <section class="how" id="how">
   <div class="section-tag">Workflow</div>
-  <h2 class="section-title fade-up">From threat to<br>governed decision.</h2>
-  <p class="section-sub fade-up">A structured governance workflow — shared across both modules — that converts qualitative threat intelligence into quantified, auditable risk decisions.</p>
+  <h2 class="section-title fade-up">From threat (and provider)<br>to governed decision.</h2>
+  <p class="section-sub fade-up">Two parallel governance flows — quantified risk for CR + OR scenarios, third-party risk for the provider lifecycle — converging in board-ready capital impact and regulator-ready submission evidence.</p>
+
+  <div style="max-width:1200px; margin:48px auto 0; padding:0 4px;" class="fade-up">
+    <div style="display:inline-flex; align-items:center; gap:10px; padding:6px 18px; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.25); border-radius:2px; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); font-weight:600;">
+      <span>Flow A</span><span style="opacity:0.4;">·</span><span>Quantified Risk Workflow — CR + OR</span>
+    </div>
+  </div>
 
   <div class="how-steps">
     <div class="how-step fade-up">
@@ -1510,12 +1606,116 @@ footer {
       </div>
     </div>
   </div>
+
+  <div style="max-width:1200px; margin:64px auto 0; padding:0 4px;" class="fade-up">
+    <div style="display:inline-flex; align-items:center; gap:10px; padding:6px 18px; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.25); border-radius:2px; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); font-weight:600;">
+      <span>Flow B</span><span style="opacity:0.4;">·</span><span>Third-Party Risk Workflow — TPPRisk</span>
+    </div>
+  </div>
+
+  <div class="how-steps">
+    <div class="how-step fade-up">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-module-badge badge-shared">TPPRisk AIQ</div>
+        <h3>Vendor Manager registers provider, services, and contracts</h3>
+        <p>Entry into the provider portfolio with EBA ITS B_05.01-aligned data — provider identity, ICT services delivered (closed-list service types), contracts with CIF/non-CIF classification, and supply-chain links. Foundation of the Register of Information.</p>
+        <div class="step-tags">
+          <span class="step-tag">B_05.01 Provider Registry</span>
+          <span class="step-tag">B_06.01 Services</span>
+          <span class="step-tag">Contracts</span>
+        </div>
+      </div>
+      <div class="step-metric">
+        <div class="metric-val">15 ITS</div>
+        <div class="metric-label">EBA ITS templates aligned to Commission Implementing Regulation 2024/2956</div>
+      </div>
+    </div>
+
+    <div class="how-step fade-up">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-module-badge badge-shared">TPPRisk AIQ</div>
+        <h3>CIF assessment evaluates Critical or Important Function status</h3>
+        <p>5-step CIF wizard (Critical or Important Function) — materiality, substitutability, geography, outsourcing depth, and testing — produces a defensible CIF determination per contract. Vendor Manager prepares; CISO/CRO governance reviews.</p>
+        <div class="step-tags">
+          <span class="step-tag">Materiality</span>
+          <span class="step-tag">Substitutability</span>
+          <span class="step-tag">Geography</span>
+          <span class="step-tag">Outsourcing Depth</span>
+          <span class="step-tag">Testing</span>
+        </div>
+      </div>
+      <div class="step-metric">
+        <div class="metric-val">5-Step</div>
+        <div class="metric-label">Structured CIF wizard — defensible Critical or Important Function determination per contract</div>
+      </div>
+    </div>
+
+    <div class="how-step fade-up">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-module-badge badge-shared">TPPRisk AIQ</div>
+        <h3>Dependencies mapped across provider → service → function → asset</h3>
+        <p>The platform surfaces concentration exposure: single-provider P95, UNION P95 across the portfolio, diversification benefit, and supply-chain dependencies (B_03.03) including intra-group ICT services (B_03.02). Concentration hot-spots become visible, not hidden in spreadsheets.</p>
+        <div class="step-tags">
+          <span class="step-tag">Single-provider P95</span>
+          <span class="step-tag">UNION P95</span>
+          <span class="step-tag">Diversification Benefit</span>
+          <span class="step-tag">B_03.03 Supply Chain</span>
+        </div>
+      </div>
+      <div class="step-metric">
+        <div class="metric-val">P95</div>
+        <div class="metric-label">FAIR-based concentration exposure across providers, services, and critical functions</div>
+      </div>
+    </div>
+
+    <div class="how-step fade-up">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="step-module-badge badge-shared">TPPRisk AIQ</div>
+        <h3>Data quality validated; RoI completeness gates check submission readiness</h3>
+        <p>HIGH/MEDIUM/LOW data quality bands per provider, with actionable drill-down to specific gaps. Validation gates check Register of Information completeness against the EBA ITS template set before any submission can proceed.</p>
+        <div class="step-tags">
+          <span class="step-tag">HIGH / MEDIUM / LOW Bands</span>
+          <span class="step-tag">Validation Gates</span>
+          <span class="step-tag">Actionable Drill-down</span>
+        </div>
+      </div>
+      <div class="step-metric">
+        <div class="metric-val">99.7%</div>
+        <div class="metric-label">Target Register of Information completeness before CRO approval and submission</div>
+      </div>
+    </div>
+
+    <div class="how-step fade-up">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <div class="step-module-badge badge-shared">TPPRisk AIQ</div>
+        <h3>CRO approves frozen snapshot; RoI submission package generated</h3>
+        <p>CRO reviews concentration risk, approves the snapshot, and freezes it. The platform generates a signed-ZIP submission package per Commission Implementing Regulation 2024/2956 — ready for the competent authority. Full audit trail preserved.</p>
+        <div class="step-tags">
+          <span class="step-tag">Snapshot Freeze</span>
+          <span class="step-tag">CRO Approval</span>
+          <span class="step-tag">Signed-ZIP</span>
+          <span class="step-tag">Submission Package</span>
+        </div>
+      </div>
+      <div class="step-metric">
+        <div class="metric-val">Signed-ZIP</div>
+        <div class="metric-label">Submission package per Commission Implementing Regulation 2024/2956 — regulator-ready</div>
+      </div>
+    </div>
+  </div>
+
+  <p style="text-align:center; margin-top:48px; font-size:0.9rem; color:rgba(255,255,255,0.5); font-style:italic; max-width:760px; margin-left:auto; margin-right:auto;" class="fade-up">From provider inventory to regulator-ready Register of Information submission.</p>
 </section>
 
 <!-- ROLES -->
 <section class="roles" id="roles">
   <div class="section-tag">Governance Model</div>
-  <h2 class="section-title fade-up">Six roles.<br>Clear accountability across both modules.</h2>
+  <h2 class="section-title fade-up">Role-based accountability across<br>Cyber, OR, Third-Party Risk, and group entities.</h2>
 
   <div class="roles-grid">
     <div class="role-card fade-up">
@@ -1584,15 +1784,58 @@ footer {
     </div>
 
     <div class="role-card fade-up">
+      <div class="role-icon">🔗</div>
+      <h4>Vendor / TPP Manager</h4>
+      <div class="role-or-label">TPPRisk AIQ — Third-Party Module</div>
+      <p>Maintains ICT provider, service, contract, and dependency records. Coordinates CIF assessments and data quality remediation across the provider portfolio.</p>
+      <ul>
+        <li>Provider registry maintenance (B_05.01)</li>
+        <li>ICT service and contract mapping</li>
+        <li>CIF assessment preparation</li>
+        <li>Exit strategy follow-up &amp; substitutability tracking</li>
+        <li>Data quality remediation</li>
+        <li>Role-restricted deactivation under licence overlimit</li>
+      </ul>
+    </div>
+
+    <div class="role-card fade-up">
+      <div class="role-icon">🎖️</div>
+      <h4>CRO / DORA Approver</h4>
+      <div class="role-or-label">TPPRisk AIQ — Snapshot Authority</div>
+      <p>Approves critical third-party risk outputs, concentration analysis, and frozen RoI snapshots before regulatory export. Methodological gate aligned with Group CRO mandate.</p>
+      <ul>
+        <li>Concentration risk review</li>
+        <li>RoI submission approval</li>
+        <li>Snapshot freeze authority</li>
+        <li>Group-level exposure oversight</li>
+        <li>Regulatory evidence sign-off</li>
+      </ul>
+    </div>
+
+    <div class="role-card fade-up">
       <div class="role-icon">⚙️</div>
       <h4>Administrator</h4>
-      <div class="role-or-label">Both Modules</div>
+      <div class="role-or-label">All Three Modules</div>
       <p>Platform configuration, module activation, and governance setup.</p>
       <ul>
         <li>Module activation</li>
         <li>User & role management</li>
         <li>AI provider config</li>
         <li>Risk thresholds & frameworks</li>
+      </ul>
+    </div>
+
+    <div class="role-card fade-up">
+      <div class="role-icon">🏛️</div>
+      <h4>Group Roles</h4>
+      <div class="role-or-label">Holding / Multi-Entity — Group Layer</div>
+      <p>Group-level oversight across subsidiaries: consolidated CR + OR + TPP exposure, cross-entity provider concentration, group-level RoI readiness. Single accountability layer above per-entity governance.</p>
+      <ul>
+        <li>Group CISO — consolidated ICT risk posture across subsidiaries</li>
+        <li>Group ORM — operational risk across all entities and business lines</li>
+        <li>Group CRO — combined CR + OR + TPP exposure, group-level snapshot approval</li>
+        <li>Cross-entity concentration analysis</li>
+        <li>Group Executive Summary — AI-generated board narrative</li>
       </ul>
     </div>
   </div>
@@ -1644,7 +1887,7 @@ footer {
     </div>
 
     <div class="ai-diagram fade-up">
-      <div style="font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px;">AI Context Inputs — Both Modules</div>
+      <div style="font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px;">AI Context Inputs — All Three Modules</div>
       <div class="ai-io">
         <div class="ai-io-group">
           <h5>Organisation Profile</h5>
@@ -1660,11 +1903,18 @@ footer {
           <div class="ai-io-item">Risk Type (Cyber / OR)</div>
           <div class="ai-io-item">Regulatory Scope Tags</div>
         </div>
+        <div class="ai-io-group">
+          <h5>Third-Party Context</h5>
+          <div class="ai-io-item">Provider Category &amp; Sub-Outsourcing</div>
+          <div class="ai-io-item">Substitutability &amp; Geography</div>
+          <div class="ai-io-item">Outsourcing Depth &amp; RTO/RPO</div>
+          <div class="ai-io-item">DPM Service Type Classification</div>
+        </div>
       </div>
       <div class="ai-arrow">↓</div>
       <div class="ai-engine">
         <div class="ai-engine-name">Anthropic Claude AI Engine</div>
-        <div class="ai-engine-sub">claude-sonnet · jurisdiction-aware · dual-module · governance-focused</div>
+        <div class="ai-engine-sub">claude-sonnet · jurisdiction-aware · multi-module · governance-focused</div>
       </div>
       <div class="ai-arrow">↓</div>
       <div class="ai-io">
@@ -1680,9 +1930,22 @@ footer {
           <div class="ai-io-item" style="border-color: rgba(201,168,76,0.3); color: rgba(255,255,255,0.7);">Process control gaps</div>
           <div class="ai-io-item" style="border-color: rgba(201,168,76,0.3); color: rgba(255,255,255,0.7);">RCSA narrative &amp; calibration</div>
         </div>
+        <div class="ai-io-group">
+          <h5>TPPRisk Outputs</h5>
+          <div class="ai-io-item" style="border-color: rgba(232,201,122,0.35); color: rgba(255,255,255,0.7);">Provider data quality gap analysis</div>
+          <div class="ai-io-item" style="border-color: rgba(232,201,122,0.35); color: rgba(255,255,255,0.7);">Substitutability &amp; exit-cost narrative</div>
+          <div class="ai-io-item" style="border-color: rgba(232,201,122,0.35); color: rgba(255,255,255,0.7);">Concentration commentary for CRO</div>
+          <div class="ai-io-item" style="border-color: rgba(232,201,122,0.35); color: rgba(255,255,255,0.7);">RoI readiness assessment</div>
+          <div class="ai-io-item" style="border-color: rgba(232,201,122,0.35); color: rgba(255,255,255,0.7);">Group-level dependency summary</div>
+        </div>
       </div>
     </div>
   </div>
+
+  <p style="text-align:center; margin-top:48px; max-width:880px; margin-left:auto; margin-right:auto; font-size:0.92rem; line-height:1.7; color:rgba(255,255,255,0.6); font-style:italic;" class="fade-up">
+    <strong style="color:var(--gold-light); font-style:normal;">AI supports review, calibration, and narrative drafting.</strong>
+    Regulatory accountability — for capital impact decisions, CIF status, RoI submission, and treatment outcomes — remains with the institution and its accountable persons.
+  </p>
 </section>
 
 <!-- DIFFERENTIATORS -->
@@ -1702,8 +1965,8 @@ footer {
 
     <div class="pillar fade-up">
       <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">🔗</div>
-      <h3>CR + OR on One Capital Basis</h3>
-      <p>Cyber risk and operational risk are typically managed in separate silos. AIQ Suite quantifies both on the same capital basis — same assets, same users, same reporting infrastructure, same executive dashboard. A bank sees its ransomware risk and its settlement error risk side-by-side as capital impact percentages.</p>
+      <h3>CR + OR + Third-Party Risk in One Operational Resilience Platform</h3>
+      <p>Cyber risk, operational risk, and third-party risk are typically managed in separate silos — separate teams, separate tools, separate evidence. AIQ Suite unifies them: same assets, same users, same governance workflow, same audit trail, same capital basis. A bank sees its ransomware exposure, its settlement error exposure, and its cloud-hosting concentration side-by-side — and surfaces where the same provider supports multiple critical processes automatically.</p>
     </div>
 
     <div class="pillar fade-up">
@@ -1728,6 +1991,43 @@ footer {
       <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">📊</div>
       <h3>Industry Benchmarking</h3>
       <p>See how your organisation's capital impact compares to sector peers. Benchmark data sourced from Verizon DBIR, ENISA Threat Landscape, IBM X-Force, and Ponemon Institute — by organisation type, sector, and company size. Gives CISO and board concrete context: are we above or below industry average for this risk?</p>
+    </div>
+
+    <div class="pillar fade-up">
+      <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">🔗</div>
+      <h3>DORA RoI + Quantified Risk in One Platform</h3>
+      <p>Most DORA TPP tools stop at registers and templates. Most risk quantification tools stop at scenarios and loss curves. AIQ Suite connects both: ICT providers, contracts, critical functions, internal assets, and quantified P95 exposure — so third-party risk is not just documented, but financially understood and regulator-submittable.</p>
+      <div class="step-tags" style="margin-top:18px;">
+        <span class="step-tag">DORA Article 28</span>
+        <span class="step-tag">EBA ITS</span>
+        <span class="step-tag">FAIR Quantification</span>
+        <span class="step-tag">Register Submission</span>
+      </div>
+    </div>
+
+    <div class="pillar fade-up">
+      <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">🗺️</div>
+      <h3>From Vendor Inventory to Concentration Exposure</h3>
+      <p>AIQ Suite doesn't treat third-party risk as a static vendor list. It maps providers to ICT services, critical functions, contracts, assets, and risk assessments — revealing where the institution is operationally dependent on a single provider, cloud region, subcontractor, or group-wide vendor relationship.</p>
+      <div class="step-tags" style="margin-top:18px;">
+        <span class="step-tag">Provider Mapping</span>
+        <span class="step-tag">Concentration P95</span>
+        <span class="step-tag">Substitutability</span>
+        <span class="step-tag">Group Dependencies</span>
+      </div>
+    </div>
+
+    <div class="pillar fade-up">
+      <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">🌐</div>
+      <h3>On-Premise, SaaS, or Holding Deployment</h3>
+      <p>Most European risk platforms are SaaS-only — a hard constraint for banks under central bank requirements that restrict public cloud deployment of core risk data. AIQ Suite supports three deployment modes: full SaaS (EU data centres), on-premise (institution's own infrastructure), and operating holding (parent entity hosts subsidiaries). Tier-based RSA-signed JWT licensing works offline — no phone-home requirement. Banks meet regulatory data-residency expectations without compromising platform capability.</p>
+      <div class="step-tags" style="margin-top:18px;">
+        <span class="step-tag">EU Data Centres</span>
+        <span class="step-tag">On-Prem Option</span>
+        <span class="step-tag">Holding Mode</span>
+        <span class="step-tag">Offline Licensing</span>
+        <span class="step-tag">No Phone-Home</span>
+      </div>
     </div>
 
   </div>
@@ -1767,20 +2067,21 @@ footer {
         font-family:'Playfair Display',serif;
         font-size:1.65rem; font-weight:700;
         color:var(--white); margin-bottom:20px; line-height:1.25;
-      ">FAIR for Cyber, <span style="color:var(--gold);">RCSA for OR</span></h3>
+      ">FAIR for Cyber, <span style="color:var(--gold);">RCSA for OR</span>, FAIR for TPP</h3>
 
       <p style="font-size:0.95rem; line-height:1.8; color:rgba(255,255,255,0.65); margin-bottom:14px;">
-        CyberRisk AIQ applies FAIR methodology with DORA and NIS2 framing. OpRisk AIQ applies Quantitative RCSA with FAIR-based Monte Carlo simulation for Basel III Operational Risk — <strong style="color:var(--gold-light); font-weight:600;">replacing the deprecated AMA approach</strong> (Basel III final reform 2023).
+        CyberRisk AIQ applies FAIR methodology with DORA and NIS2 framing. OpRisk AIQ applies Quantitative RCSA with FAIR-based Monte Carlo for Basel III Operational Risk — <strong style="color:var(--gold-light); font-weight:600;">replacing the deprecated AMA approach</strong> (Basel III final reform 2023). TPPRisk AIQ applies FAIR-based quantification to provider exposure portfolios with DORA Article 28 framing and EBA ITS Register of Information alignment.
       </p>
 
       <p style="font-size:0.9rem; line-height:1.75; color:rgba(255,255,255,0.4); margin-bottom:28px;">
-        Both modules produce capital impact on the same defensible mathematical basis. ICAAP narrative becomes one document, not two.
+        All three modules produce capital impact and concentration exposure on the same defensible mathematical basis. ICAAP, third-party risk reporting, and operational resilience narrative become one document set, not three.
       </p>
 
       <div class="step-tags">
         <span class="step-tag">FAIR</span>
         <span class="step-tag">Quantitative RCSA</span>
         <span class="step-tag">Monte Carlo</span>
+        <span class="step-tag">EBA RoI ITS</span>
         <span class="step-tag">ICAAP-ready</span>
       </div>
 
@@ -1829,10 +2130,11 @@ footer {
 
         <p style="font-size:0.92rem; line-height:1.75; color:rgba(255,255,255,0.55); font-weight:300; margin-bottom:24px;">
           Organisations with multiple entities — holding groups, subsidiaries, regional divisions,
-          or public sector bodies — can consolidate CR and OR capital exposure across all units
-          in a single view. Because AIQ Suite holds both ICT/cyber and operational risk data
-          under one roof, it identifies areas where both risk types are simultaneously elevated
-          across entities. No silo. No manual consolidation. One capital basis, group-wide.
+          or public sector bodies — can consolidate CR, OR, and TPPRisk exposure across all units
+          in a single view. Because AIQ Suite holds ICT/cyber, operational, and third-party risk data
+          under one roof, it identifies areas where risk types are simultaneously elevated,
+          AND third-party providers that serve multiple subsidiaries (group-level concentration
+          that single-entity views cannot detect). No silo. No manual consolidation. One capital basis, group-wide.
         </p>
 
         <div style="display:flex; flex-wrap:wrap; gap:8px;">
@@ -1870,6 +2172,30 @@ footer {
           </div>
         </div>
 
+        <div style="display:flex; gap:16px; align-items:flex-start; padding:16px 20px; border:1px solid rgba(201,168,76,0.12); border-radius:4px; background:rgba(255,255,255,0.02);">
+          <div style="font-size:1.2rem; flex-shrink:0; margin-top:2px;">🔗</div>
+          <div>
+            <div style="font-size:0.88rem; font-weight:600; color:var(--white); margin-bottom:4px;">Group Provider Concentration</div>
+            <div style="font-size:0.8rem; color:rgba(255,255,255,0.4); line-height:1.5;">Identifies ICT providers serving multiple group entities — surfaces single-provider concentration risk that single-entity views miss. Critical for holding-level DORA Article 28 compliance and group resilience planning.</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:16px; align-items:flex-start; padding:16px 20px; border:1px solid rgba(201,168,76,0.12); border-radius:4px; background:rgba(255,255,255,0.02);">
+          <div style="font-size:1.2rem; flex-shrink:0; margin-top:2px;">📋</div>
+          <div>
+            <div style="font-size:0.88rem; font-weight:600; color:var(--white); margin-bottom:4px;">Cross-Entity RoI Readiness</div>
+            <div style="font-size:0.8rem; color:rgba(255,255,255,0.4); line-height:1.5;">Tracks Register of Information completeness, validation gaps, and submission status across all subsidiaries. Group CRO sees which entities are submission-ready and which need remediation.</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:16px; align-items:flex-start; padding:16px 20px; border:1px solid rgba(201,168,76,0.12); border-radius:4px; background:rgba(255,255,255,0.02);">
+          <div style="font-size:1.2rem; flex-shrink:0; margin-top:2px;">⚠️</div>
+          <div>
+            <div style="font-size:0.88rem; font-weight:600; color:var(--white); margin-bottom:4px;">Shared Critical Vendor Exposure</div>
+            <div style="font-size:0.8rem; color:rgba(255,255,255,0.4); line-height:1.5;">Identifies vendors whose outage would affect multiple entities, business lines, or critical functions simultaneously. Highest-priority targets for group-level treatment and exit strategy harmonisation.</div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -1880,7 +2206,7 @@ footer {
 <section class="regulatory" id="regulatory">
   <div class="section-tag">Compliance Coverage</div>
   <h2 class="section-title fade-up">Purpose-built for regulated sectors.</h2>
-  <p class="section-sub fade-up">AIQ Suite structurally aligns internal risk governance with external auditing demands across major regulatory frameworks — through two purpose-built modules.</p>
+  <p class="section-sub fade-up">AIQ Suite structurally aligns internal risk governance with external auditing demands across major regulatory frameworks — through three purpose-built modules.</p>
 
   <div class="reg-table fade-up">
     <div class="reg-row header">
@@ -1890,19 +2216,27 @@ footer {
       <div class="reg-cell">Module</div>
     </div>
     <div class="reg-row">
-      <div class="reg-cell"><div class="reg-name">DORA</div><div class="reg-who">Digital Operational Resilience Act</div></div>
+      <div class="reg-cell"><div class="reg-name">DORA</div><div class="reg-who">EU Regulation 2022/2554</div></div>
       <div class="reg-cell" style="font-size:0.85rem; color:#444; display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding:18px 24px;">
         <span class="reg-badge">Banks</span><span class="reg-badge">Insurers</span><span class="reg-badge">Investment Firms</span><span class="reg-badge">Payment Institutions</span>
       </div>
-      <div class="reg-cell" style="font-size:0.85rem; color:#444;">ICT risk quantification, capital impact, governance workflow, DORA ICT Risk Report per Annex requirements</div>
-      <div class="reg-cell"><div class="module-indicator"><span class="dot-cyber"></span> CyberRisk AIQ</div></div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444;">ICT risk management, ICT scenario quantification, governance workflow, third-party provider risk, concentration analysis, exit strategy tracking, Register of Information support</div>
+      <div class="reg-cell"><div class="module-indicator"><span class="dot-cyber-tpp"></span> CyberRisk AIQ + TPPRisk AIQ</div></div>
+    </div>
+    <div class="reg-row">
+      <div class="reg-cell"><div class="reg-name">DORA Article 28</div><div class="reg-who">ICT Third-Party Risk</div></div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444; display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding:18px 24px;">
+        <span class="reg-badge">Banks</span><span class="reg-badge">Financial Sector</span><span class="reg-badge">ICT Service Providers</span>
+      </div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444;">EBA ITS Register of Information per Commission Implementing Regulation 2024/2956, provider concentration analytics, CIF assessment workflow, supply-chain dependency mapping (B_03.03), intra-group ICT services (B_03.02), signed-ZIP submission to competent authority</div>
+      <div class="reg-cell"><div class="module-indicator"><span class="dot-tpp"></span> <strong style="color:var(--navy);">TPPRisk AIQ</strong></div></div>
     </div>
     <div class="reg-row">
       <div class="reg-cell"><div class="reg-name">Basel III / CRR</div><div class="reg-who">Operational Risk Capital</div></div>
       <div class="reg-cell" style="font-size:0.85rem; color:#444; display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding:18px 24px;">
         <span class="reg-badge">Banks</span><span class="reg-badge">Credit Institutions</span>
       </div>
-      <div class="reg-cell" style="font-size:0.85rem; color:#444;">Quantitative RCSA with FAIR-based Monte Carlo scenario analysis, OR capital impact estimation, Basel Event Type categorisation, ICAAP-aligned methodology documentation</div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444;">FAIR-based scenario analysis with Monte Carlo, OR capital impact estimation, Basel Event Type categorisation, ICAAP-aligned methodology documentation, internal loss data integration</div>
       <div class="reg-cell"><div class="module-indicator"><span class="dot-or"></span> OpRisk AIQ</div></div>
     </div>
     <div class="reg-row">
@@ -1918,11 +2252,11 @@ footer {
       <div class="reg-cell" style="font-size:0.85rem; color:#444; display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding:18px 24px;">
         <span class="reg-badge">Insurance Companies</span>
       </div>
-      <div class="reg-cell" style="font-size:0.85rem; color:#444;">Operational risk quantification (OR module), ICT risk for DORA-in-scope insurers (Cyber module), capital adequacy context</div>
-      <div class="reg-cell"><div class="module-indicator"><span class="dot-both"></span> Both Modules</div></div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444;">Operational risk quantification (OR module), ICT risk for DORA-in-scope insurers (Cyber module), third-party risk for outsourced critical functions (TPP module), capital adequacy context</div>
+      <div class="reg-cell"><div class="module-indicator"><span class="dot-all"></span> All Three Modules</div></div>
     </div>
     <div class="reg-row">
-      <div class="reg-cell"><div class="reg-name">ISO 27001</div><div class="reg-who">Information Security Management</div></div>
+      <div class="reg-cell"><div class="reg-name">ISO 27001 / ISO 27002</div><div class="reg-who">Information Security Management</div></div>
       <div class="reg-cell" style="font-size:0.85rem; color:#444; display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding:18px 24px;">
         <span class="reg-badge">Any Organisation</span>
       </div>
@@ -1930,12 +2264,12 @@ footer {
       <div class="reg-cell"><div class="module-indicator"><span class="dot-cyber"></span> CyberRisk AIQ</div></div>
     </div>
     <div class="reg-row">
-      <div class="reg-cell"><div class="reg-name">Western Balkans transpositions</div><div class="reg-who">DORA · NIS2 transpositions</div></div>
+      <div class="reg-cell"><div class="reg-name">ZDOOFS Montenegro + ZIB</div><div class="reg-who">Sl. list CG 14/26 transposition</div></div>
       <div class="reg-cell" style="font-size:0.85rem; color:#444; display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding:18px 24px;">
-        <span class="reg-badge">Banks</span><span class="reg-badge">Financial Sector</span><span class="reg-badge">Critical Infrastructure (Western Balkans)</span>
+        <span class="reg-badge">Financial sector entities in Montenegro</span>
       </div>
-      <div class="reg-cell" style="font-size:0.85rem; color:#444;">Local-jurisdiction-aware reporting and labeling for DORA and NIS2 national transpositions; Montenegro (ZDOOFS — Sl. list CG 14/26 — and ZIB) currently in production; framework supports additional Western Balkans jurisdictions in roadmap</div>
-      <div class="reg-cell"><div class="module-indicator"><span class="dot-both"></span> Both Modules</div></div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444;">Localised support for ICT risk management, digital operational resilience, ICT third-party arrangements, registers, board reporting, and CBCG-ready evidence; framework supports additional Western Balkans transpositions in roadmap</div>
+      <div class="reg-cell"><div class="module-indicator"><span class="dot-all"></span> All Three Modules</div></div>
     </div>
   </div>
 </section>
@@ -1944,7 +2278,7 @@ footer {
 <section class="roadmap" id="roadmap">
   <div class="section-tag">Product Roadmap</div>
   <h2 class="section-title fade-up">A living platform,<br>continuously deepened.</h2>
-  <p class="section-sub fade-up">CyberRisk AIQ, OpRisk AIQ, and the Enterprise Scale tier are all live. Multi-tenant, holding architecture, and group risk intelligence are now in production.</p>
+  <p class="section-sub fade-up">CyberRisk AIQ, OpRisk AIQ, TPPRisk AIQ, and the Enterprise Scale tier are all live. Multi-tenant, holding architecture, group risk intelligence, and DORA Register of Information are now in production.</p>
 
   <div class="roadmap-phases">
     <div class="phase fade-up">
@@ -1967,7 +2301,7 @@ footer {
         <li class="phase-item done"><div class="phase-dot"></div><span>Industry Peer Benchmarking — DBIR, ENISA, Ponemon</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Industry Scenario Library with benchmark FAIR inputs</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Investment Optimizer — ROI per control</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>Jurisdiction-aware AI — 44 European countries, including Montenegro ZDOOFS (Sl. list CG 14/26) and ZIB regulatory transpositions in production</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Jurisdiction-aware AI — 44 European countries with local regulator framing</span></li>
         <!-- Reporting -->
         <li class="phase-item done"><div class="phase-dot"></div><span>Asset Risk Map — portfolio heatmap</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>BO Decision Guidance with ROI and governance flags</span></li>
@@ -2002,7 +2336,7 @@ footer {
         <!-- Intelligence -->
         <li class="phase-item done"><div class="phase-dot"></div><span>Industry Peer Benchmarking — OR scenarios</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Industry Scenario Library with benchmark FAIR inputs</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>Jurisdiction-aware AI — 44 European countries, including Montenegro ZDOOFS (Sl. list CG 14/26) and ZIB regulatory transpositions in production</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Jurisdiction-aware AI — 44 European countries with local regulator framing</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>KRI Framework — operational risk indicators with scheduler, threshold monitoring, role-based notifications</span></li>
         <!-- Reporting -->
         <li class="phase-item done"><div class="phase-dot"></div><span>Basel III OR Capital Report — RCSA + FAIR Monte Carlo</span></li>
@@ -2013,6 +2347,33 @@ footer {
         <!-- Administration -->
         <li class="phase-item done"><div class="phase-dot"></div><span>Business Process Registry with asset dependencies</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Loss Data Registry — internal loss database for FAIR calibration and ICAAP</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Multi-language UI — BS/HR/DE/EN</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>TOTP two-factor authentication (Google/Microsoft Authenticator)</span></li>
+      </ul>
+    </div>
+
+    <div class="phase fade-up">
+      <div class="phase-label">TPPRisk AIQ</div>
+      <span class="phase-status status-live">● Live</span>
+      <ul class="phase-items">
+        <li class="phase-item done"><div class="phase-dot"></div><span>ICT Third-Party Provider Register — EBA ITS B_05.01 aligned</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>ICT Services and Functions Registry — EBA ITS B_06.01 with closed-list service types</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Contract Register with CIF/non-CIF classification and CIF assessment status</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Exit strategy and substitutability tracking — DPM closed-list (ZZ:x959–x962)</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Critical or Important Function (CIF) wizard — 5-step assessment workflow</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Dependency mapping — provider → service → function → asset</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Supply chain dependencies — EBA ITS B_03.03 with provider-of-provider mapping</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Intra-group ICT services — EBA ITS B_03.02 holding / subsidiary flows</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Provider concentration analytics — Single-provider P95, UNION P95, Diversification Benefit</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>5-tab concentration analysis — CIF, Top 5, Tier 1, Without Exit Strategy, By Substitutability</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>DORA Register of Information — 15 ITS templates per Commission Implementing Regulation 2024/2956</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Snapshot history, frozen snapshots, signed-ZIP submission package</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Data quality framework — HIGH / MEDIUM / LOW bands per provider with actionable remediation</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>CRO approval and audit trail</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Vendor Manager governance role with role-restricted deactivation</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>AI-assisted FAIR calibration for substitutability and exit-cost ranges</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Multi-jurisdiction support — pan-EU DORA + Montenegro ZDOOFS (Sl. list CG 14/26) + ZIB transpositions in production</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Cross-module integration — TPP concentration linked to OR process dependencies and CR ICT asset criticality</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Multi-language UI — BS/HR/DE/EN</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>TOTP two-factor authentication (Google/Microsoft Authenticator)</span></li>
       </ul>
@@ -2045,8 +2406,8 @@ footer {
 <!-- FAKE DEMO -->
 <section style="background:#0a1628; padding:100px 60px;" id="see-it" class="see-it-section">
   <div class="section-tag">See It In Action</div>
-  <h2 class="section-title fade-up">From threat to <em style="color:var(--gold); font-family:'Playfair Display',serif;">capital impact</em><br>in one defensible view.</h2>
-  <p class="section-sub fade-up">Two modules. One methodology. Same defensible mathematical basis — FAIR Monte Carlo for cyber, Quantitative RCSA + FAIR Monte Carlo for operational risk.</p>
+  <h2 class="section-title fade-up">From threat to <em style="color:var(--gold); font-family:'Playfair Display',serif;">capital impact</em><br>and provider to <em style="color:var(--gold); font-family:'Playfair Display',serif;">submission package.</em></h2>
+  <p class="section-sub fade-up">Three modules. One defensible mathematical basis — FAIR Monte Carlo for cyber, Quantitative RCSA + FAIR Monte Carlo for operational risk, FAIR-based concentration analytics for third-party risk.</p>
 
   <div style="max-width:900px; margin:16px auto 0; text-align:left; padding:0 4px;" class="fade-up">
     <div style="display:inline-block; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.35); border-bottom:1px solid rgba(201,168,76,0.2); padding-bottom:6px; margin-bottom:4px;">Cyber Module — Ransomware scenario (FAIR Monte Carlo)</div>
@@ -2188,7 +2549,85 @@ footer {
     </div>
   </div>
 
-  <p style="text-align:center; margin-top:24px; font-size:0.82rem; color:rgba(255,255,255,0.25);" class="fade-up">Simplified scenarios. See your organisation's real risk profile with actual assets, processes, and controls.</p>
+  <div style="max-width:900px; margin:32px auto 0; text-align:left; padding:0 4px;" class="fade-up">
+    <div style="display:inline-block; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.35); border-bottom:1px solid rgba(201,168,76,0.2); padding-bottom:6px; margin-bottom:4px;">TPPRisk Module — Provider Concentration &amp; RoI Readiness (DORA Article 28)</div>
+  </div>
+
+  <div style="max-width:900px; margin:0 auto 0; background:rgba(255,255,255,0.02); border:1px solid rgba(201,168,76,0.15); border-radius:8px; padding:40px;" class="fade-up">
+
+    <div style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:14px;">ICT Provider Portfolio Snapshot</div>
+
+    <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:4px; overflow:hidden; margin-bottom:28px;" class="tpp-portfolio-table">
+      <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1.2fr 0.9fr; gap:0; background:rgba(15,31,61,0.6); font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.45);">
+        <div style="padding:12px 14px; border-right:1px solid rgba(255,255,255,0.05);">Provider</div>
+        <div style="padding:12px 14px; border-right:1px solid rgba(255,255,255,0.05); text-align:center;">Critical Fns</div>
+        <div style="padding:12px 14px; border-right:1px solid rgba(255,255,255,0.05); text-align:right;">P95 Exposure</div>
+        <div style="padding:12px 14px; border-right:1px solid rgba(255,255,255,0.05);">Substitutability</div>
+        <div style="padding:12px 14px;">Confidence</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1.2fr 0.9fr; gap:0; font-size:0.82rem; color:rgba(255,255,255,0.7); border-top:1px solid rgba(255,255,255,0.04);">
+        <div style="padding:14px; border-right:1px solid rgba(255,255,255,0.04);">Cloud Hosting Primary</div>
+        <div style="padding:14px; border-right:1px solid rgba(255,255,255,0.04); text-align:center;">5</div>
+        <div style="padding:14px; border-right:1px solid rgba(255,255,255,0.04); text-align:right; color:var(--gold-light); font-weight:600;">€8.4M</div>
+        <div style="padding:14px; border-right:1px solid rgba(255,255,255,0.04);"><span style="color:#f87171;">Low</span> <span style="color:rgba(255,255,255,0.35); font-family:'DM Mono',monospace; font-size:0.72rem;">ZZ:x959</span></div>
+        <div style="padding:14px; color:rgba(255,255,255,0.5);">Medium</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1.2fr 0.9fr; gap:0; font-size:0.82rem; color:rgba(255,255,255,0.7); border-top:1px solid rgba(255,255,255,0.04);">
+        <div style="padding:14px; border-right:1px solid rgba(255,255,255,0.04);">Payment Gateway</div>
+        <div style="padding:14px; border-right:1px solid rgba(255,255,255,0.04); text-align:center;">3</div>
+        <div style="padding:14px; border-right:1px solid rgba(255,255,255,0.04); text-align:right; color:var(--gold-light); font-weight:600;">€6.1M</div>
+        <div style="padding:14px; border-right:1px solid rgba(255,255,255,0.04);"><span style="color:#fbbf24;">Medium</span> <span style="color:rgba(255,255,255,0.35); font-family:'DM Mono',monospace; font-size:0.72rem;">ZZ:x960</span></div>
+        <div style="padding:14px; color:rgba(255,255,255,0.65);">High</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1.2fr 0.9fr; gap:0; font-size:0.82rem; color:rgba(255,255,255,0.7); border-top:1px solid rgba(255,255,255,0.04);">
+        <div style="padding:14px; border-right:1px solid rgba(255,255,255,0.04);">Core Banking Vendor</div>
+        <div style="padding:14px; border-right:1px solid rgba(255,255,255,0.04); text-align:center;">2</div>
+        <div style="padding:14px; border-right:1px solid rgba(255,255,255,0.04); text-align:right; color:var(--gold-light); font-weight:600;">€2.7M</div>
+        <div style="padding:14px; border-right:1px solid rgba(255,255,255,0.04);"><span style="color:#f87171;">Low</span> <span style="color:rgba(255,255,255,0.35); font-family:'DM Mono',monospace; font-size:0.72rem;">ZZ:x959</span></div>
+        <div style="padding:14px; color:rgba(255,255,255,0.65);">High</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1.2fr 0.9fr; gap:0; font-size:0.82rem; color:rgba(255,255,255,0.7); border-top:1px solid rgba(255,255,255,0.04);">
+        <div style="padding:14px; border-right:1px solid rgba(255,255,255,0.04);">Email Security</div>
+        <div style="padding:14px; border-right:1px solid rgba(255,255,255,0.04); text-align:center;">1</div>
+        <div style="padding:14px; border-right:1px solid rgba(255,255,255,0.04); text-align:right; color:var(--gold-light); font-weight:600;">€0.4M</div>
+        <div style="padding:14px; border-right:1px solid rgba(255,255,255,0.04);"><span style="color:#4ade80;">High</span> <span style="color:rgba(255,255,255,0.35); font-family:'DM Mono',monospace; font-size:0.72rem;">ZZ:x962</span></div>
+        <div style="padding:14px; color:rgba(255,255,255,0.65);">High</div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:28px;" class="demo-metrics-grid">
+      <div style="padding:18px 20px; background:rgba(201,168,76,0.06); border:1px solid rgba(201,168,76,0.2); border-radius:4px;">
+        <div style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:14px;">Portfolio Metrics</div>
+        <div style="display:flex; flex-direction:column; gap:8px; font-size:0.82rem; color:rgba(255,255,255,0.7);">
+          <div style="display:flex; justify-content:space-between;"><span>UNION P95 across 16 providers</span><strong style="color:var(--gold); font-weight:600;">€17.6M</strong></div>
+          <div style="display:flex; justify-content:space-between;"><span>Top Single-Provider P95</span><strong style="color:var(--gold-light); font-weight:600;">€8.4M (47.7%)</strong></div>
+          <div style="display:flex; justify-content:space-between;"><span>Diversification Benefit</span><strong style="color:#4ade80; font-weight:600;">€4.8M</strong></div>
+          <div style="display:flex; justify-content:space-between;"><span>CIF Contracts Without Exit Strategy</span><strong style="color:#f87171; font-weight:600;">1</strong></div>
+        </div>
+      </div>
+      <div style="padding:18px 20px; background:rgba(34,197,94,0.06); border:1px solid rgba(34,197,94,0.2); border-radius:4px;">
+        <div style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:14px;">DORA Register of Information</div>
+        <div style="display:flex; flex-direction:column; gap:8px; font-size:0.82rem; color:rgba(255,255,255,0.7);">
+          <div style="display:flex; justify-content:space-between;"><span>Completeness</span><strong style="color:#4ade80; font-weight:600;">99.7%</strong></div>
+          <div style="display:flex; justify-content:space-between;"><span>Open Critical Validation Gaps</span><strong style="color:#4ade80; font-weight:600;">0</strong></div>
+          <div style="display:flex; justify-content:space-between;"><span>Frozen Snapshot</span><strong style="color:rgba(255,255,255,0.85); font-weight:600;">2026-Q2</strong></div>
+          <div style="display:flex; justify-content:space-between;"><span>Next Submission</span><strong style="color:var(--gold-light); font-weight:600;">Ready for CRO Approval</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:20px; background:rgba(34,197,94,0.06); border:1px solid rgba(34,197,94,0.2); border-radius:4px;">
+      <div style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:12px;">✦ With Cloud Hosting Diversification</div>
+      <p style="font-size:0.88rem; line-height:1.65; color:rgba(255,255,255,0.7); margin-bottom:10px;">
+        Multi-region split + secondary provider arrangement reduces Cloud Hosting P95 to <strong style="color:#4ade80;">€3.6M (−57%)</strong>; UNION P95 drops to <strong style="color:#4ade80;">€12.8M</strong>; CIF without exit strategy resolved.
+      </p>
+      <p style="font-size:0.82rem; line-height:1.6; color:rgba(255,255,255,0.5);">
+        Investment justified — concentration risk reduction ROI <strong style="color:var(--gold-light);">4.8:1</strong>; submission timeline preserved.
+      </p>
+    </div>
+  </div>
+
+  <p style="text-align:center; margin-top:24px; font-size:0.82rem; color:rgba(255,255,255,0.25);" class="fade-up">Simplified scenarios. See your organisation's real risk profile with actual assets, processes, controls, and providers.</p>
   <div style="text-align:center; margin-top:16px;" class="fade-up">
     <a href="#demo" class="btn-primary" style="box-shadow:0 4px 20px rgba(201,168,76,0.25);">Request Early Access</a>
   </div>
@@ -2219,11 +2658,12 @@ footer {
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">AIQ <span>Suite</span> — CyberRisk AIQ · OpRisk AIQ</div>
+  <div class="footer-logo">AIQ <span>Suite</span> — CyberRisk AIQ · OpRisk AIQ · TPPRisk AIQ</div>
   <div class="footer-note">
     Based on FAIR methodology (The Open Group) · Aligned with ISO 27002:2022 · NIST CSF 2.0 · CIS Controls v8 · Basel III<br>
     ISO 27002 is a trademark of ISO. Controls library independently developed and aligned with ISO 27002:2022 — not reproduced from the standard.<br>
-    NIST, CIS, and Basel frameworks referenced for informational purposes. Capital impact estimates are management information for Pillar II ICAAP processes; AIQ Suite does not replace Pillar I regulatory capital calculation under Basel III SMA. AIQ Suite supports DORA ICT risk assessment requirements — not a full DORA compliance tool.
+    NIST, CIS, and Basel frameworks referenced for informational purposes. Capital impact estimates are management information for Pillar II ICAAP processes; AIQ Suite does not replace Pillar I regulatory capital calculation under Basel III SMA. AIQ Suite supports DORA ICT risk assessment requirements — not a full DORA compliance tool.<br>
+    TPPRisk AIQ supports DORA Article 28 ICT third-party risk requirements including EBA ITS Register of Information per Commission Implementing Regulation 2024/2956 — output is a regulator-submittable package, not an automated regulatory clearance.
   </div>
 </footer>
 
