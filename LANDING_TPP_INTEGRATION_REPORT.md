@@ -35,7 +35,7 @@
 | A.2 | 3rd module-card badge (TPPRisk AIQ 🔗) |
 | A.3 | 3rd dashboard preview section — top ICT provider concentration; RoI Completeness 99.7% footer |
 | A.4 | *"Three modules. One operational resilience platform."* + new sub |
-| A.5 | CyberRisk AIQ description refined (FAIR-based + control effectiveness + loss components) |
+| A.5 | CyberRisk AIQ description refined (proprietary quantitative methodology + control effectiveness + loss components) |
 | A.6 | OpRisk AIQ tag updated to `Basel III · RCSA · ICAAP`; description refined |
 | A.7 | **NEW** Module 03 TPPRisk AIQ — 14-bullet feature list anchored on EBA ITS B_05.01/B_06.01, CIF wizard, DPM ZZ:x959–x962, signed-ZIP |
 | A.8 | Dual-line problem title + triple Before/After (provider concentration + RoI completeness After lines) |
@@ -44,7 +44,7 @@
 | A.11 | 8 → 9 role cards — added Vendor/TPP Manager, CRO/DORA Approver, Group Roles (extension) |
 | A.12 | AI Engine: 3rd input column *Third-Party Context*, 3rd output column *TPPRisk Outputs*, AI accountability caveat |
 | A.13 | Differentiators: existing CR+OR card retitled, 2 new TPP cards + 1 new On-Premise/SaaS/Holding card (extension) — 9 total |
-| A.14 | One Methodology Stack extended for FAIR-based TPP + EBA RoI ITS |
+| A.14 | One Methodology Stack extended for proprietary-quantitative TPP + EBA RoI ITS |
 | A.15 | Group Risk Intelligence: narrative updated for CR+OR+TPP + 3 new subcards |
 | A.16 | Compliance table restructured to 7 rows (DORA expanded, new DORA Article 28, Solvency II All Three, ZDOOFS dedicated row) |
 | A.17 | Roadmap: 4th TPPRisk AIQ Live card; duplicate ZDOOFS lines removed from CR + OR cards |
