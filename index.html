@@ -989,6 +989,13 @@ section { padding: 100px 60px; }
 .status-soon { background: rgba(201,168,76,0.12); color: var(--gold); border: 1px solid rgba(201,168,76,0.2); }
 .status-planned { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.08); }
 
+.phase-more { margin-top: 10px; }
+.phase-more > summary { cursor: pointer; font-size: 0.72rem; letter-spacing: 0.06em; color: var(--gold); list-style: none; padding: 6px 0; opacity: 0.85; }
+.phase-more > summary::-webkit-details-marker { display: none; }
+.phase-more > summary::before { content: '＋ '; }
+.phase-more[open] > summary::before { content: '－ '; }
+.phase-more[open] > summary { margin-bottom: 6px; }
+
 /* CTA */
 .cta-section {
   background: var(--navy);
@@ -1198,7 +1205,7 @@ footer {
 
   <div class="hero-inner fade-up">
     <div class="hero-badge">Financial-sector digital operational resilience · ICT risk · Operational risk · Third-party risk · Monte Carlo quantification</div>
-    <h1><span class="hero-line">Quantify Cyber, Operational &amp; Third-Party Risk</span><span class="hero-line">in One Defensible Financial and Regulatory <em>View.</em></span></h1>
+    <h1><span class="hero-line">Quantify Cyber, Operational &amp; Third-Party Risk</span> <span class="hero-line">in One Defensible Financial and Regulatory <em>View.</em></span></h1>
     <div class="hero-2col">
     <div class="hero-left">
     <p class="hero-sub">
@@ -1309,7 +1316,7 @@ footer {
         <span style="color:var(--gold); font-weight:600;">RoI Completeness 99.7%</span>
       </div>
       <div class="chart-callout">
-        <strong>Board-ready output:</strong> 3 risks above appetite. Top provider concentration covers 5 critical functions. Register of Information prepared for internal review and regulatory submission under the applicable regime.
+        <strong>Board-ready output:</strong> 3 risks above appetite. Top provider concentration covers 5 critical functions. Register of Information prepared for internal review and regulatory submission.
         <strong style="color:var(--gold-light);">Three layers of operational resilience, one defensible view.</strong>
       </div>
     </div>
@@ -1547,7 +1554,7 @@ footer {
 <section class="how" id="how">
   <div class="section-tag">Workflow</div>
   <h2 class="section-title fade-up">From threat (and provider)<br>to governed decision.</h2>
-  <p class="section-sub fade-up">Two parallel governance flows — quantified risk for CR + OR scenarios, third-party risk for the provider lifecycle — converging in board-ready outputs and evidence prepared for internal review and regulatory submission, under applicable rules and institution approval.</p>
+  <p class="section-sub fade-up">Two parallel governance flows — quantified risk for CR + OR scenarios, third-party risk for the provider lifecycle — converging in board-ready outputs and evidence prepared for internal review and regulatory submission.</p>
 
   <div style="max-width:1200px; margin:48px auto 0; padding:0 4px;" class="fade-up">
     <div style="display:inline-flex; align-items:center; gap:10px; padding:6px 18px; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.25); border-radius:2px; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); font-weight:600;">
@@ -1735,7 +1742,7 @@ footer {
       <div class="step-content">
         <div class="step-module-badge badge-shared">TPPRisk AIQ</div>
         <h3>CRO approves frozen snapshot; RoI submission package generated</h3>
-        <p>CRO reviews concentration risk, approves the snapshot, and freezes it. The platform generates a structured ZIP package per Commission Implementing Regulation 2024/2956 — for internal review and preparation of regulatory submission under applicable competent-authority instructions. Full audit trail preserved.</p>
+        <p>CRO reviews concentration risk, approves the snapshot, and freezes it. The platform generates a structured ZIP package per Commission Implementing Regulation 2024/2956 — prepared for internal review and regulatory submission. Full audit trail preserved.</p>
         <div class="step-tags">
           <span class="step-tag">Snapshot Freeze</span>
           <span class="step-tag">CRO Approval</span>
@@ -1750,7 +1757,7 @@ footer {
     </div>
   </div>
 
-  <p style="text-align:center; margin-top:48px; font-size:0.9rem; color:rgba(255,255,255,0.5); font-style:italic; max-width:760px; margin-left:auto; margin-right:auto;" class="fade-up">From provider inventory to a Register of Information prepared for internal review and regulatory submission, under applicable rules and institution approval.</p>
+  <p style="text-align:center; margin-top:48px; font-size:0.9rem; color:rgba(255,255,255,0.5); font-style:italic; max-width:760px; margin-left:auto; margin-right:auto;" class="fade-up">From provider inventory to a Register of Information prepared for internal review and regulatory submission.</p>
 </section>
 
 <!-- ROLES -->
@@ -2037,7 +2044,7 @@ footer {
     <div class="pillar fade-up">
       <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">🔗</div>
       <h3>DORA RoI + Quantified Risk in One Platform</h3>
-      <p>Most DORA TPP tools stop at registers and templates. Most risk quantification tools stop at scenarios and loss curves. AIQ Suite connects both: ICT providers, contracts, critical functions, internal assets, and quantified P95 exposure — so third-party risk is not just documented, but financially understood and prepared for internal review and regulatory submission, under applicable rules and institution approval.</p>
+      <p>Most DORA TPP tools stop at registers and templates. Most risk quantification tools stop at scenarios and loss curves. AIQ Suite connects both: ICT providers, contracts, critical functions, internal assets, and quantified P95 exposure — so third-party risk is not just documented, but financially understood and prepared for internal review and regulatory submission.</p>
       <div class="step-tags" style="margin-top:18px;">
         <span class="step-tag">DORA Article 28</span>
         <span class="step-tag">EBA ITS</span>
@@ -2111,7 +2118,7 @@ footer {
       ">Quantification for Cyber, <span style="color:var(--gold);">RCSA for OR</span>, Quantification for TPP</h3>
 
       <p style="font-size:0.95rem; line-height:1.8; color:rgba(255,255,255,0.65); margin-bottom:14px;">
-        CyberRisk AIQ applies a proprietary quantitative methodology for ICT and cyber risk, aligned with digital operational resilience expectations. OpRisk AIQ applies Quantitative RCSA with Monte Carlo simulation for operational risk, supporting ICAAP/Pillar II input and board-level risk oversight. TPP AIQ quantifies ICT third-party provider exposure, concentration risk, CIF dependencies, and Register of Information readiness in line with DORA Article 28 and the EBA ITS structure.
+        CyberRisk AIQ applies a proprietary quantitative methodology for ICT and cyber risk, aligned with digital operational resilience expectations. OpRisk AIQ applies Quantitative RCSA with Monte Carlo simulation for operational risk, supporting ICAAP/Pillar II input and board-level risk oversight. TPPRisk AIQ quantifies ICT third-party provider exposure, concentration risk, CIF dependencies, and Register of Information readiness in line with DORA Article 28 and the EBA ITS structure.
       </p>
 
       <p style="font-size:0.9rem; line-height:1.75; color:rgba(255,255,255,0.4); margin-bottom:28px;">
@@ -2309,33 +2316,31 @@ footer {
 
 <!-- ROADMAP -->
 <section class="roadmap" id="roadmap">
-  <div class="section-tag">Product Roadmap</div>
+  <div class="section-tag">Platform Capabilities &amp; Roadmap</div>
   <h2 class="section-title fade-up">A platform built to grow<br>with regulation.</h2>
-  <p class="section-sub fade-up">CyberRisk AIQ, OpRisk AIQ, TPPRisk AIQ, and the Enterprise Scale tier — along with multi-tenant, holding architecture, group risk intelligence, and the Register of Information for ICT arrangements — are in preparation.</p>
+  <p class="section-sub fade-up">CyberRisk AIQ, OpRisk AIQ, and TPPRisk AIQ are available today in pilot / early access. The Enterprise Scale tier — multi-tenant and holding architecture with group risk intelligence — is a planned enhancement, and Resilience AIQ (business continuity) is next on the roadmap.</p>
 
   <div class="roadmap-phases">
     <div class="phase fade-up">
       <div class="phase-label">CyberRisk AIQ</div>
-      <span class="phase-status status-live">● Pilot / early access</span>
+      <span class="phase-status status-live">● Available in pilot</span>
       <ul class="phase-items">
-        <!-- Core quantification -->
         <li class="phase-item done"><div class="phase-dot"></div><span>Proprietary quantification engine (multiplicative control model)</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>10,000-run Monte Carlo — P50/P90/P95 + capital impact</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Loss Exceedance Curve — full distribution visualisation (P5–P99)</span></li>
-        <!-- Governance workflow -->
         <li class="phase-item done"><div class="phase-dot"></div><span>9-role 3LoD governance workflow</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>CISO Rating Override — independent control effectiveness review</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Scenario Simulator — What-If analysis before commitment</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Designated Representative — delegate BO tasks</span></li>
-        <!-- Controls -->
         <li class="phase-item done"><div class="phase-dot"></div><span>Proprietary control library — configurable external-framework mapping</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Controls import — Framework AI, Document AI, CSV</span></li>
-        <!-- Intelligence -->
         <li class="phase-item done"><div class="phase-dot"></div><span>Industry Peer Benchmarking — DBIR, ENISA, Ponemon</span></li>
+      </ul>
+      <details class="phase-more"><summary>Show all capabilities</summary>
+      <ul class="phase-items">
         <li class="phase-item done"><div class="phase-dot"></div><span>Industry Scenario Library with benchmark quantitative inputs</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Investment Optimizer — ROI per control</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Jurisdiction-aware AI — 44 European countries with local regulator framing</span></li>
-        <!-- Reporting -->
         <li class="phase-item done"><div class="phase-dot"></div><span>Asset Risk Map — portfolio heatmap</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Business Owner Decision Guidance with ROI and governance flags</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Scenario Coverage Check — gap analysis against industry scenario library</span></li>
@@ -2346,48 +2351,47 @@ footer {
         <li class="phase-item done"><div class="phase-dot"></div><span>Custom Report Builder — role-based visibility, AI summary</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>DORA + NIS2 regulatory reports</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>PDF export — assessment + board pack</span></li>
-        <!-- Administration -->
         <li class="phase-item done"><div class="phase-dot"></div><span>Loss Data Registry — internal loss database with quantitative calibration</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>Multi-language UI — BS/HR/DE/EN</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Multi-language UI — Montenegrin &amp; English (additional languages on request)</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>TOTP two-factor authentication (Google/Microsoft Authenticator)</span></li>
       </ul>
+      </details>
     </div>
 
     <div class="phase fade-up">
       <div class="phase-label">OpRisk AIQ</div>
-      <span class="phase-status status-live">● Pilot / early access</span>
+      <span class="phase-status status-live">● Available in pilot</span>
       <ul class="phase-items">
-        <!-- Core quantification -->
         <li class="phase-item done"><div class="phase-dot"></div><span>Proprietary quantification for OR (Basel Event Type scenarios)</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>OR P95 residual loss estimation (7 Basel Event Type categories)</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Loss Exceedance Curve — full distribution visualisation (P5–P99)</span></li>
-        <!-- Governance workflow -->
         <li class="phase-item done"><div class="phase-dot"></div><span>Operational Risk Manager / Risk Coordinator roles</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>ORM Rating Override — independent control effectiveness review</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Scenario Simulator — What-If analysis before commitment</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Designated Representative — delegate Process Owner tasks</span></li>
-        <!-- Intelligence -->
         <li class="phase-item done"><div class="phase-dot"></div><span>Industry Peer Benchmarking — OR scenarios</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Industry Scenario Library with benchmark quantitative inputs</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Jurisdiction-aware AI — 44 European countries with local regulator framing</span></li>
+      </ul>
+      <details class="phase-more"><summary>Show all capabilities</summary>
+      <ul class="phase-items">
         <li class="phase-item done"><div class="phase-dot"></div><span>KRI Framework — operational risk indicators with scheduler, threshold monitoring, role-based notifications</span></li>
-        <!-- Reporting -->
         <li class="phase-item done"><div class="phase-dot"></div><span>OR RCSA Report — RCSA + Monte Carlo</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Custom Report Builder — role-based visibility, AI summary</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Integrated Cyber + OR Executive Dashboard</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Org-type capital labels — Tier 1 / Budget / Equity</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>OR Risk Register + ORM summaries</span></li>
-        <!-- Administration -->
         <li class="phase-item done"><div class="phase-dot"></div><span>Business Process Registry with asset dependencies</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Loss Data Registry — internal loss database for quantitative calibration and ICAAP</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>Multi-language UI — BS/HR/DE/EN</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Multi-language UI — Montenegrin &amp; English (additional languages on request)</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>TOTP two-factor authentication (Google/Microsoft Authenticator)</span></li>
       </ul>
+      </details>
     </div>
 
     <div class="phase fade-up">
       <div class="phase-label">TPPRisk AIQ</div>
-      <span class="phase-status status-live">● Pilot / early access</span>
+      <span class="phase-status status-live">● Available in pilot</span>
       <ul class="phase-items">
         <li class="phase-item done"><div class="phase-dot"></div><span>ICT Third-Party Provider Register — EBA ITS B_05.01 aligned</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>ICT Services and Functions Registry — EBA ITS B_06.01 with closed-list service types</span></li>
@@ -2399,6 +2403,9 @@ footer {
         <li class="phase-item done"><div class="phase-dot"></div><span>Intra-group ICT services — EBA ITS B_03.02 holding / subsidiary flows</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Provider concentration analytics — Single-provider P95, UNION P95, Diversification Benefit</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>5-tab concentration analysis — CIF, Top 5, Tier 1, Without Exit Strategy, By Substitutability</span></li>
+      </ul>
+      <details class="phase-more"><summary>Show all capabilities</summary>
+      <ul class="phase-items">
         <li class="phase-item done"><div class="phase-dot"></div><span>Register of Information for ICT arrangements — 15 ITS templates per Commission Implementing Regulation 2024/2956</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Snapshot history, frozen snapshots, structured ZIP package for internal review and regulatory submission preparation</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Data quality framework — HIGH / MEDIUM / LOW bands per provider with actionable remediation</span></li>
@@ -2407,30 +2414,44 @@ footer {
         <li class="phase-item done"><div class="phase-dot"></div><span>AI-assisted quantitative calibration for substitutability and exit-cost ranges</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Multi-jurisdiction support — pan-EU DORA + Montenegro ZDOOFS (Sl. list CG 14/26) + ZIB transpositions in preparation</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Cross-module integration — TPP concentration linked to OR process dependencies and CR ICT asset criticality</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>Multi-language UI — BS/HR/DE/EN</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Multi-language UI — Montenegrin &amp; English (additional languages on request)</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>TOTP two-factor authentication (Google/Microsoft Authenticator)</span></li>
       </ul>
+      </details>
     </div>
 
     <div class="phase fade-up">
       <div class="phase-label">Enterprise Scale</div>
       <span class="phase-status status-planned">● Planned enhancement</span>
       <ul class="phase-items">
-        <!-- Multi-tenant -->
         <li class="phase-item done"><div class="phase-dot"></div><span>Multi-tenant SaaS architecture — schema-per-tenant isolation</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Super-admin panel — tenant provisioning, licence management, system health</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>RSA-signed JWT licensing — offline, tier-based, no phone-home</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>On-premise + SaaS + holding deployment modes</span></li>
-        <!-- Holding -->
         <li class="phase-item done"><div class="phase-dot"></div><span>Operating holding model — holding entity with own workspace</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Group roles — Group CISO, Group ORM, Group CRO</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Consolidated Risk Summary — CR + OR capital across all subsidiaries</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>DORA Group Overview — applicability and ICT exposure by subsidiary</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Group OR Capital — RCSA-aligned consolidated view across subsidiaries</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Group Risk Concentration — cross-entity CR+OR process-asset matrix</span></li>
+      </ul>
+      <details class="phase-more"><summary>Show all capabilities</summary>
+      <ul class="phase-items">
         <li class="phase-item done"><div class="phase-dot"></div><span>Group Executive Summary — AI-generated board narrative across subsidiaries</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Subsidiary benchmarking — ranked entities by combined capital at risk</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Group Administration panel — group user management, subsidiary inclusion control</span></li>
+      </ul>
+      </details>
+    </div>
+    <div class="phase fade-up">
+      <div class="phase-label">Resilience AIQ</div>
+      <span class="phase-status status-planned">● Planned — next module</span>
+      <ul class="phase-items">
+        <li class="phase-item done"><div class="phase-dot"></div><span>Business Impact Analysis (BIA) for critical or important functions</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Business continuity and crisis communication plans</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Tests and exercises with findings and lessons-learned loop</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Crisis event records aligned with DORA Article 11 evidence expectations</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Designed for the ZDOOFS business-continuity deadline (17.2.2028)</span></li>
       </ul>
     </div>
   </div>
@@ -2691,6 +2712,7 @@ footer {
   <div class="footer-note">
     <p>AIQ Suite provides management-level quantification of cyber/ICT, operational, and ICT third-party risk through a Monte Carlo approach, P95 residual loss, materiality, and auditable workflows. The outputs support RCSA, ICAAP/Pillar II, risk oversight, and preparation of regulatory evidence, but do not replace official regulatory capital calculations, the institution's internal policies, or decisions by the competent authority.</p>
     <p>For Montenegro, AIQ Suite is positioned around the Zakon o digitalnoj operativnoj otpornosti finansijskog sektora ("Službeni list Crne Gore", br. 14/2026), with EU DORA and EBA ITS used as reference models for terminology, structure and future EU-aligned scalability.</p>
+    <p>© 2026 AIQ Suite · Contact: [CONTACT-EMAIL]</p>
   </div>
 </footer>
 
