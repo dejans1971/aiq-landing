@@ -9,9 +9,11 @@
 <meta property="og:description" content="Quantify cyber, operational, and third-party risk on one defensible capital basis. CyberRisk AIQ + OpRisk AIQ + TPPRisk AIQ. DORA Article 28 RoI · Basel III · NIS2." />
 <link rel="alternate" hreflang="en" href="https://www.cyberriskaiq.com/" />
 <link rel="alternate" hreflang="cnr" href="https://www.cyberriskaiq.com/me/" />
+<link rel="alternate" hreflang="hr" href="https://www.cyberriskaiq.com/hr/" />
 <link rel="alternate" hreflang="x-default" href="https://www.cyberriskaiq.com/" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:locale:alternate" content="cnr_ME" />
+<meta property="og:locale:alternate" content="hr_HR" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -631,7 +633,10 @@ section { padding: 100px 60px; }
   grid-template-columns: repeat(2, 1fr);
   gap: 1px;
   margin-top: 60px;
-  background: var(--border);
+  /* No painted container background: separators are drawn by each pillar, so an
+     odd card count (the Why AIQ Suite grid is now 10) never leaves
+     gap-coloured empty cells. Same treatment as .modules-grid / .roles-grid. */
+  background: transparent;
   border: 1px solid var(--border);
 }
 
@@ -641,6 +646,8 @@ section { padding: 100px 60px; }
   position: relative;
   overflow: hidden;
   transition: background 0.3s;
+  /* fills the 1px grid gap to the right and below this card only */
+  box-shadow: 1px 0 0 var(--border), 0 1px 0 var(--border);
 }
 
 .pillar:hover { background: rgba(201,168,76,0.05); }
@@ -1271,6 +1278,8 @@ footer {
     <a href="/" class="lang-switcher__link lang-switcher__link--active" hreflang="en" aria-current="true">EN</a>
     <span class="lang-switcher__divider" aria-hidden="true">|</span>
     <a href="/me/" class="lang-switcher__link" hreflang="cnr">ME</a>
+    <span class="lang-switcher__divider" aria-hidden="true">|</span>
+    <a href="/hr/" class="lang-switcher__link" hreflang="hr">HR</a>
   </div>
 </nav>
 
@@ -1280,14 +1289,15 @@ footer {
   <div class="hero-grid"></div>
 
   <div class="hero-inner fade-up">
-    <div class="hero-badge">Financial-sector digital operational resilience · ICT risk · Operational risk · Third-party risk · Monte Carlo quantification</div>
-    <h1><span class="hero-line">Quantify Cyber, Operational &amp; Third-Party Risk</span> <span class="hero-line">in One Defensible Financial and Regulatory <em>View.</em></span></h1>
+    <div class="hero-badge">Financial-sector digital operational resilience · ICT risk · Operational risk · Third-party risk · Business continuity · Monte Carlo quantification</div>
+    <h1><span class="hero-line">Quantify, Govern, and Prove Digital Operational Resilience.</span> <span class="hero-line">Cyber, Operational, Third-Party, and Continuity Risk — One Defensible <em>View.</em></span></h1>
     <div class="hero-2col">
     <div class="hero-left">
     <p class="hero-sub">
-      AIQ Suite translates ICT/cyber, operational, and ICT third-party provider risk into
-      quantified financial outputs, P95 concentration exposure, and regulatory evidence —
-      through one governed platform for financial-sector operational resilience.
+      AIQ Suite translates ICT/cyber, operational, ICT third-party, and business-continuity
+      risk into quantified financial outputs, derived recovery objectives, and regulatory
+      evidence — through one governed platform for financial-sector digital operational
+      resilience.
     </p>
     <div style="display:inline-block; margin:-24px 0 36px; padding:10px 18px; background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.35); border-radius:4px; font-size:0.9rem; line-height:1.55; color:var(--gold-light); max-width:560px;">
       <strong style="color:var(--gold);">Pilot / early access:</strong> AIQ Suite is currently in pilot / early access stage and open for controlled validation with banks, financial institutions and regulated organisations.
@@ -1628,7 +1638,10 @@ footer {
         <span style="color:var(--gold);">+</span> "Top ICT provider concentration: <span style="color:var(--gold-light);">€8.4M P95</span> across 5 critical functions."<br>
         <span style="color:var(--gold);">+</span> "Register of Information: <span style="color:var(--gold-light);">99.7% complete</span> against the reference ITS structure, with no critical application-level validation gaps."
       </div>
-      <div class="vs-desc" style="color: rgba(255,255,255,0.5);">Defensible. Auditable. Quantified. Supports preparation of regulator-ready evidence, subject to institution review, approval and applicable supervisory instructions. Supports selected digital operational resilience, ICT risk, operational risk and third-party ICT risk management processes through structured evidence, quantification, workflow and reporting.</div>
+      <div class="vs-desc" style="color: rgba(255,255,255,0.5);">Defensible. Auditable. Quantified.</div>
+      <div class="footer-note" style="margin-top:14px;">
+        <p>Supports preparation of regulator-ready evidence, subject to institution review, approval and applicable supervisory instructions. Supports selected digital operational resilience, ICT risk, operational risk and third-party ICT risk management processes through structured evidence, quantification, workflow and reporting.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1668,7 +1681,7 @@ footer {
     <div class="pillar fade-up">
       <div class="pillar-number">03</div>
       <h3>Jurisdiction-Aware AI</h3>
-      <p>AI assistance proposes analysis tailored to the sector, capital base, and jurisdiction, subject to human review, adjustment, and sign-off. A bank in Montenegro receives CBCG-framed guidance. A bank in Croatia receives DORA and HNB context. A public body in Germany receives NIS2 and BSI framing. 44 European jurisdictions mapped — regulatory references serve as context and benchmark, never a compliance checklist.</p>
+      <p>AI assistance proposes analysis tailored to the sector, capital base, and jurisdiction, subject to human review, adjustment, and sign-off. A bank in Montenegro receives CBCG-framed guidance. A bank in Croatia receives DORA and HNB context. A public body in Germany receives NIS2 and BSI framing. Jurisdiction mapping (see AI Engine) serves as context and benchmark, never a compliance checklist.</p>
       <div class="step-tags">
         <span class="step-tag">44 Jurisdictions</span>
         <span class="step-tag">Anthropic Claude</span>
@@ -1696,7 +1709,7 @@ footer {
 <section class="how" id="how">
   <div class="section-tag">Workflow</div>
   <h2 class="section-title fade-up">From threat (and provider)<br>to governed decision.</h2>
-  <p class="section-sub fade-up">Three parallel governance flows — quantified risk for CR + OR, third-party risk for the provider lifecycle, and continuity governance from impact analysis to tested plan — converging in board-ready outputs and evidence prepared for internal review and regulatory submission.</p>
+  <p class="section-sub fade-up">Three parallel governance flows — quantified risk for CR + OR, third-party risk for the provider lifecycle, and continuity governance from impact analysis to tested plan — converging in board-ready outputs and evidence prepared for internal review and regulatory submission. Flow C works differently in one respect worth stating plainly: continuity governance derives its objectives (recovery time, recovery point, minimum viable operation) from structured impact analysis, not from Monte Carlo simulation — the evidence discipline is identical, the mathematics behind it is not.</p>
 
   <div style="max-width:1200px; margin:48px auto 0; padding:0 4px;" class="fade-up">
     <div style="display:inline-flex; align-items:center; gap:10px; padding:6px 18px; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.25); border-radius:2px; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); font-weight:600;">
@@ -1735,8 +1748,8 @@ footer {
         </div>
       </div>
       <div class="step-metric">
-        <div class="metric-val">10,000</div>
-        <div class="metric-label">Monte Carlo runs per scenario</div>
+        <div class="metric-val">Same Engine</div>
+        <div class="metric-label">10,000-run Monte Carlo, applied to residual risk after controls</div>
       </div>
     </div>
 
@@ -2288,25 +2301,25 @@ footer {
     <div class="pillar fade-up">
       <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">🔗</div>
       <h3>CR + OR + Third-Party + Continuity Risk in One Operational Resilience Platform</h3>
-      <p>Cyber risk, operational risk, third-party risk, and business continuity are typically managed in separate silos — separate teams, separate tools, separate evidence. AIQ Suite unifies them: same assets, same processes, same users, same governance workflow, same audit trail, same capital basis. A bank sees its ransomware exposure, its settlement error exposure, and its cloud-hosting concentration side-by-side — surfaces where the same provider supports multiple critical processes automatically, and surfaces where a single-provider outage would also break its own continuity plan.</p>
+      <p>Cyber risk, operational risk, third-party risk, and business continuity are typically managed in separate silos — separate teams, separate tools, separate evidence. AIQ Suite unifies them: same assets, same processes, same users, same governance workflow, same audit trail, same capital basis. A bank sees its ransomware exposure, its settlement error exposure, and its cloud-hosting concentration side-by-side — surfaces where the same provider supports multiple critical processes automatically, and surfaces where a single-provider outage would also break its own continuity plan. Platforms built for continuity typically do not quantify; platforms built to quantify typically do not govern continuity. AIQ Suite does both on the same organisational data.</p>
     </div>
 
     <div class="pillar fade-up">
       <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">🗺️</div>
       <h3>Built for European Regulation</h3>
-      <p>All major quantification platforms originate in North America. AIQ Suite is designed from the ground up for European regulatory requirements — DORA, NIS2, Basel III, EBA Guidelines, and 44 national jurisdictions including local regulators (CBCG, NBS, HNB, BaFin, FMA, FINMA). Not an afterthought — the architecture.</p>
+      <p>All major quantification platforms originate in North America. AIQ Suite is designed from the ground up for European regulatory requirements — DORA, NIS2, Basel III, EBA Guidelines, and dozens of national jurisdictions including local regulators (CBCG, NBS, HNB, BaFin, FMA, FINMA) — see AI Engine for the full count. Not an afterthought — the architecture.</p>
     </div>
 
     <div class="pillar fade-up">
       <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">🔍</div>
       <h3>Full Calculation Transparency</h3>
-      <p>Every input, every control rating, every Monte Carlo output is visible and auditable. Quantification inputs, loss components, control reduction calculations, capital impact formula — all accessible for regulatory review. No black box. Designed to withstand supervisory scrutiny under DORA Article 6 and EBA internal model requirements.</p>
+      <p>Every input, every control rating, every Monte Carlo output is visible and auditable. Quantification inputs, loss components, control reduction calculations, capital impact formula — all accessible for regulatory review. No proprietary black-box scoring that a supervisor, auditor, or your own risk committee cannot trace back to its inputs. Designed to withstand supervisory scrutiny under DORA Article 6 and EBA internal model requirements.</p>
     </div>
 
     <div class="pillar fade-up">
       <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">👤</div>
-      <h3>Accessible Without Certification</h3>
-      <p>Quantitative risk modeling typically requires specialist training or external consultants. AIQ Suite makes it accessible to any risk analyst through AI-assisted calibration, scenario context panels, industry benchmark guidance, and structured workflow. Expertise is embedded in the platform — not a prerequisite for using it.</p>
+      <h3>No Certification Required to Start</h3>
+      <p>Quantitative risk modeling standards typically require specialist certification before an analyst can use them with confidence — a real cost and a real bottleneck when the person available is a capable risk analyst, not a certified specialist. AIQ Suite makes quantification accessible to any risk analyst through AI-assisted calibration, scenario context panels, industry benchmark guidance, and structured workflow. Expertise is embedded in the platform — not a prerequisite for using it.</p>
     </div>
 
     <div class="pillar fade-up">
@@ -2336,6 +2349,17 @@ footer {
         <span class="step-tag">Concentration P95</span>
         <span class="step-tag">Substitutability</span>
         <span class="step-tag">Group Dependencies</span>
+      </div>
+    </div>
+
+    <div class="pillar fade-up">
+      <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">🎯</div>
+      <h3>Focused by Design, Not by Omission</h3>
+      <p>AIQ Suite governs business risk — it does not run your crisis communications, dispatch mass notifications, or manage IT disaster-recovery runbooks. Those are specialist tools your organisation likely already has (crisis communication platforms, IT service management, backup orchestration), and AIQ Suite is built to sit alongside them, not replace them. What AIQ Suite owns end-to-end is the governance layer above them: quantified exposure, derived recovery objectives, approval workflow, and the evidence trail a board or supervisor asks for. A platform that tries to do everything usually does the governance layer worse than one built for it.</p>
+      <div class="step-tags" style="margin-top:18px;">
+        <span class="step-tag">Governance Layer</span>
+        <span class="step-tag">Complements IT Tools</span>
+        <span class="step-tag">Not a Crisis Platform</span>
       </div>
     </div>
 
