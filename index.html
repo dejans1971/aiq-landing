@@ -123,9 +123,15 @@ nav {
   transition: color 0.2s;
 }
 
+.nav-links a { white-space: nowrap; }
 .nav-links a:hover { color: var(--gold); }
 
 .nav-cta {
+  /* inline-block + nowrap: as an inline element this pill wrapped mid-label
+     when the flex row ran short of room, splitting the gold background across
+     two lines and spilling out of the fixed-height bar. */
+  display: inline-block;
+  white-space: nowrap;
   background: var(--gold);
   color: var(--navy) !important;
   padding: 10px 24px;
@@ -1166,6 +1172,27 @@ footer {
 .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
+/* NAV — the link row must never wrap. Localised labels are longer than the
+   English ones (the ME/HR row needs ~1045px against EN's ~876px), so the row
+   is tightened progressively and hidden once it genuinely cannot fit, rather
+   than being allowed to wrap or overflow. */
+@media (max-width: 1560px) {
+  nav { padding: 20px 32px; }
+  .nav-links { gap: 20px; }
+  .nav-links a { font-size: 0.78rem; letter-spacing: 0.04em; }
+  .nav-cta { padding: 9px 16px; }
+}
+
+@media (max-width: 1400px) {
+  .nav-links { gap: 16px; }
+  .nav-links a { font-size: 0.74rem; letter-spacing: 0.03em; }
+  .nav-cta { padding: 9px 14px; }
+}
+
+@media (max-width: 1239px) {
+  .nav-links { display: none; }
+}
+
 @media (max-width: 1400px) {
   /* four panels/tiles are unreadable at a quarter of a laptop viewport;
      two columns keeps an even count of four wrapping cleanly */
@@ -1275,7 +1302,7 @@ footer {
     <li><a href="#modules">Modules</a></li>
     <li><a href="#how">How It Works</a></li>
     <li><a href="#differentiators">Why AIQ Suite</a></li>
-    <li><a href="#see-it">See It</a></li>
+    <li><a href="#see-it">Examples</a></li>
     <li><a href="#regulatory">Regulatory</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#demo" class="nav-cta">Early Access</a></li>

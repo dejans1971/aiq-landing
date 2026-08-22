@@ -123,9 +123,15 @@ nav {
   transition: color 0.2s;
 }
 
+.nav-links a { white-space: nowrap; }
 .nav-links a:hover { color: var(--gold); }
 
 .nav-cta {
+  /* inline-block + nowrap: as an inline element this pill wrapped mid-label
+     when the flex row ran short of room, splitting the gold background across
+     two lines and spilling out of the fixed-height bar. */
+  display: inline-block;
+  white-space: nowrap;
   background: var(--gold);
   color: var(--navy) !important;
   padding: 10px 24px;
@@ -1167,6 +1173,27 @@ footer {
 .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
+/* NAV — the link row must never wrap. Localised labels are longer than the
+   English ones (the ME/HR row needs ~1045px against EN's ~876px), so the row
+   is tightened progressively and hidden once it genuinely cannot fit, rather
+   than being allowed to wrap or overflow. */
+@media (max-width: 1560px) {
+  nav { padding: 20px 32px; }
+  .nav-links { gap: 20px; }
+  .nav-links a { font-size: 0.78rem; letter-spacing: 0.04em; }
+  .nav-cta { padding: 9px 16px; }
+}
+
+@media (max-width: 1400px) {
+  .nav-links { gap: 16px; }
+  .nav-links a { font-size: 0.74rem; letter-spacing: 0.03em; }
+  .nav-cta { padding: 9px 14px; }
+}
+
+@media (max-width: 1239px) {
+  .nav-links { display: none; }
+}
+
 @media (max-width: 1400px) {
   /* četiri panela/kartice su nečitljivi na četvrtini laptop viewport-a;
      dvije kolone znače da se četiri stavke prelamaju čisto */
@@ -1275,7 +1302,7 @@ footer {
     <li><a href="#modules">Moduli</a></li>
     <li><a href="#how">Kako funkcioniše</a></li>
     <li><a href="#differentiators">Zašto AIQ Suite</a></li>
-    <li><a href="#see-it">Pogledajte</a></li>
+    <li><a href="#see-it">Primjeri</a></li>
     <li><a href="#regulatory">Regulatorni okvir</a></li>
     <li><a href="#roadmap">Plan razvoja</a></li>
     <li><a href="#demo" class="nav-cta">Rani pristup</a></li>
