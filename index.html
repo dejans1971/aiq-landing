@@ -357,6 +357,34 @@ h1 em {
   padding-left: 152px;
 }
 
+.chart-group-label {
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin: 26px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chart-group-label:first-of-type { margin-top: 0; }
+.chart-group-label::after { content: ''; flex: 1; height: 1px; background: rgba(201,168,76,0.2); }
+
+/* Readiness rows are siblings of the P95 bar rows — same row height, same
+   right-aligned value column — but carry no percentage-of-max bar fill,
+   because the values are counts and coverage, not shares of a maximum. */
+.chart-row-plain {
+  flex: 1;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+  border-bottom: 1px dotted rgba(201,168,76,0.22);
+}
+
 .chart-callout {
   margin-top: 20px;
   padding: 12px 16px;
@@ -447,10 +475,12 @@ section { padding: 100px 60px; }
 
 .modules-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2px;
   margin-top: 60px;
-  background: var(--border);
+  /* No painted container background: separators are drawn by each panel, so an
+     odd item count never leaves gap-coloured empty cells. */
+  background: transparent;
   border: 1px solid var(--border);
 }
 
@@ -459,6 +489,8 @@ section { padding: 100px 60px; }
   padding: 52px 48px;
   position: relative;
   overflow: hidden;
+  /* fills the 2px grid gap to the right and below this panel only */
+  box-shadow: 2px 0 0 var(--border), 0 2px 0 var(--border);
 }
 
 .module-panel::before {
@@ -726,7 +758,9 @@ section { padding: 100px 60px; }
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   margin-top: 60px;
-  background: var(--border);
+  /* No painted container background — see .modules-grid note. Card count is no
+     longer required to be a multiple of the column count. */
+  background: transparent;
   border: 1px solid var(--border);
 }
 
@@ -734,6 +768,8 @@ section { padding: 100px 60px; }
   background: var(--navy);
   padding: 36px 28px;
   transition: background 0.3s;
+  /* fills the 1px grid gap to the right and below this card only */
+  box-shadow: 1px 0 0 var(--border), 0 1px 0 var(--border);
 }
 
 .role-card:hover { background: rgba(201,168,76,0.04); }
@@ -918,21 +954,52 @@ section { padding: 100px 60px; }
 .dot-tpp { width: 8px; height: 8px; border-radius: 50%; background: var(--gold-light); flex-shrink: 0; }
 .dot-both { width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, #2563eb 50%, var(--gold) 50%); flex-shrink: 0; }
 .dot-cyber-tpp { width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, #2563eb 50%, var(--gold-light) 50%); flex-shrink: 0; }
-.dot-all { width: 8px; height: 8px; border-radius: 50%; background: conic-gradient(#2563eb 0deg 120deg, var(--gold) 120deg 240deg, var(--gold-light) 240deg 360deg); flex-shrink: 0; }
+.dot-res { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; flex-shrink: 0; }
+.dot-cyber-tpp-res { width: 8px; height: 8px; border-radius: 50%; background: conic-gradient(#2563eb 0deg 120deg, var(--gold-light) 120deg 240deg, #22c55e 240deg 360deg); flex-shrink: 0; }
+.dot-all { width: 8px; height: 8px; border-radius: 50%; background: conic-gradient(#2563eb 0deg 90deg, var(--gold) 90deg 180deg, var(--gold-light) 180deg 270deg, #22c55e 270deg 360deg); flex-shrink: 0; }
 
 /* ROADMAP */
 .roadmap { background: #0a1628; }
 
+/* Roadmap is split into independently-sized tier groups. Each group sizes its
+   own grid with auto-fit, so moving an item between tiers can never leave a
+   gap-coloured empty cell — there is no hardcoded column count per tier. */
+.roadmap-group { margin-top: 40px; }
+.roadmap-group:first-of-type { margin-top: 48px; }
+
+.roadmap-group-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.roadmap-group-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
 .roadmap-phases {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1px;
-  margin-top: 60px;
-  background: var(--border);
+  /* No painted container background — see .modules-grid note. */
+  background: transparent;
   border: 1px solid var(--border);
 }
 
-.phase { background: #0a1628; padding: 40px 32px; }
+/* The planned tier sizes to its own content rather than being stretched across
+   the available tier's track width. */
+.roadmap-phases--planned { max-width: 680px; }
+
+.phase {
+  background: #0a1628;
+  padding: 40px 32px;
+  /* fills the 1px grid gap to the right and below this tile only */
+  box-shadow: 1px 0 0 var(--border), 0 1px 0 var(--border);
+}
 
 .phase-label {
   font-size: 0.68rem;
@@ -1092,6 +1159,14 @@ footer {
 .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
+@media (max-width: 1400px) {
+  /* four panels/tiles are unreadable at a quarter of a laptop viewport;
+     two columns keeps an even count of four wrapping cleanly */
+  .modules-grid { grid-template-columns: repeat(2, 1fr); }
+  .roadmap-phases { grid-template-columns: repeat(2, 1fr); }
+  .roadmap-phases--planned { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 1024px) {
   nav { padding: 16px 24px; }
   .nav-links { display: none; }
@@ -1101,8 +1176,9 @@ footer {
   section { padding: 72px 24px; }
   .problem-grid, .ai-grid { grid-template-columns: 1fr; gap: 32px; }
   .pillars-grid, .roadmap-phases { grid-template-columns: 1fr !important; }
+  .roadmap-phases--planned { max-width: 100%; }
   .roles-grid { grid-template-columns: 1fr 1fr; }
-  .modules-grid { grid-template-columns: 1fr; }
+  .modules-grid { grid-template-columns: 1fr !important; }
   .ai-io { grid-template-columns: 1fr; }
   .tpp-portfolio-table { overflow-x: auto; }
   .tpp-portfolio-table > div { min-width: 640px; }
@@ -1134,8 +1210,8 @@ footer {
   .module-card { width: 100%; }
   .roles-grid { grid-template-columns: 1fr; }
   .pillars-grid { grid-template-columns: 1fr !important; }
-  .roadmap-phases { grid-template-columns: 1fr; }
-  .modules-grid { grid-template-columns: 1fr; }
+  .roadmap-phases { grid-template-columns: 1fr !important; }
+  .modules-grid { grid-template-columns: 1fr !important; }
   .problem-grid { grid-template-columns: 1fr; }
   .ai-grid { grid-template-columns: 1fr; }
   .vs-card { padding: 24px 20px; }
@@ -1245,6 +1321,13 @@ footer {
           <div class="module-card-tag">DORA Article 28 RoI · Concentration</div>
         </div>
       </div>
+      <div class="module-card">
+        <div class="module-card-icon">🔄</div>
+        <div>
+          <div class="module-card-name">Resilience AIQ</div>
+          <div class="module-card-tag">ZDOOFS · DORA Article 11 · Business continuity</div>
+        </div>
+      </div>
     </div>
 
     <div class="hero-actions">
@@ -1256,8 +1339,10 @@ footer {
 
   <div class="hero-visual fade-up">
     <div class="hero-chart">
-      <div class="chart-label">Portfolio Risk — P95 Exposure and Materiality</div>
-      <div class="chart-section-label">CyberRisk AIQ — ICT Scenarios</div>
+      <div class="chart-label">Portfolio Risk — Exposure and Resilience Readiness</div>
+
+      <div class="chart-group-label">Quantified Risk — P95 Exposure</div>
+      <div class="chart-section-label" style="margin-top:0;">CyberRisk AIQ — ICT Scenarios</div>
       <div class="chart-bars">
         <div class="chart-row">
           <div class="chart-row-label">Ransomware</div>
@@ -1315,9 +1400,30 @@ footer {
         <span style="color:rgba(255,255,255,0.55);">P95 exposure · CIF mapped per provider</span>
         <span style="color:var(--gold); font-weight:600;">RoI Completeness 99.7%</span>
       </div>
+
+      <div class="chart-group-label">Operational Resilience — Readiness Evidence</div>
+      <div class="chart-section-label" style="margin-top:0;">Resilience AIQ — Continuity Readiness</div>
+      <div class="chart-bars">
+        <div class="chart-row">
+          <div class="chart-row-label">BIA Coverage</div>
+          <div class="chart-row-plain">Critical processes assessed</div>
+          <div class="chart-val chart-highlight">87%</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-row-label">Plans Approved</div>
+          <div class="chart-row-plain">Confirmed and adopted, current version</div>
+          <div class="chart-val">12</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-row-label">Open Findings</div>
+          <div class="chart-row-plain">High severity, awaiting closure</div>
+          <div class="chart-val">0</div>
+        </div>
+      </div>
+
       <div class="chart-callout">
-        <strong>Board-ready output:</strong> 3 risks above appetite. Top provider concentration covers 5 critical functions. Register of Information prepared for internal review and regulatory submission.
-        <strong style="color:var(--gold-light);">Three layers of operational resilience, one defensible view.</strong>
+        <strong>Board-ready output:</strong> 3 risks above appetite. Top provider concentration covers 5 critical functions. Register of Information prepared for internal review and regulatory submission. Continuity plans adopted for every Tier 1 process, with no high-severity findings open.
+        <strong style="color:var(--gold-light);">Four layers of operational resilience, one defensible view.</strong>
       </div>
     </div>
   </div>
@@ -1357,8 +1463,8 @@ footer {
 <!-- MODULES -->
 <section class="modules-section" id="modules">
   <div class="section-tag">Platform Modules</div>
-  <h2 class="section-title fade-up">Three connected modules.<br>One operational resilience platform.</h2>
-  <p class="section-sub fade-up">Each module can be deployed independently or together as AIQ Suite. All three share the same governance workflow, organisational data, AI infrastructure, reporting layer, audit trail, and capital-impact logic — giving banks one consistent view of ICT risk, operational risk, and third-party dependency risk.</p>
+  <h2 class="section-title fade-up">Four connected modules.<br>One operational resilience platform.</h2>
+  <p class="section-sub fade-up">Each module can be deployed independently or together as AIQ Suite. All four share the same governance workflow, organisational data, AI infrastructure, reporting layer, audit trail, and capital-impact logic — giving banks one consistent view of ICT risk, operational risk, third-party dependency risk, and business continuity readiness.</p>
 
   <div class="modules-grid">
     <div class="module-panel fade-up">
@@ -1378,9 +1484,13 @@ footer {
         <li>NIS2 ICT Risk Report for public sector and corporate</li>
         <li>Financial, budget, and capital-materiality reporting</li>
         <li>Investment Optimizer — ROI-ranked controls per scenario</li>
+      </ul>
+      <details class="phase-more"><summary>Show all capabilities</summary>
+      <ul class="module-features">
         <li>AI analyst assessment — jurisdiction-aware, editable, human-signed</li>
         <li>Business Owner Decision Guidance — ROI flags, governance checklist, Tier 1 DORA banner</li>
       </ul>
+      </details>
     </div>
 
     <div class="module-panel fade-up">
@@ -1424,6 +1534,9 @@ footer {
         <li>Critical or Important Function (CIF) assessments — 5-step wizard</li>
         <li>Dependency mapping — provider → service → function → asset</li>
         <li>Supply chain dependencies (B_03.03) and intra-group ICT services (B_03.02)</li>
+      </ul>
+      <details class="phase-more"><summary>Show all capabilities</summary>
+      <ul class="module-features">
         <li>Single-provider P95 and group concentration analytics</li>
         <li>Data quality framework — HIGH / MEDIUM / LOW bands with actionable drill-down</li>
         <li>Register of Information for ICT arrangements — completeness checks and validation gates</li>
@@ -1432,6 +1545,35 @@ footer {
         <li>Vendor Manager role with role-restricted deactivation</li>
         <li>AI-assisted quantitative calibration for substitutability and exit-cost ranges</li>
       </ul>
+      </details>
+    </div>
+
+    <div class="module-panel fade-up">
+      <div class="module-panel-label">Module 04</div>
+      <h3>Resilience <span>AIQ</span></h3>
+      <div class="module-panel-tagline">Business Continuity Management</div>
+      <p>Manages the full business-continuity lifecycle — business impact analysis, recovery strategies, continuity plans with multi-party approval, testing with derived outcomes, disruption event records with supervisory notification, and findings tracked to closure — on the same processes and organisational data already used across CyberRisk, OpRisk and TPPRisk AIQ.</p>
+      <div class="module-reg-badges">
+        <span class="reg-pill">ZDOOFS</span>
+        <span class="reg-pill">DORA Article 11</span>
+        <span class="reg-pill">CBCG Odluka</span>
+      </div>
+      <ul class="module-features">
+        <li>Business Impact Analysis with derived criticality tier and MTPD ceiling</li>
+        <li>Recovery strategies across five resource types (people, location, ICT service, data, third party)</li>
+        <li>Business continuity plans with multi-party owner confirmation and versioned approval snapshots</li>
+        <li>Recovery order derivation with override and feasibility check</li>
+        <li>Testing with derived outcome (never manually selected) and coverage matrix by process and strategy</li>
+        <li>Disruption event register with five-timestamp evidence and supervisory notification tracking (DORA Article 11 aligned)</li>
+        <li>Findings with severity always derived from process criticality and objective impact, tracked to closure</li>
+      </ul>
+      <details class="phase-more"><summary>Show all capabilities</summary>
+      <ul class="module-features">
+        <li>Eight consistency checks across the whole module, including regulatory-circularity and cross-plan capacity overlap detection</li>
+        <li>26+ indicators integrated into the shared KRI dashboard alongside CR/OR/TPP</li>
+        <li>Group-level consolidated continuity view for multi-entity organisations, using the same Group CISO/ORM/CRO roles already governing CR/OR/TPP</li>
+      </ul>
+      </details>
     </div>
   </div>
 </section>
@@ -1494,7 +1636,7 @@ footer {
 <!-- PILLARS -->
 <section class="pillars" id="pillars">
   <div class="section-tag">Core Capabilities</div>
-  <h2 class="section-title fade-up">Four capabilities. Three modules.<br>One operational resilience platform.</h2>
+  <h2 class="section-title fade-up">Four capabilities. Four modules.<br>One operational resilience platform.</h2>
 
   <div class="pillars-grid">
     <div class="pillar fade-up">
@@ -1538,7 +1680,7 @@ footer {
     <div class="pillar fade-up">
       <div class="pillar-number">04</div>
       <h3>Integrated 3LoD Governance</h3>
-      <p>End-to-end accountability from analyst assessment to board escalation, across all three modules. 1LoD: Analyst + ICT Custodian / Risk Coordinator / Vendor Manager. 2LoD: CISO + OR Manager + CRO. Full audit trail, structured rework flow, Business Owner Decision Guidance, Tier 1 DORA escalation, signed RoI snapshots. One workflow engine across CR, OR, and TPP.</p>
+      <p>End-to-end accountability from analyst assessment to board escalation, across all four modules. 1LoD: Analyst + ICT Custodian / Risk Coordinator / Vendor Manager / BCM Coordinator. 2LoD: CISO + OR Manager + CRO + BCM Manager. Full audit trail, structured rework flow, Business Owner Decision Guidance, Tier 1 DORA escalation, signed RoI snapshots, multi-party continuity plan approval. One workflow engine across CR, OR, TPP, and continuity.</p>
       <div class="step-tags">
         <span class="step-tag">3LoD Model</span>
         <span class="step-tag">Role Workflow</span>
@@ -1554,7 +1696,7 @@ footer {
 <section class="how" id="how">
   <div class="section-tag">Workflow</div>
   <h2 class="section-title fade-up">From threat (and provider)<br>to governed decision.</h2>
-  <p class="section-sub fade-up">Two parallel governance flows — quantified risk for CR + OR scenarios, third-party risk for the provider lifecycle — converging in board-ready outputs and evidence prepared for internal review and regulatory submission.</p>
+  <p class="section-sub fade-up">Three parallel governance flows — quantified risk for CR + OR, third-party risk for the provider lifecycle, and continuity governance from impact analysis to tested plan — converging in board-ready outputs and evidence prepared for internal review and regulatory submission.</p>
 
   <div style="max-width:1200px; margin:48px auto 0; padding:0 4px;" class="fade-up">
     <div style="display:inline-flex; align-items:center; gap:10px; padding:6px 18px; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.25); border-radius:2px; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); font-weight:600;">
@@ -1757,13 +1899,113 @@ footer {
     </div>
   </div>
 
-  <p style="text-align:center; margin-top:48px; font-size:0.9rem; color:rgba(255,255,255,0.5); font-style:italic; max-width:760px; margin-left:auto; margin-right:auto;" class="fade-up">From provider inventory to a Register of Information prepared for internal review and regulatory submission.</p>
+  <div style="max-width:1200px; margin:64px auto 0; padding:0 4px;" class="fade-up">
+    <div style="display:inline-flex; align-items:center; gap:10px; padding:6px 18px; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.25); border-radius:2px; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); font-weight:600;">
+      <span>Flow C</span><span style="opacity:0.4;">·</span><span>Business Continuity Workflow — Resilience AIQ</span>
+    </div>
+  </div>
+
+  <div class="how-steps">
+    <div class="how-step fade-up">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-module-badge badge-shared">Resilience AIQ</div>
+        <h3>BCM Coordinator prepares BIA, recovery strategy, and continuity plan</h3>
+        <p>Working from the business processes already registered for OpRisk AIQ, the coordinator prepares the business impact analysis, selects recovery strategies across the five resource types (people, location, ICT service, data, third party), and drafts the continuity plan. Criticality tier and the MTPD ceiling are derived from the impact analysis, not entered by hand.</p>
+        <div class="step-tags">
+          <span class="step-tag">Business Impact Analysis</span>
+          <span class="step-tag">Recovery Strategies</span>
+          <span class="step-tag">Plan Draft</span>
+        </div>
+      </div>
+      <div class="step-metric">
+        <div class="metric-val">Derived</div>
+        <div class="metric-label">Criticality tier and MTPD ceiling derived from the impact analysis — the same process registry already used by OpRisk AIQ</div>
+      </div>
+    </div>
+
+    <div class="how-step fade-up">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-module-badge badge-shared">Resilience AIQ</div>
+        <h3>BCM Manager performs methodological control</h3>
+        <p>Second-line review before anything reaches the owners: regulatory-circularity check (recovery objectives that quietly reference the obligation they are meant to satisfy), completeness of the covered-process set, and monotonicity of recovery objectives against the criticality tier. Returned for rework where the methodology does not hold.</p>
+        <div class="step-tags">
+          <span class="step-tag">Regulatory-Circularity Check</span>
+          <span class="step-tag">Completeness</span>
+          <span class="step-tag">Monotonicity</span>
+          <span class="step-tag">Return for Rework</span>
+        </div>
+      </div>
+      <div class="step-metric">
+        <div class="metric-val">8 Checks</div>
+        <div class="metric-label">Consistency checks run across the module, including regulatory circularity and cross-plan capacity overlap</div>
+      </div>
+    </div>
+
+    <div class="how-step fade-up">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-module-badge badge-shared">Resilience AIQ</div>
+        <h3>Covered-process owners confirm; plan owner gives final confirmation</h3>
+        <p>Every process covered by the plan is confirmed by its own owner — the same Process Owner role that carries treatment accountability in OpRisk AIQ. The plan owner, who must own at least one of the covered processes, gives the final confirmation. The approval is captured as a versioned snapshot, not a status flag.</p>
+        <div class="step-tags">
+          <span class="step-tag">Multi-Party Confirmation</span>
+          <span class="step-tag">Plan Owner Gate</span>
+          <span class="step-tag">Versioned Snapshot</span>
+        </div>
+      </div>
+      <div class="step-metric">
+        <div class="metric-val">Multi-Party</div>
+        <div class="metric-label">Each covered process confirmed by its own owner before the plan owner can close the approval</div>
+      </div>
+    </div>
+
+    <div class="how-step fade-up">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="step-module-badge badge-shared">Resilience AIQ</div>
+        <h3>Governing body adopts the plan; adoption date and act recorded</h3>
+        <p>Formal adoption by the governing body is recorded against the approved plan version — adoption date and the adopting act, held with the approval snapshot. The record is what a supervisor asks for: which version was adopted, by whom, on what date, under which act.</p>
+        <div class="step-tags">
+          <span class="step-tag">Board Adoption</span>
+          <span class="step-tag">Adoption Act</span>
+          <span class="step-tag">Audit Trail</span>
+        </div>
+      </div>
+      <div class="step-metric">
+        <div class="metric-val">Adopted</div>
+        <div class="metric-label">Adoption date and act recorded against the approved plan version, preserved with the approval snapshot</div>
+      </div>
+    </div>
+
+    <div class="how-step fade-up">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <div class="step-module-badge badge-shared">Resilience AIQ</div>
+        <h3>Structured findings loop closes tests, disruptions, and check outcomes</h3>
+        <p>Test outcomes (derived, never manually selected), disruption event records, and failed consistency checks all raise structured findings. Severity is always derived from process criticality and objective impact — with the remediation deadline following from the severity — and each finding is tracked to closure.</p>
+        <div class="step-tags">
+          <span class="step-tag">Derived Test Outcome</span>
+          <span class="step-tag">Disruption Records</span>
+          <span class="step-tag">Derived Severity</span>
+          <span class="step-tag">Tracked to Closure</span>
+        </div>
+      </div>
+      <div class="step-metric">
+        <div class="metric-val">Derived</div>
+        <div class="metric-label">Finding severity and deadline derived from process criticality and objective impact — not selected by the person raising the finding</div>
+      </div>
+    </div>
+  </div>
+
+  <p style="text-align:center; margin-top:48px; font-size:0.9rem; color:rgba(255,255,255,0.5); font-style:italic; max-width:760px; margin-left:auto; margin-right:auto;" class="fade-up">From provider inventory to a Register of Information prepared for internal review and regulatory submission — and from impact analysis to a tested, adopted continuity plan.</p>
 </section>
 
 <!-- ROLES -->
 <section class="roles" id="roles">
   <div class="section-tag">Governance Model</div>
-  <h2 class="section-title fade-up">Role-based accountability across<br>Cyber, OR, Third-Party Risk, and group entities.</h2>
+  <h2 class="section-title fade-up">Role-based accountability across<br>Cyber, OR, Third-Party, Continuity Risk, and group entities.</h2>
 
   <div class="roles-grid">
     <div class="role-card fade-up">
@@ -1861,9 +2103,39 @@ footer {
     </div>
 
     <div class="role-card fade-up">
+      <div class="role-icon">🔄</div>
+      <h4>BCM Coordinator</h4>
+      <div class="role-or-label">Resilience AIQ — First Line</div>
+      <p>Prepares the continuity lifecycle end-to-end: business impact analysis, recovery strategies, and the continuity plan draft. Read-only internal-audit access to the same records is granted through the platform's audit-view permission rather than a separate role card.</p>
+      <ul>
+        <li>Business Impact Analysis preparation</li>
+        <li>Recovery strategy selection across five resource types</li>
+        <li>Continuity plan drafting &amp; versioning</li>
+        <li>Test scheduling and execution records</li>
+        <li>Disruption event capture — five-timestamp evidence</li>
+        <li>Finding remediation follow-up</li>
+      </ul>
+    </div>
+
+    <div class="role-card fade-up">
+      <div class="role-icon">🔄</div>
+      <h4>BCM Manager</h4>
+      <div class="role-or-label">Resilience AIQ — Second Line</div>
+      <p>Methodological control gate before owner confirmation — the continuity equivalent of the CISO / Operational Risk Manager review. Also the addressee of the module's internal-audit evidence pack.</p>
+      <ul>
+        <li>Regulatory-circularity check on recovery objectives</li>
+        <li>Completeness of the covered-process set</li>
+        <li>Monotonicity against derived criticality tier</li>
+        <li>Consistency-check oversight (8 checks)</li>
+        <li>Supervisory notification tracking — DORA Article 11</li>
+        <li>Return for rework</li>
+      </ul>
+    </div>
+
+    <div class="role-card fade-up">
       <div class="role-icon">⚙️</div>
       <h4>Administrator</h4>
-      <div class="role-or-label">All Three Modules</div>
+      <div class="role-or-label">All Four Modules</div>
       <p>Platform configuration, module activation, and governance setup.</p>
       <ul>
         <li>Module activation</li>
@@ -1877,12 +2149,13 @@ footer {
       <div class="role-icon">🏛️</div>
       <h4>Group Roles</h4>
       <div class="role-or-label">Holding / Multi-Entity — Group Layer</div>
-      <p>Group-level oversight across subsidiaries: consolidated CR + OR + TPP exposure, cross-entity provider concentration, group-level RoI readiness. Single accountability layer above per-entity governance.</p>
+      <p>Group-level oversight across subsidiaries: consolidated CR + OR + TPP + continuity exposure, cross-entity provider concentration, group-level RoI readiness. Single accountability layer above per-entity governance.</p>
       <ul>
         <li>Group CISO — consolidated ICT risk posture across subsidiaries</li>
         <li>Group ORM — operational risk across all entities and business lines</li>
-        <li>Group CRO — combined CR + OR + TPP exposure, group-level snapshot approval</li>
+        <li>Group CRO — combined CR + OR + TPP + continuity exposure, group-level snapshot approval</li>
         <li>Cross-entity concentration analysis</li>
+        <li>Group continuity view reuses these same three roles — no new group role required for Resilience AIQ</li>
         <li>Group Executive Summary — AI-generated board narrative</li>
       </ul>
     </div>
@@ -2014,8 +2287,8 @@ footer {
 
     <div class="pillar fade-up">
       <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">🔗</div>
-      <h3>CR + OR + Third-Party Risk in One Operational Resilience Platform</h3>
-      <p>Cyber risk, operational risk, and third-party risk are typically managed in separate silos — separate teams, separate tools, separate evidence. AIQ Suite unifies them: same assets, same users, same governance workflow, same audit trail, same capital basis. A bank sees its ransomware exposure, its settlement error exposure, and its cloud-hosting concentration side-by-side — and surfaces where the same provider supports multiple critical processes automatically.</p>
+      <h3>CR + OR + Third-Party + Continuity Risk in One Operational Resilience Platform</h3>
+      <p>Cyber risk, operational risk, third-party risk, and business continuity are typically managed in separate silos — separate teams, separate tools, separate evidence. AIQ Suite unifies them: same assets, same processes, same users, same governance workflow, same audit trail, same capital basis. A bank sees its ransomware exposure, its settlement error exposure, and its cloud-hosting concentration side-by-side — surfaces where the same provider supports multiple critical processes automatically, and surfaces where a single-provider outage would also break its own continuity plan.</p>
     </div>
 
     <div class="pillar fade-up">
@@ -2116,14 +2389,14 @@ footer {
         font-family:'Playfair Display',serif;
         font-size:1.65rem; font-weight:700;
         color:var(--white); margin-bottom:20px; line-height:1.25;
-      ">Quantification for Cyber, <span style="color:var(--gold);">RCSA for OR</span>, Quantification for TPP</h3>
+      ">Quantification for Cyber, <span style="color:var(--gold);">RCSA for OR</span>, Quantification for TPP, <span style="color:var(--gold);">Structured Evidence for Continuity</span></h3>
 
       <p style="font-size:0.95rem; line-height:1.8; color:rgba(255,255,255,0.65); margin-bottom:14px;">
-        CyberRisk AIQ applies a proprietary quantitative methodology for ICT and cyber risk, aligned with digital operational resilience expectations. OpRisk AIQ applies Quantitative RCSA with Monte Carlo simulation for operational risk, supporting ICAAP/Pillar II input and board-level risk oversight. TPPRisk AIQ quantifies ICT third-party provider exposure, concentration risk, CIF dependencies, and Register of Information readiness in line with DORA Article 28 and the EBA ITS structure.
+        CyberRisk AIQ applies a proprietary quantitative methodology for ICT and cyber risk, aligned with digital operational resilience expectations. OpRisk AIQ applies Quantitative RCSA with Monte Carlo simulation for operational risk, supporting ICAAP/Pillar II input and board-level risk oversight. TPPRisk AIQ quantifies ICT third-party provider exposure, concentration risk, CIF dependencies, and Register of Information readiness in line with DORA Article 28 and the EBA ITS structure. Resilience AIQ does not quantify in the same statistical sense — there is no Monte Carlo layer here; its methodological basis is derivation and evidence: criticality tier and MTPD ceiling derived from the business impact analysis, recovery objectives checked for monotonicity against that tier, test outcomes and finding severity derived rather than selected.
       </p>
 
       <p style="font-size:0.9rem; line-height:1.75; color:rgba(255,255,255,0.4); margin-bottom:28px;">
-        Together, the three modules produce P95 residual loss, concentration exposure, and auditable evidence on a consistent quantitative basis. ICAAP input, third-party risk reporting, and the operational resilience narrative become one coherent evidence pack — not three disconnected reporting streams.
+        Together, the four modules produce P95 residual loss, concentration exposure, derived recovery objectives, and auditable evidence on a consistent basis. ICAAP input, third-party risk reporting, continuity evidence, and the operational resilience narrative become one coherent evidence pack — not four disconnected reporting streams.
       </p>
 
       <div class="step-tags">
@@ -2179,7 +2452,7 @@ footer {
 
         <p style="font-size:0.92rem; line-height:1.75; color:rgba(255,255,255,0.55); font-weight:300; margin-bottom:24px;">
           Organisations with multiple entities — holding groups, subsidiaries, regional divisions,
-          or public sector bodies — can consolidate CR, OR, and TPPRisk exposure across all units
+          or public sector bodies — can consolidate CR, OR, TPPRisk exposure and continuity readiness across all units
           in a single view. Because AIQ Suite holds ICT/cyber, operational, and third-party risk data
           under one roof, it identifies areas where risk types are simultaneously elevated,
           AND third-party providers that serve multiple subsidiaries (group-level concentration
@@ -2238,6 +2511,14 @@ footer {
         </div>
 
         <div style="display:flex; gap:16px; align-items:flex-start; padding:16px 20px; border:1px solid rgba(201,168,76,0.12); border-radius:4px; background:rgba(255,255,255,0.02);">
+          <div style="font-size:1.2rem; flex-shrink:0; margin-top:2px;">🔄</div>
+          <div>
+            <div style="font-size:0.88rem; font-weight:600; color:var(--white); margin-bottom:4px;">Group Continuity Readiness</div>
+            <div style="font-size:0.8rem; color:rgba(255,255,255,0.4); line-height:1.5;">Tracks BIA and plan approval status across all subsidiaries, surfaces processes with materially different recovery objectives across otherwise-comparable entities.</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:16px; align-items:flex-start; padding:16px 20px; border:1px solid rgba(201,168,76,0.12); border-radius:4px; background:rgba(255,255,255,0.02);">
           <div style="font-size:1.2rem; flex-shrink:0; margin-top:2px;">⚠️</div>
           <div>
             <div style="font-size:0.88rem; font-weight:600; color:var(--white); margin-bottom:4px;">Shared Critical Vendor Exposure</div>
@@ -2255,7 +2536,7 @@ footer {
 <section class="regulatory" id="regulatory">
   <div class="section-tag">Regulatory relevance</div>
   <h2 class="section-title fade-up">Purpose-built for regulated sectors.</h2>
-  <p class="section-sub fade-up">AIQ Suite helps institutions structure internal risk governance, evidence, and reporting in relation to relevant regulatory and audit requirements — through three purpose-built modules.</p>
+  <p class="section-sub fade-up">AIQ Suite helps institutions structure internal risk governance, evidence, and reporting in relation to relevant regulatory and audit requirements — through four purpose-built modules.</p>
 
   <div class="reg-table fade-up">
     <div class="reg-row header">
@@ -2269,8 +2550,8 @@ footer {
       <div class="reg-cell" style="font-size:0.85rem; color:#444; display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding:18px 24px;">
         <span class="reg-badge">Banks</span><span class="reg-badge">Insurers</span><span class="reg-badge">Investment Firms</span><span class="reg-badge">Payment Institutions</span>
       </div>
-      <div class="reg-cell" style="font-size:0.85rem; color:#444;">ICT risk management, ICT scenario quantification, governance workflow, third-party provider risk, concentration analysis, exit strategy tracking, Register of Information support</div>
-      <div class="reg-cell"><div class="module-indicator"><span class="dot-cyber-tpp"></span> CyberRisk AIQ + TPPRisk AIQ</div></div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444;">ICT risk management, ICT scenario quantification, governance workflow, third-party provider risk, concentration analysis, exit strategy tracking, Register of Information support, and business continuity management with resilience testing and disruption-event evidence (Article 11) — including supervisory notification tracking</div>
+      <div class="reg-cell"><div class="module-indicator"><span class="dot-cyber-tpp-res"></span> CyberRisk AIQ + TPPRisk AIQ + Resilience AIQ</div></div>
     </div>
     <div class="reg-row">
       <div class="reg-cell"><div class="reg-name">DORA Article 28</div><div class="reg-who">ICT Third-Party Risk</div></div>
@@ -2301,16 +2582,16 @@ footer {
       <div class="reg-cell" style="font-size:0.85rem; color:#444; display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding:18px 24px;">
         <span class="reg-badge">Insurance Companies</span>
       </div>
-      <div class="reg-cell" style="font-size:0.85rem; color:#444;">Operational risk quantification (OR module), ICT risk for DORA-in-scope insurers (Cyber module), third-party risk for outsourced critical functions (TPP module), capital adequacy context</div>
-      <div class="reg-cell"><div class="module-indicator"><span class="dot-all"></span> All Three Modules</div></div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444;">Operational risk quantification (OR module), ICT risk for DORA-in-scope insurers (Cyber module), third-party risk for outsourced critical functions (TPP module), business continuity for critical functions (Resilience module), capital adequacy context</div>
+      <div class="reg-cell"><div class="module-indicator"><span class="dot-all"></span> All Four Modules</div></div>
     </div>
     <div class="reg-row">
       <div class="reg-cell"><div class="reg-name">ZDOOFS Montenegro + ZIB</div><div class="reg-who">Sl. list CG 14/26 transposition</div></div>
       <div class="reg-cell" style="font-size:0.85rem; color:#444; display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding:18px 24px;">
         <span class="reg-badge">Financial sector entities in Montenegro</span>
       </div>
-      <div class="reg-cell" style="font-size:0.85rem; color:#444;">Localised support for ICT risk management, digital operational resilience, ICT third-party arrangements, registers, board reporting, and CBCG-ready evidence; framework supports additional Western Balkans transpositions in roadmap</div>
-      <div class="reg-cell"><div class="module-indicator"><span class="dot-all"></span> All Three Modules</div></div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444;">Localised support for ICT risk management, digital operational resilience, business continuity management — business impact analysis, recovery strategies, continuity plans with governing-body adoption, testing and disruption records — ICT third-party arrangements, registers, board reporting, and CBCG-ready evidence; framework supports additional Western Balkans transpositions in roadmap</div>
+      <div class="reg-cell"><div class="module-indicator"><span class="dot-all"></span> All Four Modules</div></div>
     </div>
   </div>
 </section>
@@ -2319,8 +2600,10 @@ footer {
 <section class="roadmap" id="roadmap">
   <div class="section-tag">Platform Capabilities &amp; Roadmap</div>
   <h2 class="section-title fade-up">A platform built to grow<br>with regulation.</h2>
-  <p class="section-sub fade-up">CyberRisk AIQ, OpRisk AIQ, and TPPRisk AIQ are available today in pilot / early access. The Enterprise Scale tier — multi-tenant and holding architecture with group risk intelligence — is a planned enhancement, and Resilience AIQ (business continuity) is next on the roadmap.</p>
+  <p class="section-sub fade-up">CyberRisk AIQ, OpRisk AIQ, TPPRisk AIQ, and Resilience AIQ are available today in pilot / early access. The Enterprise Scale tier — multi-tenant and holding architecture with group risk intelligence — remains a planned enhancement.</p>
 
+  <div class="roadmap-group">
+  <div class="roadmap-group-label fade-up">Available in pilot</div>
   <div class="roadmap-phases">
     <div class="phase fade-up">
       <div class="phase-label">CyberRisk AIQ</div>
@@ -2422,6 +2705,38 @@ footer {
     </div>
 
     <div class="phase fade-up">
+      <div class="phase-label">Resilience AIQ</div>
+      <span class="phase-status status-live">● Available in pilot</span>
+      <ul class="phase-items">
+        <li class="phase-item done"><div class="phase-dot"></div><span>Business Impact Analysis with derived criticality tier and MTPD ceiling</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Recovery strategies across five resource types — people, location, ICT service, data, third party</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Business continuity plans with multi-party owner confirmation and versioned approval snapshots</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Governing-body adoption — adoption date and act recorded against the approved version</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Recovery order derivation with override and feasibility check</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Testing with derived outcome (never manually selected)</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Test coverage matrix by process and strategy</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Disruption event register — five-timestamp evidence</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Supervisory notification tracking — DORA Article 11 aligned</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Findings with severity derived from process criticality and objective impact, tracked to closure</span></li>
+      </ul>
+      <details class="phase-more"><summary>Show all capabilities</summary>
+      <ul class="phase-items">
+        <li class="phase-item done"><div class="phase-dot"></div><span>Eight consistency checks across the module — including regulatory circularity and cross-plan capacity overlap detection</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>BCM Coordinator (1LoD) and BCM Manager (2LoD) governance roles</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>26+ indicators integrated into the shared KRI dashboard alongside CR/OR/TPP</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Group-level consolidated continuity view — reuses Group CISO / ORM / CRO, no new role</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Built on the same business process registry already used by OpRisk AIQ</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Aligned with the ZDOOFS business-continuity deadline (17.2.2028)</span></li>
+      </ul>
+      </details>
+    </div>
+  </div>
+  </div>
+
+  <div class="roadmap-group">
+  <div class="roadmap-group-label fade-up">Planned</div>
+  <div class="roadmap-phases roadmap-phases--planned">
+    <div class="phase fade-up">
       <div class="phase-label">Enterprise Scale</div>
       <span class="phase-status status-planned">● Planned enhancement</span>
       <ul class="phase-items">
@@ -2444,17 +2759,7 @@ footer {
       </ul>
       </details>
     </div>
-    <div class="phase fade-up">
-      <div class="phase-label">Resilience AIQ</div>
-      <span class="phase-status status-planned">● Planned — next module</span>
-      <ul class="phase-items">
-        <li class="phase-item done"><div class="phase-dot"></div><span>Business Impact Analysis (BIA) for critical or important functions</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>Business continuity and crisis communication plans</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>Tests and exercises with findings and lessons-learned loop</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>Crisis event records aligned with DORA Article 11 evidence expectations</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>Designed for the ZDOOFS business-continuity deadline (17.2.2028)</span></li>
-      </ul>
-    </div>
+  </div>
   </div>
 </section>
 
@@ -2462,7 +2767,7 @@ footer {
 <section style="background:#0a1628; padding:100px 60px;" id="see-it" class="see-it-section">
   <div class="section-tag">See It In Action</div>
   <h2 class="section-title fade-up">From threat to <em style="color:var(--gold); font-family:'Playfair Display',serif;">capital impact</em><br>and provider to <em style="color:var(--gold); font-family:'Playfair Display',serif;">submission package.</em></h2>
-  <p class="section-sub fade-up">Three modules. One defensible mathematical basis — Monte Carlo simulation for cyber, Quantitative RCSA + Monte Carlo for operational risk, quantitative concentration analytics for third-party risk.</p>
+  <p class="section-sub fade-up">Four modules. One defensible basis — Monte Carlo simulation for cyber, Quantitative RCSA + Monte Carlo for operational risk, quantitative concentration analytics for third-party risk, and derived recovery objectives with structured evidence for business continuity.</p>
 
   <div style="max-width:900px; margin:16px auto 0; text-align:left; padding:0 4px;" class="fade-up">
     <div style="display:inline-block; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.35); border-bottom:1px solid rgba(201,168,76,0.2); padding-bottom:6px; margin-bottom:4px;">Cyber Module — Ransomware scenario (Monte Carlo simulation)</div>
@@ -2679,6 +2984,74 @@ footer {
       <p style="font-size:0.82rem; line-height:1.6; color:rgba(255,255,255,0.5);">
         Investment justified — concentration risk reduction ROI <strong style="color:var(--gold-light);">4.8:1</strong>; submission timeline preserved.
       </p>
+    </div>
+  </div>
+
+  <div style="max-width:900px; margin:32px auto 0; text-align:left; padding:0 4px;" class="fade-up">
+    <div style="display:inline-block; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.35); border-bottom:1px solid rgba(201,168,76,0.2); padding-bottom:6px; margin-bottom:4px;">Resilience Module — Payment Processing continuity (derived objectives, not Monte Carlo)</div>
+  </div>
+
+  <div style="max-width:900px; margin:0 auto 0; background:rgba(255,255,255,0.02); border:1px solid rgba(201,168,76,0.15); border-radius:8px; padding:40px;" class="fade-up demo-wrapper">
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:32px;">
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:4px; padding:20px;">
+        <div style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:8px;">Process</div>
+        <div style="font-size:1rem; font-weight:600; color:var(--white);">Payment Processing</div>
+        <div style="font-size:0.8rem; color:rgba(255,255,255,0.4); margin-top:4px;">Same process registry as OpRisk AIQ · Covered by BCP-02</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:4px; padding:20px;">
+        <div style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:8px;">Impact Analysis</div>
+        <div style="font-size:1rem; font-weight:600; color:var(--white);">Financial + regulatory impact at 4h</div>
+        <div style="font-size:0.8rem; color:rgba(255,255,255,0.4); margin-top:4px;">Criticality tier and MTPD derived — not selected</div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:32px;" class="demo-metrics-grid">
+      <div style="text-align:center; padding:20px; background:rgba(220,38,38,0.08); border:1px solid rgba(220,38,38,0.2); border-radius:4px;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; color:#f87171;">Tier 1</div>
+        <div style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-top:4px;">Derived Criticality</div>
+      </div>
+      <div style="text-align:center; padding:20px; background:rgba(201,168,76,0.06); border:1px solid rgba(201,168,76,0.2); border-radius:4px;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; color:var(--gold);">8h</div>
+        <div style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-top:4px;">MTPD Ceiling</div>
+      </div>
+      <div style="text-align:center; padding:20px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:4px;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; color:var(--white);">12h</div>
+        <div style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-top:4px;">Current RTO</div>
+      </div>
+      <div style="text-align:center; padding:20px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:4px;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; color:var(--white);">4h</div>
+        <div style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-top:4px;">Current RPO</div>
+      </div>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:4px; padding:20px; margin-bottom:24px;">
+      <div style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:12px;">Current Recovery Strategies</div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <span style="padding:4px 12px; background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.25); border-radius:2px; font-size:0.75rem; color:var(--gold);">People · Cross-trained backup team</span>
+        <span style="padding:4px 12px; background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.25); border-radius:2px; font-size:0.75rem; color:var(--gold);">Data · Nightly offsite backup</span>
+        <span style="padding:4px 12px; background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.25); border-radius:2px; font-size:0.75rem; color:var(--gold);">ICT Service · Manual fallback procedure</span>
+      </div>
+      <div style="margin-top:14px; font-size:0.8rem; color:#f87171;">⚠ Consistency check: RTO 12h exceeds the derived MTPD ceiling of 8h — finding raised, severity derived Tier 1 / High.</div>
+    </div>
+
+    <div style="padding:20px; background:rgba(34,197,94,0.06); border:1px solid rgba(34,197,94,0.2); border-radius:4px;">
+      <div style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:16px;">✦ After: Warm standby (ICT service) + secondary site (location) + continuous replication (data)</div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; text-align:center;" class="demo-result-grid">
+        <div>
+          <div style="font-size:0.68rem; color:rgba(255,255,255,0.3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Recovery Time (RTO)</div>
+          <div style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:#4ade80;">3h <span style="font-size:0.9rem; color:rgba(255,255,255,0.3);">↓ from 12h</span></div>
+        </div>
+        <div>
+          <div style="font-size:0.68rem; color:rgba(255,255,255,0.3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Recovery Point (RPO)</div>
+          <div style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:#4ade80;">15min <span style="font-size:0.9rem; color:rgba(255,255,255,0.3);">↓ from 4h</span></div>
+        </div>
+        <div>
+          <div style="font-size:0.68rem; color:rgba(255,255,255,0.3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">MTPD Headroom</div>
+          <div style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:#4ade80;">5h <span style="font-size:0.9rem; color:rgba(255,255,255,0.3);">↑ from −4h</span></div>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:16px; font-size:0.82rem; color:rgba(255,255,255,0.45);">Recovery time reduced 75% — RTO now inside the derived MTPD ceiling, consistency check passes, and the finding closes on the next test with a derived Pass outcome.</p>
     </div>
   </div>
 

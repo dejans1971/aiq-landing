@@ -357,6 +357,34 @@ h1 em {
   padding-left: 152px;
 }
 
+.chart-group-label {
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin: 26px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chart-group-label:first-of-type { margin-top: 0; }
+.chart-group-label::after { content: ''; flex: 1; height: 1px; background: rgba(201,168,76,0.2); }
+
+/* Redovi spremnosti su srodni redovima P95 izloženosti — ista visina reda, isti
+   desno poravnat stubac vrijednosti — ali bez popune trake, jer su vrijednosti
+   brojevi i pokrivenost, a ne udjeli u maksimumu. */
+.chart-row-plain {
+  flex: 1;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+  border-bottom: 1px dotted rgba(201,168,76,0.22);
+}
+
 .chart-callout {
   margin-top: 20px;
   padding: 12px 16px;
@@ -447,10 +475,12 @@ section { padding: 100px 60px; }
 
 .modules-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2px;
   margin-top: 60px;
-  background: var(--border);
+  /* Bez obojene pozadine kontejnera: separatore crta svaki panel, pa neparan
+     broj stavki nikad ne ostavlja prazne ćelije u boji razmaka. */
+  background: transparent;
   border: 1px solid var(--border);
 }
 
@@ -459,6 +489,8 @@ section { padding: 100px 60px; }
   padding: 52px 48px;
   position: relative;
   overflow: hidden;
+  /* popunjava 2px razmak desno i ispod samo ovog panela */
+  box-shadow: 2px 0 0 var(--border), 0 2px 0 var(--border);
 }
 
 .module-panel::before {
@@ -726,7 +758,9 @@ section { padding: 100px 60px; }
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   margin-top: 60px;
-  background: var(--border);
+  /* Bez obojene pozadine kontejnera — vidjeti napomenu uz .modules-grid. Broj
+     kartica više ne mora biti umnožak broja kolona. */
+  background: transparent;
   border: 1px solid var(--border);
 }
 
@@ -734,6 +768,8 @@ section { padding: 100px 60px; }
   background: var(--navy);
   padding: 36px 28px;
   transition: background 0.3s;
+  /* popunjava 1px razmak desno i ispod samo ove kartice */
+  box-shadow: 1px 0 0 var(--border), 0 1px 0 var(--border);
 }
 
 .role-card:hover { background: rgba(201,168,76,0.04); }
@@ -918,21 +954,53 @@ section { padding: 100px 60px; }
 .dot-tpp { width: 8px; height: 8px; border-radius: 50%; background: var(--gold-light); flex-shrink: 0; }
 .dot-both { width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, #2563eb 50%, var(--gold) 50%); flex-shrink: 0; }
 .dot-cyber-tpp { width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, #2563eb 50%, var(--gold-light) 50%); flex-shrink: 0; }
-.dot-all { width: 8px; height: 8px; border-radius: 50%; background: conic-gradient(#2563eb 0deg 120deg, var(--gold) 120deg 240deg, var(--gold-light) 240deg 360deg); flex-shrink: 0; }
+.dot-res { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; flex-shrink: 0; }
+.dot-cyber-tpp-res { width: 8px; height: 8px; border-radius: 50%; background: conic-gradient(#2563eb 0deg 120deg, var(--gold-light) 120deg 240deg, #22c55e 240deg 360deg); flex-shrink: 0; }
+.dot-all { width: 8px; height: 8px; border-radius: 50%; background: conic-gradient(#2563eb 0deg 90deg, var(--gold) 90deg 180deg, var(--gold-light) 180deg 270deg, #22c55e 270deg 360deg); flex-shrink: 0; }
 
 /* ROADMAP */
 .roadmap { background: #0a1628; }
 
+/* Plan razvoja je podijeljen u nezavisno dimenzionisane grupe. Svaka grupa
+   dimenzioniše svoju mrežu preko auto-fit, pa premještanje stavke između
+   nivoa nikad ne može ostaviti praznu ćeliju u boji razmaka — nema fiksnog
+   broja kolona po nivou. */
+.roadmap-group { margin-top: 40px; }
+.roadmap-group:first-of-type { margin-top: 48px; }
+
+.roadmap-group-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.roadmap-group-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
 .roadmap-phases {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1px;
-  margin-top: 60px;
-  background: var(--border);
+  /* Bez obojene pozadine kontejnera — vidjeti napomenu uz .modules-grid. */
+  background: transparent;
   border: 1px solid var(--border);
 }
 
-.phase { background: #0a1628; padding: 40px 32px; }
+/* Planirani nivo se dimenzioniše prema svom sadržaju, umjesto da bude razvučen
+   preko širine kolona dostupnog nivoa. */
+.roadmap-phases--planned { max-width: 680px; }
+
+.phase {
+  background: #0a1628;
+  padding: 40px 32px;
+  /* popunjava 1px razmak desno i ispod samo ove kartice */
+  box-shadow: 1px 0 0 var(--border), 0 1px 0 var(--border);
+}
 
 .phase-label {
   font-size: 0.68rem;
@@ -1092,6 +1160,14 @@ footer {
 .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
+@media (max-width: 1400px) {
+  /* četiri panela/kartice su nečitljivi na četvrtini laptop viewport-a;
+     dvije kolone znače da se četiri stavke prelamaju čisto */
+  .modules-grid { grid-template-columns: repeat(2, 1fr); }
+  .roadmap-phases { grid-template-columns: repeat(2, 1fr); }
+  .roadmap-phases--planned { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 1024px) {
   nav { padding: 16px 24px; }
   .nav-links { display: none; }
@@ -1101,8 +1177,9 @@ footer {
   section { padding: 72px 24px; }
   .problem-grid, .ai-grid { grid-template-columns: 1fr; gap: 32px; }
   .pillars-grid, .roadmap-phases { grid-template-columns: 1fr !important; }
+  .roadmap-phases--planned { max-width: 100%; }
   .roles-grid { grid-template-columns: 1fr 1fr; }
-  .modules-grid { grid-template-columns: 1fr; }
+  .modules-grid { grid-template-columns: 1fr !important; }
   .ai-io { grid-template-columns: 1fr; }
   .tpp-portfolio-table { overflow-x: auto; }
   .tpp-portfolio-table > div { min-width: 640px; }
@@ -1134,8 +1211,8 @@ footer {
   .module-card { width: 100%; }
   .roles-grid { grid-template-columns: 1fr; }
   .pillars-grid { grid-template-columns: 1fr !important; }
-  .roadmap-phases { grid-template-columns: 1fr; }
-  .modules-grid { grid-template-columns: 1fr; }
+  .roadmap-phases { grid-template-columns: 1fr !important; }
+  .modules-grid { grid-template-columns: 1fr !important; }
   .problem-grid { grid-template-columns: 1fr; }
   .ai-grid { grid-template-columns: 1fr; }
   .vs-card { padding: 24px 20px; }
@@ -1244,6 +1321,13 @@ footer {
           <div class="module-card-tag">ZDOOFS · EU DORA · Koncentracija</div>
         </div>
       </div>
+      <div class="module-card">
+        <div class="module-card-icon">🔄</div>
+        <div>
+          <div class="module-card-name">Resilience AIQ</div>
+          <div class="module-card-tag">ZDOOFS · DORA član 11 · Kontinuitet poslovanja</div>
+        </div>
+      </div>
     </div>
 
     <div class="hero-actions">
@@ -1255,8 +1339,10 @@ footer {
 
   <div class="hero-visual fade-up">
     <div class="hero-chart">
-      <div class="chart-label">Rizik portfolija — P95 izloženost i materijalnost</div>
-      <div class="chart-section-label">CyberRisk AIQ — IKT scenariji</div>
+      <div class="chart-label">Rizik portfolija — izloženost i spremnost otpornosti</div>
+
+      <div class="chart-group-label">Kvantifikovani rizik — P95 izloženost</div>
+      <div class="chart-section-label" style="margin-top:0;">CyberRisk AIQ — IKT scenariji</div>
       <div class="chart-bars">
         <div class="chart-row">
           <div class="chart-row-label">Ransomware</div>
@@ -1314,9 +1400,30 @@ footer {
         <span style="color:rgba(255,255,255,0.55);">P95 izloženost · KVF mapirane po pružaocu</span>
         <span style="color:var(--gold); font-weight:600;">RoI potpunost 99,7%</span>
       </div>
+
+      <div class="chart-group-label">Operativna otpornost — dokazi o spremnosti</div>
+      <div class="chart-section-label" style="margin-top:0;">Resilience AIQ — Spremnost kontinuiteta</div>
+      <div class="chart-bars">
+        <div class="chart-row">
+          <div class="chart-row-label">BIA pokrivenost</div>
+          <div class="chart-row-plain">Kritični procesi obrađeni</div>
+          <div class="chart-val chart-highlight">87%</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-row-label">Odobreni planovi</div>
+          <div class="chart-row-plain">Potvrđeni i usvojeni, tekuća verzija</div>
+          <div class="chart-val">12</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-row-label">Otvoreni nalazi</div>
+          <div class="chart-row-plain">Visoka težina, čekaju zatvaranje</div>
+          <div class="chart-val">0</div>
+        </div>
+      </div>
+
       <div class="chart-callout">
-        <strong>Rezultat spreman za Odbor direktora:</strong> 3 rizika iznad apetita. Najveća koncentracija pružalaca pokriva 5 kritičnih funkcija. Registar informacija pripremljen za internu provjeru i regulatorno dostavljanje.
-        <strong style="color:var(--gold-light);">Tri sloja operativne otpornosti, jedan odbranjiv prikaz.</strong>
+        <strong>Rezultat spreman za Odbor direktora:</strong> 3 rizika iznad apetita. Najveća koncentracija pružalaca pokriva 5 kritičnih funkcija. Registar informacija pripremljen za internu provjeru i regulatorno dostavljanje. Planovi kontinuiteta usvojeni za svaki Tier 1 proces, bez otvorenih nalaza visoke težine.
+        <strong style="color:var(--gold-light);">Četiri sloja operativne otpornosti, jedan odbranjiv prikaz.</strong>
       </div>
     </div>
   </div>
@@ -1356,8 +1463,8 @@ footer {
 <!-- MODULI -->
 <section class="modules-section" id="modules">
   <div class="section-tag">Moduli platforme</div>
-  <h2 class="section-title fade-up">Tri povezana modula.<br>Jedna platforma za operativnu otpornost.</h2>
-  <p class="section-sub fade-up">Svaki modul može se uvesti nezavisno ili zajedno kao AIQ Suite. Sva tri dijele isti upravljački radni tok, organizacione podatke, AI infrastrukturu, sloj izvještavanja, revizorski trag i logiku materijalnosti / kapitalnog pogleda — pružajući bankama jedan konzistentan prikaz IKT rizika, operativnog rizika i rizika zavisnosti od trećih strana.</p>
+  <h2 class="section-title fade-up">Četiri povezana modula.<br>Jedna platforma za operativnu otpornost.</h2>
+  <p class="section-sub fade-up">Svaki modul može se uvesti nezavisno ili zajedno kao AIQ Suite. Sva četiri dijele isti upravljački radni tok, organizacione podatke, AI infrastrukturu, sloj izvještavanja, revizorski trag i logiku materijalnosti / kapitalnog pogleda — pružajući bankama jedan konzistentan prikaz IKT rizika, operativnog rizika, rizika zavisnosti od trećih strana i spremnosti kontinuiteta poslovanja.</p>
 
   <div class="modules-grid">
     <div class="module-panel fade-up">
@@ -1377,9 +1484,13 @@ footer {
         <li>NIS2 IKT izvještaj o riziku za javni sektor i kompanije</li>
         <li>Izračun i izvještavanje finansijskog, budžetskog i kapitalnog uticaja</li>
         <li>Optimizator investicija — kontrole rangirane po ROI po scenariju</li>
+      </ul>
+      <details class="phase-more"><summary>Prikaži sve mogućnosti</summary>
+      <ul class="module-features">
         <li>AI analitičarska procjena — prilagođena jurisdikciji, urediva, potpisana od čovjeka</li>
         <li>Smjernice za odluku poslovnog vlasnika — ROI indikatori, upravljačka lista, Tier 1 ZDOOFS oznaka</li>
       </ul>
+      </details>
     </div>
 
     <div class="module-panel fade-up">
@@ -1422,6 +1533,9 @@ footer {
         <li>Procjene kritičnih ili važnih funkcija (KVF/CIF) — wizard sa pet koraka</li>
         <li>Mapiranje zavisnosti — pružalac → usluga → funkcija → imovina</li>
         <li>Zavisnosti lanca snabdijevanja (B_03.03) i intragrupne IKT usluge (B_03.02)</li>
+      </ul>
+      <details class="phase-more"><summary>Prikaži sve mogućnosti</summary>
+      <ul class="module-features">
         <li>P95 pojedinačnog pružaoca i analitika grupne koncentracije</li>
         <li>Okvir kvaliteta podataka — Visoka / Srednja / Niska pouzdanost sa pregledom konkretnih nedostataka i koraka za ispravku</li>
         <li>Provjere potpunosti Registra informacija i validacione kontrolne tačke prema EU DORA/ITS referentnoj strukturi</li>
@@ -1430,6 +1544,35 @@ footer {
         <li>Menadžer dobavljača uloga sa deaktivacijom ograničenom prema ulozi</li>
         <li>AI-asistirana kvantitativna kalibracija za rasponove zamjenjivosti i troškova izlaska</li>
       </ul>
+      </details>
+    </div>
+
+    <div class="module-panel fade-up">
+      <div class="module-panel-label">Modul 04</div>
+      <h3>Resilience <span>AIQ</span></h3>
+      <div class="module-panel-tagline">Upravljanje kontinuitetom poslovanja</div>
+      <p>Upravlja punim životnim ciklusom kontinuiteta poslovanja — analiza uticaja na poslovanje, strategije oporavka, planovi kontinuiteta sa višestranom potvrdom, testiranje sa izvedenim ishodom, evidencija događaja prekida sa praćenjem obavještavanja nadzornog organa i nalazi praćeni do zatvaranja — nad istim procesima i organizacionim podacima koji se već koriste u CyberRisk, OpRisk i TPPRisk AIQ.</p>
+      <div class="module-reg-badges">
+        <span class="reg-pill">ZDOOFS</span>
+        <span class="reg-pill">DORA član 11 (ref.)</span>
+        <span class="reg-pill">Odluka CBCG</span>
+      </div>
+      <ul class="module-features">
+        <li>Analiza uticaja na poslovanje (BIA) sa izvedenim nivoom kritičnosti i MTPD gornjom granicom</li>
+        <li>Strategije oporavka kroz pet tipova resursa (ljudi, lokacija, IKT usluga, podaci, treća strana)</li>
+        <li>Planovi kontinuiteta poslovanja sa višestranom potvrdom vlasnika i verzionisanim snimcima stanja odobrenja</li>
+        <li>Izvođenje redosljeda oporavka sa nadjačavanjem i provjerom izvodljivosti</li>
+        <li>Testiranje sa izvedenim ishodom (nikad ručno odabranim) i matricom pokrivenosti po procesu i strategiji</li>
+        <li>Registar događaja prekida sa evidencijom pet vremenskih oznaka i praćenjem obavještavanja nadzornog organa (usklađeno sa DORA članom 11)</li>
+        <li>Nalazi sa težinom uvijek izvedenom iz kritičnosti procesa i objektivnog uticaja, praćeni do zatvaranja</li>
+      </ul>
+      <details class="phase-more"><summary>Prikaži sve mogućnosti</summary>
+      <ul class="module-features">
+        <li>Osam provjera konzistentnosti kroz cijeli modul, uključujući otkrivanje regulatorne cirkularnosti i preklapanja kapaciteta između planova</li>
+        <li>26+ indikatora integrisanih u zajedničku KRI kontrolnu tablu uz CR/OR/TPP</li>
+        <li>Konsolidovani prikaz kontinuiteta na nivou grupe za višeentitetske organizacije, uz iste uloge Grupni CISO/ORM/CRO koje već upravljaju CR/OR/TPP</li>
+      </ul>
+      </details>
     </div>
   </div>
 </section>
@@ -1492,7 +1635,7 @@ footer {
 <!-- STUBOVI -->
 <section class="pillars" id="pillars">
   <div class="section-tag">Osnovne mogućnosti</div>
-  <h2 class="section-title fade-up">Četiri sposobnosti. Tri modula.<br>Jedna platforma za operativnu otpornost.</h2>
+  <h2 class="section-title fade-up">Četiri sposobnosti. Četiri modula.<br>Jedna platforma za operativnu otpornost.</h2>
 
   <div class="pillars-grid">
     <div class="pillar fade-up">
@@ -1535,7 +1678,7 @@ footer {
     <div class="pillar fade-up">
       <div class="pillar-number">04</div>
       <h3>Integrisano upravljanje 3LoD</h3>
-      <p>Sveobuhvatna odgovornost od analitičarske procjene do eskalacije na Odbor direktora, kroz sva tri modula. 1LoD: Analitičar + Tehnički vlasnik / Risk koordinator / Menadžer dobavljača. 2LoD: CISO + Operativni Risk Menadžer + CRO. Potpuna revizijska staza, strukturisani tok za ponovnu obradu, Smjernice za odluku poslovnog vlasnika, DORA Tier 1 eskalacija, potpisani RoI snimci stanja. Jedan mehanizam toka rada kroz CR, OR i TPP.</p>
+      <p>Sveobuhvatna odgovornost od analitičarske procjene do eskalacije na Odbor direktora, kroz sva četiri modula. 1LoD: Analitičar + Tehnički vlasnik / Risk koordinator / Menadžer dobavljača / BCM koordinator. 2LoD: CISO + Operativni Risk Menadžer + CRO + BCM menadžer. Potpuna revizijska staza, strukturisani tok za ponovnu obradu, Smjernice za odluku poslovnog vlasnika, DORA Tier 1 eskalacija, potpisani RoI snimci stanja, višestrana potvrda plana kontinuiteta. Jedan mehanizam toka rada kroz CR, OR, TPP i kontinuitet.</p>
       <div class="step-tags">
         <span class="step-tag">3LoD model</span>
         <span class="step-tag">Tok uloga</span>
@@ -1551,7 +1694,7 @@ footer {
 <section class="how" id="how">
   <div class="section-tag">Tok rada</div>
   <h2 class="section-title fade-up">Od prijetnje (i pružaoca)<br>do upravljane odluke.</h2>
-  <p class="section-sub fade-up">Dva paralelna upravljačka toka — kvantifikovani rizik za CR + OR scenarije, rizik trećih strana za životni ciklus pružaoca — koja se spajaju u rezultate spremne za Odbor direktora i evidenciju spremnu za internu provjeru i pripremu regulatorne dostave.</p>
+  <p class="section-sub fade-up">Tri paralelna upravljačka toka — kvantifikovani rizik za CR + OR, rizik trećih strana za životni ciklus pružaoca i upravljanje kontinuitetom od analize uticaja do testiranog plana — koja se spajaju u rezultate spremne za Odbor direktora i evidenciju spremnu za internu provjeru i pripremu regulatorne dostave.</p>
 
   <div style="max-width:1200px; margin:48px auto 0; padding:0 4px;" class="fade-up">
     <div style="display:inline-flex; align-items:center; gap:10px; padding:6px 18px; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.25); border-radius:2px; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); font-weight:600;">
@@ -1754,13 +1897,113 @@ footer {
     </div>
   </div>
 
-  <p style="text-align:center; margin-top:48px; font-size:0.9rem; color:rgba(255,255,255,0.5); font-style:italic; max-width:760px; margin-left:auto; margin-right:auto;" class="fade-up">Od inventara pružalaca do Registra informacija spremnog za internu provjeru i pripremu regulatorne dostave.</p>
+  <div style="max-width:1200px; margin:64px auto 0; padding:0 4px;" class="fade-up">
+    <div style="display:inline-flex; align-items:center; gap:10px; padding:6px 18px; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.25); border-radius:2px; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); font-weight:600;">
+      <span>Tok C</span><span style="opacity:0.4;">·</span><span>Tok kontinuiteta poslovanja — Resilience AIQ</span>
+    </div>
+  </div>
+
+  <div class="how-steps">
+    <div class="how-step fade-up">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-module-badge badge-shared">Resilience AIQ</div>
+        <h3>BCM koordinator priprema BIA, strategiju oporavka i plan kontinuiteta</h3>
+        <p>Polazeći od poslovnih procesa već upisanih za OpRisk AIQ, koordinator priprema analizu uticaja na poslovanje, bira strategije oporavka kroz pet tipova resursa (ljudi, lokacija, IKT usluga, podaci, treća strana) i izrađuje nacrt plana kontinuiteta. Nivo kritičnosti i MTPD gornja granica izvode se iz analize uticaja, a ne unose ručno.</p>
+        <div class="step-tags">
+          <span class="step-tag">Analiza uticaja na poslovanje</span>
+          <span class="step-tag">Strategije oporavka</span>
+          <span class="step-tag">Nacrt plana</span>
+        </div>
+      </div>
+      <div class="step-metric">
+        <div class="metric-val">Izvedeno</div>
+        <div class="metric-label">Nivo kritičnosti i MTPD gornja granica izvedeni iz analize uticaja — nad istim registrom procesa koji već koristi OpRisk AIQ</div>
+      </div>
+    </div>
+
+    <div class="how-step fade-up">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-module-badge badge-shared">Resilience AIQ</div>
+        <h3>BCM menadžer sprovodi metodološku kontrolu</h3>
+        <p>Pregled druge linije odbrane prije nego što išta stigne do vlasnika: provjera regulatorne cirkularnosti (ciljevi oporavka koji se prikriveno pozivaju na obavezu koju treba da ispune), potpunost skupa obuhvaćenih procesa i monotonost ciljeva oporavka u odnosu na nivo kritičnosti. Vraća se na ponovnu obradu tamo gdje metodologija ne stoji.</p>
+        <div class="step-tags">
+          <span class="step-tag">Provjera regulatorne cirkularnosti</span>
+          <span class="step-tag">Potpunost</span>
+          <span class="step-tag">Monotonost</span>
+          <span class="step-tag">Vraćanje na ponovnu obradu</span>
+        </div>
+      </div>
+      <div class="step-metric">
+        <div class="metric-val">8 provjera</div>
+        <div class="metric-label">Provjere konzistentnosti kroz modul, uključujući regulatornu cirkularnost i preklapanje kapaciteta između planova</div>
+      </div>
+    </div>
+
+    <div class="how-step fade-up">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-module-badge badge-shared">Resilience AIQ</div>
+        <h3>Vlasnici obuhvaćenih procesa potvrđuju; vlasnik plana daje konačnu potvrdu</h3>
+        <p>Svaki proces obuhvaćen planom potvrđuje njegov vlasnik — ista uloga Vlasnika procesa koja nosi odgovornost za tretman u OpRisk AIQ. Vlasnik plana, koji mora biti vlasnik bar jednog obuhvaćenog procesa, daje konačnu potvrdu. Odobrenje se bilježi kao verzionisani snimak stanja, a ne kao oznaka statusa.</p>
+        <div class="step-tags">
+          <span class="step-tag">Višestrana potvrda</span>
+          <span class="step-tag">Kontrolna tačka vlasnika plana</span>
+          <span class="step-tag">Verzionisani snimak stanja</span>
+        </div>
+      </div>
+      <div class="step-metric">
+        <div class="metric-val">Višestrano</div>
+        <div class="metric-label">Svaki obuhvaćeni proces potvrđuje njegov vlasnik prije nego što vlasnik plana može zatvoriti odobrenje</div>
+      </div>
+    </div>
+
+    <div class="how-step fade-up">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="step-module-badge badge-shared">Resilience AIQ</div>
+        <h3>Organ upravljanja usvaja plan; datum usvajanja i akt se evidentiraju</h3>
+        <p>Formalno usvajanje od strane organa upravljanja evidentira se uz odobrenu verziju plana — datum usvajanja i akt kojim je usvojen, čuvani uz snimak stanja odobrenja. Evidencija je upravo ono što nadzorni organ traži: koja verzija je usvojena, od koga, kog datuma i kojim aktom.</p>
+        <div class="step-tags">
+          <span class="step-tag">Usvajanje od organa upravljanja</span>
+          <span class="step-tag">Akt o usvajanju</span>
+          <span class="step-tag">Revizijska staza</span>
+        </div>
+      </div>
+      <div class="step-metric">
+        <div class="metric-val">Usvojeno</div>
+        <div class="metric-label">Datum usvajanja i akt evidentirani uz odobrenu verziju plana, sačuvani sa snimkom stanja odobrenja</div>
+      </div>
+    </div>
+
+    <div class="how-step fade-up">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <div class="step-module-badge badge-shared">Resilience AIQ</div>
+        <h3>Strukturisana petlja nalaza zatvara testove, prekide i ishode provjera</h3>
+        <p>Ishodi testova (izvedeni, nikad ručno odabrani), evidencija događaja prekida i neuspjele provjere konzistentnosti pokreću strukturisane nalaze. Težina se uvijek izvodi iz kritičnosti procesa i objektivnog uticaja — a rok za otklanjanje slijedi iz težine — i svaki nalaz se prati do zatvaranja.</p>
+        <div class="step-tags">
+          <span class="step-tag">Izvedeni ishod testa</span>
+          <span class="step-tag">Evidencija prekida</span>
+          <span class="step-tag">Izvedena težina</span>
+          <span class="step-tag">Praćenje do zatvaranja</span>
+        </div>
+      </div>
+      <div class="step-metric">
+        <div class="metric-val">Izvedeno</div>
+        <div class="metric-label">Težina nalaza i rok izvedeni iz kritičnosti procesa i objektivnog uticaja — ne bira ih osoba koja podiže nalaz</div>
+      </div>
+    </div>
+  </div>
+
+  <p style="text-align:center; margin-top:48px; font-size:0.9rem; color:rgba(255,255,255,0.5); font-style:italic; max-width:760px; margin-left:auto; margin-right:auto;" class="fade-up">Od inventara pružalaca do Registra informacija spremnog za internu provjeru i pripremu regulatorne dostave — i od analize uticaja do testiranog, usvojenog plana kontinuiteta.</p>
 </section>
 
 <!-- UPRAVLJAČKI MODEL -->
 <section class="roles" id="roles">
   <div class="section-tag">Upravljački model</div>
-  <h2 class="section-title fade-up">Uloge sa jasnom odgovornošću kroz<br>Sajber, OR, rizik trećih strana i grupne entitete.</h2>
+  <h2 class="section-title fade-up">Uloge sa jasnom odgovornošću kroz<br>Sajber, OR, rizik trećih strana, kontinuitet poslovanja i grupne entitete.</h2>
 
   <div class="roles-grid">
     <div class="role-card fade-up">
@@ -1858,9 +2101,39 @@ footer {
     </div>
 
     <div class="role-card fade-up">
+      <div class="role-icon">🔄</div>
+      <h4>BCM koordinator</h4>
+      <div class="role-or-label">Resilience AIQ — Prva linija</div>
+      <p>Priprema životni ciklus kontinuiteta od kraja do kraja: analizu uticaja na poslovanje, strategije oporavka i nacrt plana kontinuiteta. Pristup istoj evidenciji samo za čitanje, za potrebe interne revizije, ostvaruje se kroz revizorsku dozvolu platforme, a ne kroz zasebnu karticu uloge.</p>
+      <ul>
+        <li>Priprema analize uticaja na poslovanje</li>
+        <li>Izbor strategija oporavka kroz pet tipova resursa</li>
+        <li>Izrada i verzionisanje plana kontinuiteta</li>
+        <li>Planiranje testova i evidencija sprovođenja</li>
+        <li>Evidentiranje događaja prekida — pet vremenskih oznaka</li>
+        <li>Praćenje otklanjanja nalaza</li>
+      </ul>
+    </div>
+
+    <div class="role-card fade-up">
+      <div class="role-icon">🔄</div>
+      <h4>BCM menadžer</h4>
+      <div class="role-or-label">Resilience AIQ — Druga linija</div>
+      <p>Metodološka kontrolna tačka prije potvrde vlasnika — ekvivalent pregleda CISO / Operativnog Risk Menadžera za kontinuitet. Takođe primalac dokaznog paketa modula za internu reviziju.</p>
+      <ul>
+        <li>Provjera regulatorne cirkularnosti ciljeva oporavka</li>
+        <li>Potpunost skupa obuhvaćenih procesa</li>
+        <li>Monotonost u odnosu na izvedeni nivo kritičnosti</li>
+        <li>Nadzor nad provjerama konzistentnosti (8 provjera)</li>
+        <li>Praćenje obavještavanja nadzornog organa — DORA član 11</li>
+        <li>Vraćanje na ponovnu obradu</li>
+      </ul>
+    </div>
+
+    <div class="role-card fade-up">
       <div class="role-icon">⚙️</div>
       <h4>Administrator</h4>
-      <div class="role-or-label">Sva tri modula</div>
+      <div class="role-or-label">Sva četiri modula</div>
       <p>Konfiguracija platforme, aktivacija modula i postavljanje upravljanja.</p>
       <ul>
         <li>Aktivacija modula</li>
@@ -1874,12 +2147,13 @@ footer {
       <div class="role-icon">🏛️</div>
       <h4>Grupne uloge</h4>
       <div class="role-or-label">Holding / Više-entitetska struktura — Grupni sloj</div>
-      <p>Pregled na nivou grupe kroz zavisna društva: konsolidovana izloženost CR + OR + TPP, koncentracija pružalaca između entiteta, spremnost RoI na nivou grupe. Jedinstven sloj odgovornosti iznad upravljanja po entitetu.</p>
+      <p>Pregled na nivou grupe kroz zavisna društva: konsolidovana izloženost CR + OR + TPP + kontinuitet, koncentracija pružalaca između entiteta, spremnost RoI na nivou grupe. Jedinstven sloj odgovornosti iznad upravljanja po entitetu.</p>
       <ul>
         <li>Grupni CISO — konsolidovana IKT rizična pozicija kroz zavisna društva</li>
         <li>Grupni ORM — operativni rizik kroz sve entitete i poslovne linije</li>
-        <li>Grupni CRO — kombinovana CR + OR + TPP izloženost, odobravanje snimka stanja na nivou grupe</li>
+        <li>Grupni CRO — kombinovana CR + OR + TPP + kontinuitet izloženost, odobravanje snimka stanja na nivou grupe</li>
         <li>Analiza koncentracije između entiteta</li>
+        <li>Grupni prikaz kontinuiteta koristi iste tri uloge — za Resilience AIQ nije potrebna nova grupna uloga</li>
         <li>Grupni izvršni sažetak — narativ za Odbor direktora generisan od AI</li>
       </ul>
     </div>
@@ -2010,8 +2284,8 @@ footer {
 
     <div class="pillar fade-up">
       <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">🔗</div>
-      <h3>CR + OR + Rizik trećih strana u jednoj platformi za operativnu otpornost</h3>
-      <p>Sajber rizik, operativni rizik i rizik trećih strana tipično se vode odvojeno, u silosima — odvojeni timovi, odvojeni alati, odvojena evidencija. AIQ Suite ih objedinjuje: ista imovina, isti korisnici, isti upravljački radni tok, ista revizijska staza, ista kapitalna osnova. Banka vidi rizik od ransomware napada, rizik od greške u poravnanju i rizik od koncentracije cloud hostinga jedne pored druge — i automatski prikazuje gdje isti pružalac podržava više kritičnih procesa.</p>
+      <h3>CR + OR + Rizik trećih strana + Kontinuitet u jednoj platformi za operativnu otpornost</h3>
+      <p>Sajber rizik, operativni rizik, rizik trećih strana i kontinuitet poslovanja tipično se vode odvojeno, u silosima — odvojeni timovi, odvojeni alati, odvojena evidencija. AIQ Suite ih objedinjuje: ista imovina, isti procesi, isti korisnici, isti upravljački radni tok, ista revizijska staza, ista kapitalna osnova. Banka vidi rizik od ransomware napada, rizik od greške u poravnanju i rizik od koncentracije cloud hostinga jedne pored druge, automatski prikazuje gdje isti pružalac podržava više kritičnih procesa — i prikazuje gdje bi ispad pojedinačnog pružaoca istovremeno srušio i njen sopstveni plan kontinuiteta.</p>
     </div>
 
     <div class="pillar fade-up">
@@ -2111,14 +2385,14 @@ footer {
         font-family:'Playfair Display',serif;
         font-size:1.65rem; font-weight:700;
         color:var(--white); margin-bottom:20px; line-height:1.25;
-      ">Kvantifikacija za sajber, <span style="color:var(--gold);">RCSA za OR</span>, Kvantifikacija za TPP</h3>
+      ">Kvantifikacija za sajber, <span style="color:var(--gold);">RCSA za OR</span>, Kvantifikacija za TPP, <span style="color:var(--gold);">Strukturisani dokazi za kontinuitet</span></h3>
 
       <p style="font-size:0.95rem; line-height:1.8; color:rgba(255,255,255,0.65); margin-bottom:14px;">
-        CyberRisk AIQ primjenjuje vlasničku kvantitativnu metodologiju za IKT i sajber rizik, usklađenu sa očekivanjima digitalne operativne otpornosti. OpRisk AIQ primjenjuje kvantitativni RCSA sa Monte Carlo simulacijom za operativni rizik, kao podršku za ICAAP/Pilar II ulaze i nadzor rizika na nivou Odbora direktora. TPPRisk AIQ kvantifikuje izloženost prema IKT pružaocima trećih strana, koncentracioni rizik, KVF/CIF zavisnosti i spremnost Registra informacija u skladu sa zahtjevima za upravljanje rizikom IKT trećih strana i Registrom informacija (EU DORA/ITS referentna struktura).
+        CyberRisk AIQ primjenjuje vlasničku kvantitativnu metodologiju za IKT i sajber rizik, usklađenu sa očekivanjima digitalne operativne otpornosti. OpRisk AIQ primjenjuje kvantitativni RCSA sa Monte Carlo simulacijom za operativni rizik, kao podršku za ICAAP/Pilar II ulaze i nadzor rizika na nivou Odbora direktora. TPPRisk AIQ kvantifikuje izloženost prema IKT pružaocima trećih strana, koncentracioni rizik, KVF/CIF zavisnosti i spremnost Registra informacija u skladu sa zahtjevima za upravljanje rizikom IKT trećih strana i Registrom informacija (EU DORA/ITS referentna struktura). Resilience AIQ ne kvantifikuje u istom statističkom smislu — tu nema Monte Carlo sloja; njegova metodološka osnova je izvođenje i dokaz: nivo kritičnosti i MTPD gornja granica izvedeni iz analize uticaja na poslovanje, ciljevi oporavka provjereni na monotonost u odnosu na taj nivo, ishodi testova i težina nalaza izvedeni umjesto odabrani.
       </p>
 
       <p style="font-size:0.9rem; line-height:1.75; color:rgba(255,255,255,0.4); margin-bottom:28px;">
-        Zajedno, tri modula proizvode P95 rezidualni gubitak, izloženost koncentracije i provjerljive dokaze na konzistentnoj kvantitativnoj osnovi. ICAAP ulazi, izvještavanje o riziku trećih strana i narativ operativne otpornosti postaju jedan koherentan dokazni paket — a ne tri nepovezana izvještajna toka.
+        Zajedno, četiri modula proizvode P95 rezidualni gubitak, izloženost koncentracije, izvedene ciljeve oporavka i provjerljive dokaze na konzistentnoj osnovi. ICAAP ulazi, izvještavanje o riziku trećih strana, dokazi o kontinuitetu i narativ operativne otpornosti postaju jedan koherentan dokazni paket — a ne četiri nepovezana izvještajna toka.
       </p>
 
       <div class="step-tags">
@@ -2171,7 +2445,7 @@ footer {
         ">Grupna analitika rizika<br>za višeentitetske organizacije</h3>
 
         <p style="font-size:0.92rem; line-height:1.75; color:rgba(255,255,255,0.55); font-weight:300; margin-bottom:24px;">
-          Organizacije sa više entiteta — holding grupe, zavisna društva, regionalne divizije ili javni organi — mogu konsolidovati izloženost CR, OR i TPPRisk kroz sve jedinice u jednom prikazu. Budući da AIQ Suite drži podatke o IKT/sajber, operativnom riziku i riziku trećih strana pod jednim krovom, identifikuje oblasti gdje su tipovi rizika istovremeno povišeni, I pružaoce trećih strana koji opslužuju više zavisnih društava (grupna koncentracija koju prikazi po pojedinačnom entitetu ne mogu otkriti). Nema silosa. Nema ručne konsolidacije. Jedna kapitalna osnova, na nivou grupe.
+          Organizacije sa više entiteta — holding grupe, zavisna društva, regionalne divizije ili javni organi — mogu konsolidovati izloženost CR, OR i TPPRisk te spremnost kontinuiteta kroz sve jedinice u jednom prikazu. Budući da AIQ Suite drži podatke o IKT/sajber, operativnom riziku i riziku trećih strana pod jednim krovom, identifikuje oblasti gdje su tipovi rizika istovremeno povišeni, I pružaoce trećih strana koji opslužuju više zavisnih društava (grupna koncentracija koju prikazi po pojedinačnom entitetu ne mogu otkriti). Nema silosa. Nema ručne konsolidacije. Jedna kapitalna osnova, na nivou grupe.
         </p>
 
         <div style="display:flex; flex-wrap:wrap; gap:8px;">
@@ -2225,6 +2499,14 @@ footer {
         </div>
 
         <div style="display:flex; gap:16px; align-items:flex-start; padding:16px 20px; border:1px solid rgba(201,168,76,0.12); border-radius:4px; background:rgba(255,255,255,0.02);">
+          <div style="font-size:1.2rem; flex-shrink:0; margin-top:2px;">🔄</div>
+          <div>
+            <div style="font-size:0.88rem; font-weight:600; color:var(--white); margin-bottom:4px;">Grupna spremnost kontinuiteta</div>
+            <div style="font-size:0.8rem; color:rgba(255,255,255,0.4); line-height:1.5;">Prati status BIA i odobrenja planova kroz sva zavisna društva, prikazuje procese sa bitno različitim ciljevima oporavka u inače uporedivim entitetima.</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:16px; align-items:flex-start; padding:16px 20px; border:1px solid rgba(201,168,76,0.12); border-radius:4px; background:rgba(255,255,255,0.02);">
           <div style="font-size:1.2rem; flex-shrink:0; margin-top:2px;">⚠️</div>
           <div>
             <div style="font-size:0.88rem; font-weight:600; color:var(--white); margin-bottom:4px;">Izloženost zajedničkim ključnim pružaocima usluga</div>
@@ -2242,7 +2524,7 @@ footer {
 <section class="regulatory" id="regulatory">
   <div class="section-tag">Regulatorna relevantnost</div>
   <h2 class="section-title fade-up">Namjenski izrađen za regulisane sektore.</h2>
-  <p class="section-sub fade-up">AIQ Suite pomaže institucijama da strukturiraju interno upravljanje rizicima, dokaznu evidenciju i izvještavanje u odnosu na relevantne regulatorne i revizorske zahtjeve — kroz tri namjenski izrađena modula.</p>
+  <p class="section-sub fade-up">AIQ Suite pomaže institucijama da strukturiraju interno upravljanje rizicima, dokaznu evidenciju i izvještavanje u odnosu na relevantne regulatorne i revizorske zahtjeve — kroz četiri namjenski izrađena modula.</p>
 
   <div class="reg-table fade-up">
     <div class="reg-row header">
@@ -2256,8 +2538,8 @@ footer {
       <div class="reg-cell" style="font-size:0.85rem; color:#444; display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding:18px 24px;">
         <span class="reg-badge">Banke</span><span class="reg-badge">Osiguravajuća društva</span><span class="reg-badge">Investiciona društva</span><span class="reg-badge">Institucije za plaćanje</span>
       </div>
-      <div class="reg-cell" style="font-size:0.85rem; color:#444;">Upravljanje IKT rizikom, kvantifikacija IKT scenarija, upravljački tok rada, rizik IKT pružalaca trećih strana, analiza koncentracije, praćenje izlazne strategije, podrška za Registar informacija</div>
-      <div class="reg-cell"><div class="module-indicator"><span class="dot-cyber-tpp"></span> CyberRisk AIQ + TPPRisk AIQ</div></div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444;">Upravljanje IKT rizikom, kvantifikacija IKT scenarija, upravljački tok rada, rizik IKT pružalaca trećih strana, analiza koncentracije, praćenje izlazne strategije, podrška za Registar informacija, kao i upravljanje kontinuitetom poslovanja sa testiranjem otpornosti i evidencijom događaja prekida (član 11) — uključujući praćenje obavještavanja nadzornog organa</div>
+      <div class="reg-cell"><div class="module-indicator"><span class="dot-cyber-tpp-res"></span> CyberRisk AIQ + TPPRisk AIQ + Resilience AIQ</div></div>
     </div>
     <div class="reg-row">
       <div class="reg-cell"><div class="reg-name">DORA član 28</div><div class="reg-who">Rizik IKT trećih strana</div></div>
@@ -2288,16 +2570,16 @@ footer {
       <div class="reg-cell" style="font-size:0.85rem; color:#444; display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding:18px 24px;">
         <span class="reg-badge">Osiguravajuća društva</span>
       </div>
-      <div class="reg-cell" style="font-size:0.85rem; color:#444;">Kvantifikacija operativnog rizika (OR modul), IKT rizik za osiguravače u obuhvatu DORA-e (Sajber modul), rizik trećih strana za eksternalizovane kritične funkcije (TPP modul), kontekst adekvatnosti kapitala</div>
-      <div class="reg-cell"><div class="module-indicator"><span class="dot-all"></span> Sva tri modula</div></div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444;">Kvantifikacija operativnog rizika (OR modul), IKT rizik za osiguravače u obuhvatu DORA-e (Sajber modul), rizik trećih strana za eksternalizovane kritične funkcije (TPP modul), kontinuitet poslovanja za kritične funkcije (Resilience modul), kontekst adekvatnosti kapitala</div>
+      <div class="reg-cell"><div class="module-indicator"><span class="dot-all"></span> Sva četiri modula</div></div>
     </div>
     <div class="reg-row">
       <div class="reg-cell"><div class="reg-name">ZDOOFS Crna Gora + ZIB</div><div class="reg-who">Sl. list CG 14/26 transpozicija</div></div>
       <div class="reg-cell" style="font-size:0.85rem; color:#444; display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding:18px 24px;">
         <span class="reg-badge">Subjekti finansijskog sektora u Crnoj Gori</span>
       </div>
-      <div class="reg-cell" style="font-size:0.85rem; color:#444;">Lokalizovana podrška za upravljanje IKT rizikom, digitalnu operativnu otpornost, IKT aranžmane sa trećim stranama, registre, izvještavanje za Odbor direktora i CBCG-spremnu evidenciju. Okvir podržava dodatne transpozicije Zapadnog Balkana u planu razvoja</div>
-      <div class="reg-cell"><div class="module-indicator"><span class="dot-all"></span> Sva tri modula</div></div>
+      <div class="reg-cell" style="font-size:0.85rem; color:#444;">Lokalizovana podrška za upravljanje IKT rizikom, digitalnu operativnu otpornost, upravljanje kontinuitetom poslovanja — analiza uticaja na poslovanje, strategije oporavka, planovi kontinuiteta sa usvajanjem od organa upravljanja, testiranje i evidencija prekida — IKT aranžmane sa trećim stranama, registre, izvještavanje za Odbor direktora i CBCG-spremnu evidenciju. Okvir podržava dodatne transpozicije Zapadnog Balkana u planu razvoja</div>
+      <div class="reg-cell"><div class="module-indicator"><span class="dot-all"></span> Sva četiri modula</div></div>
     </div>
   </div>
 </section>
@@ -2306,8 +2588,10 @@ footer {
 <section class="roadmap" id="roadmap">
   <div class="section-tag">Mogućnosti platforme i plan razvoja</div>
   <h2 class="section-title fade-up">Platforma koja raste<br>s regulativom.</h2>
-  <p class="section-sub fade-up">CyberRisk AIQ, OpRisk AIQ i TPPRisk AIQ dostupni su danas u pilot fazi / fazi ranog pristupa. Enterprise Scale nivo — multi-tenant i holding arhitektura sa grupnom analitikom rizika — planirano je proširenje, a Resilience AIQ (kontinuitet poslovanja) je sljedeći na planu razvoja.</p>
+  <p class="section-sub fade-up">CyberRisk AIQ, OpRisk AIQ, TPPRisk AIQ i Resilience AIQ dostupni su danas u pilot fazi / fazi ranog pristupa. Enterprise Scale nivo — multi-tenant i holding arhitektura sa grupnom analitikom rizika — ostaje planirano proširenje.</p>
 
+  <div class="roadmap-group">
+  <div class="roadmap-group-label fade-up">Pilot / rani pristup</div>
   <div class="roadmap-phases">
     <div class="phase fade-up">
       <div class="phase-label">CyberRisk AIQ</div>
@@ -2409,6 +2693,38 @@ footer {
     </div>
 
     <div class="phase fade-up">
+      <div class="phase-label">Resilience AIQ</div>
+      <span class="phase-status status-live">● Pilot / rani pristup</span>
+      <ul class="phase-items">
+        <li class="phase-item done"><div class="phase-dot"></div><span>Analiza uticaja na poslovanje sa izvedenim nivoom kritičnosti i MTPD gornjom granicom</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Strategije oporavka kroz pet tipova resursa — ljudi, lokacija, IKT usluga, podaci, treća strana</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Planovi kontinuiteta poslovanja sa višestranom potvrdom vlasnika i verzionisanim snimcima stanja odobrenja</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Usvajanje od organa upravljanja — datum usvajanja i akt evidentirani uz odobrenu verziju</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Izvođenje redosljeda oporavka sa nadjačavanjem i provjerom izvodljivosti</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Testiranje sa izvedenim ishodom (nikad ručno odabranim)</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Matrica pokrivenosti testovima po procesu i strategiji</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Registar događaja prekida — evidencija pet vremenskih oznaka</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Praćenje obavještavanja nadzornog organa — usklađeno sa DORA članom 11</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Nalazi sa težinom izvedenom iz kritičnosti procesa i objektivnog uticaja, praćeni do zatvaranja</span></li>
+      </ul>
+      <details class="phase-more"><summary>Prikaži sve mogućnosti</summary>
+      <ul class="phase-items">
+        <li class="phase-item done"><div class="phase-dot"></div><span>Osam provjera konzistentnosti kroz modul — uključujući otkrivanje regulatorne cirkularnosti i preklapanja kapaciteta između planova</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Upravljačke uloge BCM koordinator (1LoD) i BCM menadžer (2LoD)</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>26+ indikatora integrisanih u zajedničku KRI kontrolnu tablu uz CR/OR/TPP</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Konsolidovani prikaz kontinuiteta na nivou grupe — koristi Grupni CISO / ORM / CRO, bez nove uloge</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Izgrađen nad istim registrom poslovnih procesa koji već koristi OpRisk AIQ</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Usklađen sa ZDOOFS rokom za kontinuitet poslovanja (17.2.2028)</span></li>
+      </ul>
+      </details>
+    </div>
+  </div>
+  </div>
+
+  <div class="roadmap-group">
+  <div class="roadmap-group-label fade-up">Planirano</div>
+  <div class="roadmap-phases roadmap-phases--planned">
+    <div class="phase fade-up">
       <div class="phase-label">Enterprise Scale</div>
       <span class="phase-status status-planned">● Planirano proširenje</span>
       <ul class="phase-items">
@@ -2431,17 +2747,7 @@ footer {
       </ul>
       </details>
     </div>
-    <div class="phase fade-up">
-      <div class="phase-label">Resilience AIQ</div>
-      <span class="phase-status status-planned">● Planirano — sljedeći modul</span>
-      <ul class="phase-items">
-        <li class="phase-item done"><div class="phase-dot"></div><span>Analiza uticaja na poslovanje (BIA) za kritične ili važne funkcije</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>Planovi kontinuiteta poslovanja i kriznih komunikacija</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>Testovi i vježbe sa nalazima i petljom naučenih lekcija</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>Evidencija kriznih događaja u skladu sa očekivanjima DORA člana 11</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>Projektovan za ZDOOFS rok za kontinuitet poslovanja (17.2.2028)</span></li>
-      </ul>
-    </div>
+  </div>
   </div>
 </section>
 
@@ -2449,7 +2755,7 @@ footer {
 <section style="background:#0a1628; padding:100px 60px;" id="see-it" class="see-it-section">
   <div class="section-tag">Pogledajte kako radi</div>
   <h2 class="section-title fade-up">Od prijetnje do <em style="color:var(--gold); font-family:'Playfair Display',serif;">P95 izloženosti i materijalnosti</em><br>i od pružaoca do <em style="color:var(--gold); font-family:'Playfair Display',serif;">paketa za regulatornu dostavu.</em></h2>
-  <p class="section-sub fade-up">Tri modula. Ista odbranjiva matematička osnova — Monte Carlo simulacija za sajber, Kvantitativni RCSA + Monte Carlo za operativni rizik, kvantitativna analitika koncentracije za rizik trećih strana.</p>
+  <p class="section-sub fade-up">Četiri modula. Ista odbranjiva osnova — Monte Carlo simulacija za sajber, Kvantitativni RCSA + Monte Carlo za operativni rizik, kvantitativna analitika koncentracije za rizik trećih strana i izvedeni ciljevi oporavka sa strukturisanim dokazima za kontinuitet poslovanja.</p>
 
   <div style="max-width:900px; margin:16px auto 0; text-align:left; padding:0 4px;" class="fade-up">
     <div style="display:inline-block; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.35); border-bottom:1px solid rgba(201,168,76,0.2); padding-bottom:6px; margin-bottom:4px;">Sajber modul — Ransomware scenario (Monte Carlo simulacija)</div>
@@ -2666,6 +2972,74 @@ footer {
       <p style="font-size:0.82rem; line-height:1.6; color:rgba(255,255,255,0.5);">
         Investicija opravdana — ROI smanjenja rizika koncentracije <strong style="color:var(--gold-light);">4,8:1</strong>. Vremenski rok podnošenja očuvan.
       </p>
+    </div>
+  </div>
+
+  <div style="max-width:900px; margin:32px auto 0; text-align:left; padding:0 4px;" class="fade-up">
+    <div style="display:inline-block; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.35); border-bottom:1px solid rgba(201,168,76,0.2); padding-bottom:6px; margin-bottom:4px;">Resilience modul — Kontinuitet obrade plaćanja (izvedeni ciljevi, ne Monte Carlo)</div>
+  </div>
+
+  <div style="max-width:900px; margin:0 auto 0; background:rgba(255,255,255,0.02); border:1px solid rgba(201,168,76,0.15); border-radius:8px; padding:40px;" class="fade-up demo-wrapper">
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:32px;">
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:4px; padding:20px;">
+        <div style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:8px;">Proces</div>
+        <div style="font-size:1rem; font-weight:600; color:var(--white);">Obrada plaćanja</div>
+        <div style="font-size:0.8rem; color:rgba(255,255,255,0.4); margin-top:4px;">Isti registar procesa kao OpRisk AIQ · Obuhvaćen planom BCP-02</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:4px; padding:20px;">
+        <div style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:8px;">Analiza uticaja</div>
+        <div style="font-size:1rem; font-weight:600; color:var(--white);">Finansijski i regulatorni uticaj na 4h</div>
+        <div style="font-size:0.8rem; color:rgba(255,255,255,0.4); margin-top:4px;">Nivo kritičnosti i MTPD izvedeni — nisu odabrani</div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:32px;" class="demo-metrics-grid">
+      <div style="text-align:center; padding:20px; background:rgba(220,38,38,0.08); border:1px solid rgba(220,38,38,0.2); border-radius:4px;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; color:#f87171;">Tier 1</div>
+        <div style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-top:4px;">Izvedena kritičnost</div>
+      </div>
+      <div style="text-align:center; padding:20px; background:rgba(201,168,76,0.06); border:1px solid rgba(201,168,76,0.2); border-radius:4px;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; color:var(--gold);">8h</div>
+        <div style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-top:4px;">MTPD gornja granica</div>
+      </div>
+      <div style="text-align:center; padding:20px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:4px;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; color:var(--white);">12h</div>
+        <div style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-top:4px;">Tekući RTO</div>
+      </div>
+      <div style="text-align:center; padding:20px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:4px;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; color:var(--white);">4h</div>
+        <div style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-top:4px;">Tekući RPO</div>
+      </div>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:4px; padding:20px; margin-bottom:24px;">
+      <div style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:12px;">Tekuće strategije oporavka</div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <span style="padding:4px 12px; background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.25); border-radius:2px; font-size:0.75rem; color:var(--gold);">Ljudi · Unakrsno obučen rezervni tim</span>
+        <span style="padding:4px 12px; background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.25); border-radius:2px; font-size:0.75rem; color:var(--gold);">Podaci · Noćni backup na izdvojenoj lokaciji</span>
+        <span style="padding:4px 12px; background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.25); border-radius:2px; font-size:0.75rem; color:var(--gold);">IKT usluga · Ručna zamjenska procedura</span>
+      </div>
+      <div style="margin-top:14px; font-size:0.8rem; color:#f87171;">⚠ Provjera konzistentnosti: RTO 12h premašuje izvedenu MTPD gornju granicu od 8h — podignut nalaz, težina izvedena Tier 1 / Visoka.</div>
+    </div>
+
+    <div style="padding:20px; background:rgba(34,197,94,0.06); border:1px solid rgba(34,197,94,0.2); border-radius:4px;">
+      <div style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:16px;">✦ Poslije: Topla rezerva (IKT usluga) + sekundarna lokacija (lokacija) + kontinuirana replikacija (podaci)</div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; text-align:center;" class="demo-result-grid">
+        <div>
+          <div style="font-size:0.68rem; color:rgba(255,255,255,0.3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Vrijeme oporavka (RTO)</div>
+          <div style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:#4ade80;">3h <span style="font-size:0.9rem; color:rgba(255,255,255,0.3);">↓ od 12h</span></div>
+        </div>
+        <div>
+          <div style="font-size:0.68rem; color:rgba(255,255,255,0.3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Tačka oporavka (RPO)</div>
+          <div style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:#4ade80;">15min <span style="font-size:0.9rem; color:rgba(255,255,255,0.3);">↓ od 4h</span></div>
+        </div>
+        <div>
+          <div style="font-size:0.68rem; color:rgba(255,255,255,0.3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Rezerva do MTPD</div>
+          <div style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:#4ade80;">5h <span style="font-size:0.9rem; color:rgba(255,255,255,0.3);">↑ od −4h</span></div>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:16px; font-size:0.82rem; color:rgba(255,255,255,0.45);">Vrijeme oporavka smanjeno za 75% — RTO je sada unutar izvedene MTPD gornje granice, provjera konzistentnosti prolazi, a nalaz se zatvara na sljedećem testu sa izvedenim ishodom „Prošao".</p>
     </div>
   </div>
 
