@@ -1003,9 +1003,9 @@ section { padding: 100px 60px; }
   border: 1px solid var(--border);
 }
 
-/* The planned tier sizes to its own content rather than being stretched across
+/* The enterprise tier sizes to its own content rather than being stretched across
    the available tier's track width. */
-.roadmap-phases--planned { max-width: 680px; }
+.roadmap-phases--enterprise { max-width: 680px; }
 
 .phase {
   background: #0a1628;
@@ -1198,7 +1198,7 @@ footer {
      two columns keeps an even count of four wrapping cleanly */
   .modules-grid { grid-template-columns: repeat(2, 1fr); }
   .roadmap-phases { grid-template-columns: repeat(2, 1fr); }
-  .roadmap-phases--planned { grid-template-columns: 1fr; }
+  .roadmap-phases--enterprise { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 1024px) {
@@ -1210,7 +1210,7 @@ footer {
   section { padding: 72px 24px; }
   .problem-grid, .ai-grid { grid-template-columns: 1fr; gap: 32px; }
   .pillars-grid, .roadmap-phases { grid-template-columns: 1fr !important; }
-  .roadmap-phases--planned { max-width: 100%; }
+  .roadmap-phases--enterprise { max-width: 100%; }
   .roles-grid { grid-template-columns: 1fr 1fr; }
   .modules-grid { grid-template-columns: 1fr !important; }
   .ai-io { grid-template-columns: 1fr; }
@@ -1574,7 +1574,7 @@ footer {
         <li>ICT Services and Functions Registry — EBA ITS B_06.01 with closed-list service types</li>
         <li>Contract Register with CIF/non-CIF classification and CIF assessment status</li>
         <li>Exit strategy and substitutability tracking — DPM closed-list (ZZ:x959–x962)</li>
-        <li>Critical or Important Function (CIF) assessments — 5-step wizard</li>
+        <li>Critical or Important Function (CIF) assessments — overall rating, substitutability and alternative providers, reintegration, gap count, audit and review dates</li>
         <li>Dependency mapping — provider → service → function → asset</li>
         <li>Supply chain dependencies (B_03.03) and intra-group ICT services (B_03.02)</li>
       </ul>
@@ -1612,8 +1612,8 @@ footer {
       </ul>
       <details class="phase-more"><summary>Show all capabilities</summary>
       <ul class="module-features">
-        <li>Eight consistency checks across the whole module, including regulatory-circularity and cross-plan capacity overlap detection</li>
-        <li>26+ indicators integrated into the shared KRI dashboard alongside CR/OR/TPP</li>
+        <li>Eight consistency checks across the whole module, including circular-dependency and cross-plan capacity overlap detection</li>
+        <li>29 continuity indicators, 24 of them on the shared KRI dashboard alongside CR/OR/TPP</li>
         <li>Group-level consolidated continuity view for multi-entity organisations, using the same Group CISO/ORM/CRO roles already governing CR/OR/TPP</li>
       </ul>
       </details>
@@ -1688,7 +1688,7 @@ footer {
     <div class="pillar fade-up">
       <div class="pillar-number">01</div>
       <h3>Defensible Risk Quantification</h3>
-      <p>Quantitative risk inputs processed through 10,000-run Monte Carlo simulation — for ICT scenarios (CyberRisk AIQ), Basel Event Type scenarios (OpRisk AIQ), and third-party provider exposure portfolios (TPPRisk AIQ). Multiplicative control reduction model ensures realistic compounding. Outputs include Expected Loss, P50/P90/P95 confidence intervals, Loss Exceedance Curve, and capital impact percentage.</p>
+      <p>Quantitative risk inputs processed through 10,000-run Monte Carlo simulation — for ICT scenarios (CyberRisk AIQ) and Basel Event Type scenarios (OpRisk AIQ). Provider and portfolio exposure (TPPRisk AIQ) is aggregated from the quantified cyber and operational assessments that depend on each provider. Multiplicative control reduction model ensures realistic compounding. Outputs include Expected Loss, P50/P90/P95 confidence intervals, Loss Exceedance Curve, and capital impact percentage.</p>
       <div class="step-tags">
         <span class="step-tag">Quantification</span>
         <span class="step-tag">Monte Carlo</span>
@@ -1716,7 +1716,7 @@ footer {
       <h3>Jurisdiction-Aware AI</h3>
       <p>AI assistance proposes analysis tailored to the sector, capital base, and jurisdiction, subject to human review, adjustment, and sign-off. A bank in Montenegro receives CBCG-framed guidance. A bank in Croatia receives DORA and HNB context. A public body in Germany receives NIS2 and BSI framing. Jurisdiction mapping (see AI Engine) serves as context and benchmark, never a compliance checklist.</p>
       <div class="step-tags">
-        <span class="step-tag">44 Jurisdictions</span>
+        <span class="step-tag">40 Jurisdictions</span>
         <span class="step-tag">Anthropic Claude</span>
         <span class="step-tag">Regulatory Context</span>
         <span class="step-tag">Local Regulators</span>
@@ -1864,7 +1864,7 @@ footer {
       </div>
       <div class="step-metric">
         <div class="metric-val">15 ITS</div>
-        <div class="metric-label">EBA ITS templates aligned to Commission Implementing Regulation 2024/2956</div>
+        <div class="metric-label">Mappers for all 15 ITS templates of Commission Implementing Regulation 2024/2956 — a package contains those your register populates</div>
       </div>
     </div>
 
@@ -1873,18 +1873,18 @@ footer {
       <div class="step-content">
         <div class="step-module-badge badge-shared">TPPRisk AIQ</div>
         <h3>CIF assessment evaluates Critical or Important Function status</h3>
-        <p>5-step CIF wizard (Critical or Important Function) — materiality, substitutability, geography, outsourcing depth, and testing — produces a defensible CIF determination per contract. Vendor Manager prepares; CISO/CRO governance reviews.</p>
+        <p>CIF assessment (Critical or Important Function) — overall rating, substitutability and alternative providers, reintegration, gap count, and the audit and review dates — produces a defensible CIF determination per contract. Vendor Manager prepares; CISO/CRO governance reviews.</p>
         <div class="step-tags">
-          <span class="step-tag">Materiality</span>
+          <span class="step-tag">Overall Rating</span>
           <span class="step-tag">Substitutability</span>
-          <span class="step-tag">Geography</span>
-          <span class="step-tag">Outsourcing Depth</span>
-          <span class="step-tag">Testing</span>
+          <span class="step-tag">Alternative Providers</span>
+          <span class="step-tag">Reintegration</span>
+          <span class="step-tag">Gap Count</span>
         </div>
       </div>
       <div class="step-metric">
-        <div class="metric-val">5-Step</div>
-        <div class="metric-label">Structured CIF wizard — defensible Critical or Important Function determination per contract</div>
+        <div class="metric-val">Per Contract</div>
+        <div class="metric-label">Structured CIF assessment — defensible Critical or Important Function determination per contract</div>
       </div>
     </div>
 
@@ -1930,17 +1930,17 @@ footer {
       <div class="step-content">
         <div class="step-module-badge badge-shared">TPPRisk AIQ</div>
         <h3>CRO approves frozen snapshot; RoI submission package generated</h3>
-        <p>CRO reviews concentration risk, approves the snapshot, and freezes it. The platform generates a structured ZIP package per Commission Implementing Regulation 2024/2956 — prepared for internal review and regulatory submission. Full audit trail preserved.</p>
+        <p>CRO reviews concentration risk, approves the snapshot, and freezes it. The platform generates a structured ZIP package with a SHA-256 integrity hash per Commission Implementing Regulation 2024/2956 — prepared for internal review and regulatory submission. Full audit trail preserved.</p>
         <div class="step-tags">
           <span class="step-tag">Snapshot Freeze</span>
           <span class="step-tag">CRO Approval</span>
-          <span class="step-tag">Signed-ZIP</span>
+          <span class="step-tag">ZIP + SHA-256 Hash</span>
           <span class="step-tag">Submission Package</span>
         </div>
       </div>
       <div class="step-metric">
-        <div class="metric-val">Signed-ZIP</div>
-        <div class="metric-label">Submission package structured per Commission Implementing Regulation 2024/2956 — prepared for internal review and regulatory submission</div>
+        <div class="metric-val">SHA-256</div>
+        <div class="metric-label">ZIP package with SHA-256 integrity hash, structured per Commission Implementing Regulation 2024/2956 — prepared for internal review and regulatory submission</div>
       </div>
     </div>
   </div>
@@ -1985,7 +1985,7 @@ footer {
       </div>
       <div class="step-metric">
         <div class="metric-val">8 Checks</div>
-        <div class="metric-label">Consistency checks run across the module, including regulatory circularity and cross-plan capacity overlap</div>
+        <div class="metric-label">Consistency checks run across the module, including circular dependency and cross-plan capacity overlap</div>
       </div>
     </div>
 
@@ -2227,7 +2227,7 @@ footer {
         <div class="ai-feature-icon">🌍</div>
         <div>
           <h4>Jurisdiction-Aware Regulatory Context</h4>
-          <p>44 European jurisdictions mapped. AI analysis references the frameworks actually applicable to your organisation — CBCG for Montenegrin banks, DORA and HNB for Croatian institutions, NBS for Serbian entities. Regulatory references provide context and benchmark, never a compliance checklist.</p>
+          <p>40 European jurisdictions mapped, with local-regulator context for 15. AI analysis references the frameworks actually applicable to your organisation — CBCG for Montenegrin banks, DORA and HNB for Croatian institutions, NBS for Serbian entities. Regulatory references provide context and benchmark, never a compliance checklist.</p>
         </div>
       </div>
       <div class="ai-feature fade-up">
@@ -2328,7 +2328,7 @@ footer {
     <div class="pillar fade-up">
       <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">⚡</div>
       <h3>Workflow + Quantification in One</h3>
-      <p>Most quantification tools are calculators — they produce a number but leave coordination to email and spreadsheets. AIQ Suite embeds the complete governance workflow: analyst preparation, ICT/process control rating, CISO review, business owner decision, action plan, and approval — all in one platform, with full audit trail.</p>
+      <p>Quantification produces a number; governance turns it into a decision. AIQ Suite embeds the complete governance workflow: analyst preparation, ICT/process control rating, CISO review, business owner decision, action plan, and approval — all in one platform, with full audit trail.</p>
     </div>
 
     <div class="pillar fade-up">
@@ -2340,7 +2340,7 @@ footer {
     <div class="pillar fade-up">
       <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">🗺️</div>
       <h3>Built for European Regulation</h3>
-      <p>All major quantification platforms originate in North America. AIQ Suite is designed from the ground up for European regulatory requirements — DORA, NIS2, Basel III, EBA Guidelines, and dozens of national jurisdictions including local regulators (CBCG, NBS, HNB, BaFin, FMA, FINMA) — see AI Engine for the full count. Not an afterthought — the architecture.</p>
+      <p>AIQ Suite is designed from the ground up for European regulatory requirements — DORA, NIS2, Basel III, EBA Guidelines, and dozens of national jurisdictions including local regulators (CBCG, NBS, HNB, BaFin, FMA, FINMA) — see AI Engine for the full count. Not an afterthought — the architecture.</p>
     </div>
 
     <div class="pillar fade-up">
@@ -2358,7 +2358,7 @@ footer {
     <div class="pillar fade-up">
       <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">📊</div>
       <h3>Industry Benchmarking</h3>
-      <p>See how your organisation's capital impact compares to sector peers. Benchmark data sourced from Verizon DBIR, ENISA Threat Landscape, IBM X-Force, and Ponemon Institute — by organisation type, sector, and company size. Gives CISO and board concrete context: are we above or below industry average for this risk?</p>
+      <p>See how your organisation's capital impact compares to sector peers — by organisation type, sector, and company size. Scenario ranges are calibrated against published industry threat and loss research (Verizon DBIR, ENISA Threat Landscape, IBM X-Force, Ponemon Institute, ORX); benchmark percentiles are internally derived, not taken from those publications. Gives CISO and board concrete context: are we above or below the benchmark for this risk?</p>
     </div>
 
     <div class="pillar fade-up">
@@ -2399,7 +2399,7 @@ footer {
     <div class="pillar fade-up">
       <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">🌐</div>
       <h3>On-Premise, SaaS, or Holding Deployment</h3>
-      <p>Most European risk platforms are SaaS-only — a hard constraint for banks under central bank requirements that restrict public cloud deployment of core risk data. AIQ Suite supports three deployment modes: full SaaS (EU data centres), on-premise (institution's own infrastructure), and operating holding (parent entity hosts subsidiaries). Tier-based RSA-signed JWT licensing works offline — no phone-home requirement. Banks meet regulatory data-residency expectations without compromising platform capability.</p>
+      <p>Central bank requirements can restrict public cloud deployment of core risk data. AIQ Suite supports three deployment modes: full SaaS (EU data centres), on-premise (institution's own infrastructure), and operating holding (parent entity hosts subsidiaries). Tier-based RSA-signed JWT licensing works offline — no phone-home requirement. A super-admin panel handles tenant provisioning, licence management, and system health. Banks meet regulatory data-residency expectations without compromising platform capability.</p>
       <div class="step-tags" style="margin-top:18px;">
         <span class="step-tag">EU Data Centres</span>
         <span class="step-tag">On-Prem Option</span>
@@ -2655,9 +2655,9 @@ footer {
 
 <!-- ROADMAP -->
 <section class="roadmap" id="roadmap">
-  <div class="section-tag">Platform Capabilities &amp; Roadmap</div>
+  <div class="section-tag">Platform Capabilities</div>
   <h2 class="section-title fade-up">A platform built to grow<br>with regulation.</h2>
-  <p class="section-sub fade-up">CyberRisk AIQ, OpRisk AIQ, TPPRisk AIQ, and Resilience AIQ are available today in pilot / early access. The Enterprise Scale tier — multi-tenant and holding architecture with group risk intelligence — remains a planned enhancement.</p>
+  <p class="section-sub fade-up">CyberRisk AIQ, OpRisk AIQ, TPPRisk AIQ, and Resilience AIQ are available today in pilot / early access, together with the Enterprise Scale tier — multi-tenant and holding architecture with group risk intelligence.</p>
 
   <div class="roadmap-group">
   <div class="roadmap-group-label fade-up">Available in pilot</div>
@@ -2674,19 +2674,19 @@ footer {
         <li class="phase-item done"><div class="phase-dot"></div><span>Scenario Simulator — What-If analysis before commitment</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Designated Representative — delegate BO tasks</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Proprietary control library — configurable external-framework mapping</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>Controls import — Framework AI, Document AI, CSV</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Controls import — CSV</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Industry Peer Benchmarking — DBIR, ENISA, Ponemon</span></li>
       </ul>
       <details class="phase-more"><summary>Show all capabilities</summary>
       <ul class="phase-items">
         <li class="phase-item done"><div class="phase-dot"></div><span>Industry Scenario Library with benchmark quantitative inputs</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Investment Optimizer — ROI per control</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>Jurisdiction-aware AI — 44 European countries with local regulator framing</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Jurisdiction-aware AI — 40 European jurisdictions, with local-regulator context for 15</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Asset Risk Map — portfolio heatmap</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Business Owner Decision Guidance with ROI and governance flags</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Scenario Coverage Check — gap analysis against industry scenario library</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Risk Appetite Statement — configurable thresholds with DORA Article 5 escalation</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>KRI Framework — 15 pre-seeded KRIs with formula-driven computation, breach detection, weekly digest emails</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>KRI Framework — 8 pre-seeded cyber KRIs (15 across cyber, operational and cross-module) with formula-driven computation, breach detection, weekly digest emails</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Cross-Domain Risk Intelligence — Process ↔ ICT Asset linking surfaces concentration risks</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>CISO Board Summary — AI-generated, editable</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Custom Report Builder — role-based visibility, AI summary</span></li>
@@ -2712,7 +2712,7 @@ footer {
         <li class="phase-item done"><div class="phase-dot"></div><span>Designated Representative — delegate Process Owner tasks</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Industry Peer Benchmarking — OR scenarios</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Industry Scenario Library with benchmark quantitative inputs</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>Jurisdiction-aware AI — 44 European countries with local regulator framing</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Jurisdiction-aware AI — 40 European jurisdictions, with local-regulator context for 15</span></li>
       </ul>
       <details class="phase-more"><summary>Show all capabilities</summary>
       <ul class="phase-items">
@@ -2738,7 +2738,7 @@ footer {
         <li class="phase-item done"><div class="phase-dot"></div><span>ICT Services and Functions Registry — EBA ITS B_06.01 with closed-list service types</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Contract Register with CIF/non-CIF classification and CIF assessment status</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Exit strategy and substitutability tracking — DPM closed-list (ZZ:x959–x962)</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>Critical or Important Function (CIF) wizard — 5-step assessment workflow</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Critical or Important Function (CIF) assessment — overall rating, substitutability and alternative providers, reintegration, gap count, audit and review dates</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Dependency mapping — provider → service → function → asset</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Supply chain dependencies — EBA ITS B_03.03 with provider-of-provider mapping</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Intra-group ICT services — EBA ITS B_03.02 holding / subsidiary flows</span></li>
@@ -2747,7 +2747,7 @@ footer {
       </ul>
       <details class="phase-more"><summary>Show all capabilities</summary>
       <ul class="phase-items">
-        <li class="phase-item done"><div class="phase-dot"></div><span>Register of Information for ICT arrangements — 15 ITS templates per Commission Implementing Regulation 2024/2956</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Register of Information for ICT arrangements — mappers for all 15 ITS templates of Commission Implementing Regulation 2024/2956; a package contains those your register populates</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Snapshot history, frozen snapshots, structured ZIP package for internal review and regulatory submission preparation</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Data quality framework — HIGH / MEDIUM / LOW bands per provider with actionable remediation</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>CRO approval and audit trail</span></li>
@@ -2778,9 +2778,9 @@ footer {
       </ul>
       <details class="phase-more"><summary>Show all capabilities</summary>
       <ul class="phase-items">
-        <li class="phase-item done"><div class="phase-dot"></div><span>Eight consistency checks across the module — including regulatory circularity and cross-plan capacity overlap detection</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Eight consistency checks across the module — including circular-dependency and cross-plan capacity overlap detection</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>BCM Coordinator (1LoD) and BCM Manager (2LoD) governance roles</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>26+ indicators integrated into the shared KRI dashboard alongside CR/OR/TPP</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>29 continuity indicators, 24 of them on the shared KRI dashboard alongside CR/OR/TPP</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Group-level consolidated continuity view — reuses Group CISO / ORM / CRO, no new role</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Built on the same business process registry already used by OpRisk AIQ</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Aligned with the ZDOOFS business-continuity deadline (17.2.2028)</span></li>
@@ -2791,13 +2791,13 @@ footer {
   </div>
 
   <div class="roadmap-group">
-  <div class="roadmap-group-label fade-up">Planned</div>
-  <div class="roadmap-phases roadmap-phases--planned">
+  <div class="roadmap-group-label fade-up">Enterprise tier</div>
+  <div class="roadmap-phases roadmap-phases--enterprise">
     <div class="phase fade-up">
       <div class="phase-label">Enterprise Scale</div>
-      <span class="phase-status status-planned">● Planned enhancement</span>
+      <span class="phase-status status-live">● Available in pilot</span>
       <ul class="phase-items">
-        <li class="phase-item done"><div class="phase-dot"></div><span>Multi-tenant SaaS architecture — schema-per-tenant isolation</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Multi-tenant SaaS — per-tenant data separation, enforced on every query</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Super-admin panel — tenant provisioning, licence management, system health</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>RSA-signed JWT licensing — offline, tier-based, no phone-home</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>On-premise + SaaS + holding deployment modes</span></li>
@@ -2825,6 +2825,7 @@ footer {
   <div class="section-tag">See It In Action</div>
   <h2 class="section-title fade-up">From threat to <em style="color:var(--gold); font-family:'Playfair Display',serif;">capital impact</em><br>and provider to <em style="color:var(--gold); font-family:'Playfair Display',serif;">submission package.</em></h2>
   <p class="section-sub fade-up">Four modules. One defensible basis — Monte Carlo simulation for cyber, Quantitative RCSA + Monte Carlo for operational risk, quantitative concentration analytics for third-party risk, and derived recovery objectives with structured evidence for business continuity.</p>
+  <p class="section-sub fade-up" style="font-size:0.85rem; color:rgba(255,255,255,0.4); margin-top:-4px;"><em>Illustrative figures. The calculations, outputs and screens are the product’s; the values are examples, not any institution’s data.</em></p>
 
   <div style="max-width:900px; margin:16px auto 0; text-align:left; padding:0 4px;" class="fade-up">
     <div style="display:inline-block; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.35); border-bottom:1px solid rgba(201,168,76,0.2); padding-bottom:6px; margin-bottom:4px;">Cyber Module — Ransomware scenario (Monte Carlo simulation)</div>
@@ -3027,7 +3028,7 @@ footer {
         <div style="display:flex; flex-direction:column; gap:8px; font-size:0.82rem; color:rgba(255,255,255,0.7);">
           <div style="display:flex; justify-content:space-between;"><span>Completeness</span><strong style="color:#4ade80; font-weight:600;">99.7%</strong></div>
           <div style="display:flex; justify-content:space-between;"><span>Open Critical Validation Gaps</span><strong style="color:#4ade80; font-weight:600;">0</strong></div>
-          <div style="display:flex; justify-content:space-between;"><span>Frozen Snapshot</span><strong style="color:rgba(255,255,255,0.85); font-weight:600;">2026-Q2</strong></div>
+          <div style="display:flex; justify-content:space-between;"><span>Snapshot</span><strong style="color:rgba(255,255,255,0.85); font-weight:600;">Frozen (sample)</strong></div>
           <div style="display:flex; justify-content:space-between;"><span>Next Submission</span><strong style="color:var(--gold-light); font-weight:600;">Ready for CRO Approval</strong></div>
         </div>
       </div>

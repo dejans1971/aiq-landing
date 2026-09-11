@@ -1004,9 +1004,9 @@ section { padding: 100px 60px; }
   border: 1px solid var(--border);
 }
 
-/* Planirana razina se dimenzionira prema svom sadržaju, umjesto da bude razvučen
+/* Enterprise razina se dimenzionira prema svom sadržaju, umjesto da bude razvučen
    preko širine kolona dostupne razine. */
-.roadmap-phases--planned { max-width: 680px; }
+.roadmap-phases--enterprise { max-width: 680px; }
 
 .phase {
   background: #0a1628;
@@ -1199,7 +1199,7 @@ footer {
      dvije kolone znače da se četiri stavke prelamaju čisto */
   .modules-grid { grid-template-columns: repeat(2, 1fr); }
   .roadmap-phases { grid-template-columns: repeat(2, 1fr); }
-  .roadmap-phases--planned { grid-template-columns: 1fr; }
+  .roadmap-phases--enterprise { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 1024px) {
@@ -1211,7 +1211,7 @@ footer {
   section { padding: 72px 24px; }
   .problem-grid, .ai-grid { grid-template-columns: 1fr; gap: 32px; }
   .pillars-grid, .roadmap-phases { grid-template-columns: 1fr !important; }
-  .roadmap-phases--planned { max-width: 100%; }
+  .roadmap-phases--enterprise { max-width: 100%; }
   .roles-grid { grid-template-columns: 1fr 1fr; }
   .modules-grid { grid-template-columns: 1fr !important; }
   .ai-io { grid-template-columns: 1fr; }
@@ -1573,7 +1573,7 @@ footer {
         <li>Registar IKT usluga i funkcija — EBA ITS B_06.01 sa zatvorenom listom tipova usluga</li>
         <li>Registar ugovora s KVF klasifikacijom i statusom procjene</li>
         <li>Praćenje izlazne strategije i zamjenjivosti — DPM zatvorena lista (ZZ:x959–x962)</li>
-        <li>Procjene ključnih ili važnih funkcija (KVF/CIF) — vođeni postupak u pet koraka</li>
+        <li>Procjene ključnih ili važnih funkcija (KVF/CIF) — ukupna ocjena, zamjenjivost i alternativni pružatelji, reintegracija, broj nedostataka, datumi revizije i preispitivanja</li>
         <li>Mapiranje ovisnosti — pružatelj → usluga → funkcija → imovina</li>
         <li>Ovisnosti lanca opskrbe (B_03.03) i intragrupne IKT usluge (B_03.02)</li>
       </ul>
@@ -1609,8 +1609,8 @@ footer {
       </ul>
       <details class="phase-more"><summary>Prikaži sve mogućnosti</summary>
       <ul class="module-features">
-        <li>Osam provjera konzistentnosti kroz cijeli modul, uključujući otkrivanje regulatorne cirkularnosti i preklapanja kapaciteta između planova</li>
-        <li>26+ indikatora integriranih u zajedničku KRI kontrolnu tablu uz CR/OR/TPP</li>
+        <li>Osam provjera konzistentnosti kroz cijeli modul, uključujući otkrivanje kružnih ovisnosti i preklapanja kapaciteta između planova</li>
+        <li>29 indikatora kontinuiteta, od kojih 24 na zajedničkoj KRI kontrolnoj tabli uz CR/OR/TPP</li>
         <li>Konsolidirani prikaz kontinuiteta na razini grupe za višeentitetske organizacije, uz iste uloge Grupni CISO/ORM/CRO koje već upravljaju CR/OR/TPP</li>
       </ul>
       </details>
@@ -1685,7 +1685,7 @@ footer {
     <div class="pillar fade-up">
       <div class="pillar-number">01</div>
       <h3>Obranjiva kvantifikacija rizika</h3>
-      <p>Kvantitativni ulazi rizika obrađeni kroz Monte Carlo simulaciju od 10.000 ponavljanja — za IKT scenarije (CyberRisk AIQ), scenarije Basel tipova događaja (OpRisk AIQ) i portfelje izloženosti pružatelja trećih strana (TPPRisk AIQ). Multiplikativni model smanjenja kontrola osigurava realan kumulativan učinak. Rezultati uključuju Očekivani gubitak, intervale pouzdanosti P50/P90/P95, Krivu prekoračenja gubitka i postotak kapitalnog utjecaja.</p>
+      <p>Kvantitativni ulazi rizika obrađeni kroz Monte Carlo simulaciju od 10.000 ponavljanja — za IKT scenarije (CyberRisk AIQ) i scenarije Basel tipova događaja (OpRisk AIQ). Izloženost po pružatelju i portfelju (TPPRisk AIQ) agregira se iz kvantificiranih kibernetičkih i operativnih procjena koje ovise o svakom pružatelju. Multiplikativni model smanjenja kontrola osigurava realan kumulativan učinak. Rezultati uključuju Očekivani gubitak, intervale pouzdanosti P50/P90/P95, Krivu prekoračenja gubitka i postotak kapitalnog utjecaja.</p>
       <div class="step-tags">
         <span class="step-tag">Kvantifikacija</span>
         <span class="step-tag">Monte Carlo</span>
@@ -1712,7 +1712,7 @@ footer {
       <h3>AI analiza prilagođena jurisdikciji</h3>
       <p>AI asistencija predlaže analizu prilagođenu sektoru, kapitalnoj osnovi i jurisdikciji, uz obveznu ljudsku provjeru i potpisivanje. Banka u Hrvatskoj dobiva DORA i HNB kontekst. Banka u Crnoj Gori dobiva smjernice u okviru CBCG-a. Javno tijelo u Njemačkoj dobiva NIS2 i BSI okvir. Mapiranje jurisdikcija (vidjeti AI mehanizam) služi kao kontekst i referentna vrijednost, nikada kao lista provjere usklađenosti.</p>
       <div class="step-tags">
-        <span class="step-tag">44 jurisdikcije</span>
+        <span class="step-tag">40 jurisdikcija</span>
         <span class="step-tag">Anthropic Claude</span>
         <span class="step-tag">Regulatorni kontekst</span>
         <span class="step-tag">Lokalni regulatori</span>
@@ -1860,7 +1860,7 @@ footer {
       </div>
       <div class="step-metric">
         <div class="metric-val">15 ITS</div>
-        <div class="metric-label">EBA ITS šabloni usklađeni sa Provedbenom uredbom Komisije 2024/2956</div>
+        <div class="metric-label">Maperi za svih 15 ITS šablona Provedbene uredbe Komisije 2024/2956 — paket sadrži one koje vaš registar popunjava</div>
       </div>
     </div>
 
@@ -1869,18 +1869,18 @@ footer {
       <div class="step-content">
         <div class="step-module-badge badge-shared">TPPRisk AIQ</div>
         <h3>KVF procjena ocjenjuje status ključne ili važne funkcije</h3>
-        <p>Vođeni postupak procjene KVF u pet koraka — materijalnost, zamjenjivost, geografija, dubina eksternalizacije i testiranje — proizvodi obranjivu KVF odluku po ugovoru. Menadžer dobavljača priprema, a CISO/CRO upravljanje pregleda.</p>
+        <p>KVF procjena — ukupna ocjena, zamjenjivost i alternativni pružatelji, reintegracija, broj nedostataka, datumi revizije i preispitivanja — proizvodi obranjivu KVF odluku po ugovoru. Menadžer dobavljača priprema, a CISO/CRO upravljanje pregleda.</p>
         <div class="step-tags">
-          <span class="step-tag">Materijalnost</span>
+          <span class="step-tag">Ukupna ocjena</span>
           <span class="step-tag">Zamjenjivost</span>
-          <span class="step-tag">Geografija</span>
-          <span class="step-tag">Dubina eksternalizacije</span>
-          <span class="step-tag">Testiranje</span>
+          <span class="step-tag">Alternativni pružatelji</span>
+          <span class="step-tag">Reintegracija</span>
+          <span class="step-tag">Broj nedostataka</span>
         </div>
       </div>
       <div class="step-metric">
-        <div class="metric-val">U pet koraka</div>
-        <div class="metric-label">Strukturirani vođeni postupak procjene KVF — obranjiva odluka o ključnoj ili važnoj funkciji po ugovoru</div>
+        <div class="metric-val">Po ugovoru</div>
+        <div class="metric-label">Strukturirana KVF procjena — obranjiva odluka o ključnoj ili važnoj funkciji po ugovoru</div>
       </div>
     </div>
 
@@ -1926,17 +1926,17 @@ footer {
       <div class="step-content">
         <div class="step-module-badge badge-shared">TPPRisk AIQ</div>
         <h3>CRO odobrava zamrznuti snimak stanja. RoI paket pripremljen za internu provjeru i regulatornu dostavu</h3>
-        <p>CRO pregleda rizik koncentracije, odobrava snimak stanja i zamrzava ga. Platforma generira paket potpisane ZIP datoteke po Provedbenoj uredbi Komisije 2024/2956 — spreman za internu provjeru i pripremu regulatorne dostave. Potpuna revizijska staza očuvana.</p>
+        <p>CRO pregleda rizik koncentracije, odobrava snimak stanja i zamrzava ga. Platforma generira ZIP paket sa SHA-256 kontrolnom sumom po Provedbenoj uredbi Komisije 2024/2956 — spreman za internu provjeru i pripremu regulatorne dostave. Potpuna revizijska staza očuvana.</p>
         <div class="step-tags">
           <span class="step-tag">Zamrzavanje snimka stanja</span>
           <span class="step-tag">CRO odobravanje</span>
-          <span class="step-tag">Potpisana ZIP</span>
+          <span class="step-tag">ZIP + SHA-256 kontrolna suma</span>
           <span class="step-tag">RoI paket za internu provjeru</span>
         </div>
       </div>
       <div class="step-metric">
-        <div class="metric-val">Potpisana ZIP</div>
-        <div class="metric-label">Paket strukturiran po Provedbenoj uredbi Komisije 2024/2956 — spreman za internu provjeru i pripremu regulatorne dostave</div>
+        <div class="metric-val">SHA-256</div>
+        <div class="metric-label">ZIP paket sa SHA-256 kontrolnom sumom, strukturiran po Provedbenoj uredbi Komisije 2024/2956 — spreman za internu provjeru i pripremu regulatorne dostave</div>
       </div>
     </div>
   </div>
@@ -1981,7 +1981,7 @@ footer {
       </div>
       <div class="step-metric">
         <div class="metric-val">8 provjera</div>
-        <div class="metric-label">Provjere konzistentnosti kroz modul, uključujući regulatornu cirkularnost i preklapanje kapaciteta između planova</div>
+        <div class="metric-label">Provjere konzistentnosti kroz modul, uključujući kružne ovisnosti i preklapanje kapaciteta između planova</div>
       </div>
     </div>
 
@@ -2223,7 +2223,7 @@ footer {
         <div class="ai-feature-icon">🌍</div>
         <div>
           <h4>Regulatorni kontekst svjestan jurisdikcije</h4>
-          <p>Mapirane 44 europske jurisdikcije. AI analiza referencira okvire koji se stvarno primjenjuju na vašu organizaciju — DORA i HNB za hrvatske institucije, CBCG za crnogorske banke, NBS za srpske entitete. Regulatorne reference pružaju kontekst i referentnu vrijednost, nikada listu provjere usklađenosti.</p>
+          <p>Mapirano 40 europskih jurisdikcija, s kontekstom lokalnog regulatora za 15. AI analiza referencira okvire koji se stvarno primjenjuju na vašu organizaciju — DORA i HNB za hrvatske institucije, CBCG za crnogorske banke, NBS za srpske entitete. Regulatorne reference pružaju kontekst i referentnu vrijednost, nikada listu provjere usklađenosti.</p>
         </div>
       </div>
       <div class="ai-feature fade-up">
@@ -2323,7 +2323,7 @@ footer {
     <div class="pillar fade-up">
       <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">⚡</div>
       <h3>Tok rada + Kvantifikacija u jednom</h3>
-      <p>Većina alata za kvantifikaciju su kalkulatori — daju broj, ali koordinaciju prepuštaju e-mailu i tablicama. AIQ Suite ugrađuje kompletan upravljački tok rada: priprema analitičara, ocjena IKT/procesnih kontrola, CISO pregled, odluka poslovnog vlasnika, akcijski plan i odobrenje — sve na jednoj platformi, s potpunom revizijskom stazom.</p>
+      <p>Kvantifikacija daje broj; upravljanje ga pretvara u odluku. AIQ Suite ugrađuje kompletan upravljački tok rada: priprema analitičara, ocjena IKT/procesnih kontrola, CISO pregled, odluka poslovnog vlasnika, akcijski plan i odobrenje — sve na jednoj platformi, s potpunom revizijskom stazom.</p>
     </div>
 
     <div class="pillar fade-up">
@@ -2335,7 +2335,7 @@ footer {
     <div class="pillar fade-up">
       <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">🗺️</div>
       <h3>Izrađen za europsku regulativu</h3>
-      <p>Sve glavne platforme za kvantifikaciju potiču iz Sjeverne Amerike. AIQ Suite je dizajniran za europski regulatorni kontekst i prilagodljiv nacionalnim okvirima, uključujući digitalnu operativnu otpornost, IKT rizik, operativni rizik i rizik IKT trećih strana. Za Hrvatsku, kao državu članicu EU, DORA se primjenjuje izravno — nema nacionalnog propisa koji bi je trebalo posebno transponirati — a EBA ITS infrastruktura za Registar informacija jednako je izravno primjenjiva. Nadzor nad primjenom provodi Hrvatska narodna banka.</p>
+      <p>AIQ Suite je dizajniran za europski regulatorni kontekst i prilagodljiv nacionalnim okvirima, uključujući digitalnu operativnu otpornost, IKT rizik, operativni rizik i rizik IKT trećih strana. Za Hrvatsku, kao državu članicu EU, DORA se primjenjuje izravno — nema nacionalnog propisa koji bi je trebalo posebno transponirati — a EBA ITS infrastruktura za Registar informacija jednako je izravno primjenjiva. Nadzor nad primjenom provodi Hrvatska narodna banka.</p>
     </div>
 
     <div class="pillar fade-up">
@@ -2353,7 +2353,7 @@ footer {
     <div class="pillar fade-up">
       <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">📊</div>
       <h3>Industrijsko referentno poređenje</h3>
-      <p>Pogledajte kako kapitalni utjecaj vaše organizacije stoji u poređenju s uporedivim organizacijama iz industrije. Referentni podaci iz Verizon DBIR, ENISA Threat Landscape, IBM X-Force i Ponemon Institute — po tipu organizacije, sektoru i veličini tvrtke. Daje CISO-u i Upravi konkretan kontekst: jesmo li iznad ili ispod industrijskog prosjeka za ovaj rizik?</p>
+      <p>Pogledajte kako kapitalni utjecaj vaše organizacije stoji u poređenju s uporedivim organizacijama iz industrije — po tipu organizacije, sektoru i veličini tvrtke. Rasponi scenarija kalibrirani su prema objavljenim industrijskim istraživanjima prijetnji i gubitaka (Verizon DBIR, ENISA Threat Landscape, IBM X-Force, Ponemon Institute, ORX); referentni percentili su interno izvedeni, a ne preuzeti iz tih publikacija. Daje CISO-u i Upravi konkretan kontekst: jesmo li iznad ili ispod referentne vrijednosti za ovaj rizik?</p>
     </div>
 
     <div class="pillar fade-up">
@@ -2394,7 +2394,7 @@ footer {
     <div class="pillar fade-up">
       <div class="pillar-number" style="font-size:2rem; color:rgba(201,168,76,0.2);">🌐</div>
       <h3>On-premise, SaaS ili holding implementacija</h3>
-      <p>Većina europskih platformi za rizik je samo SaaS — što je strogo ograničenje za banke pod zahtjevima centralnih banaka koji ograničavaju smještanje ključnih podataka o riziku u public cloud-u. AIQ Suite podržava tri modela implementacije: puni SaaS model (EU podatkovni centri), on-premise (vlastita infrastruktura institucije) i operativni holding (matični entitet hostuje ovisna društva). RSA-potpisano JWT licenciranje zasnovano na paketu/razini radi offline — bez zahtjeva za stalnim pozivanjem vanjskog servisa. Banke ispunjavaju regulatorna očekivanja rezidencije podataka bez kompromitiranja platformskih sposobnosti.</p>
+      <p>Zahtjevi središnjih banaka mogu ograničiti smještanje ključnih podataka o riziku u public cloud-u. AIQ Suite podržava tri modela implementacije: puni SaaS model (EU podatkovni centri), on-premise (vlastita infrastruktura institucije) i operativni holding (matični entitet hostuje ovisna društva). RSA-potpisano JWT licenciranje zasnovano na paketu/razini radi offline — bez zahtjeva za stalnim pozivanjem vanjskog servisa. Super-admin panel pokriva provizioniranje klijenata, upravljanje licencama i zdravlje sustava. Banke ispunjavaju regulatorna očekivanja rezidencije podataka bez kompromitiranja platformskih sposobnosti.</p>
       <div class="step-tags" style="margin-top:18px;">
         <span class="step-tag">EU podatkovni centri</span>
         <span class="step-tag">On-premises opcija</span>
@@ -2633,9 +2633,9 @@ footer {
 
 <!-- PLAN RAZVOJA -->
 <section class="roadmap" id="roadmap">
-  <div class="section-tag">Mogućnosti platforme i plan razvoja</div>
+  <div class="section-tag">Mogućnosti platforme</div>
   <h2 class="section-title fade-up">Platforma koja raste<br>s regulativom.</h2>
-  <p class="section-sub fade-up">CyberRisk AIQ, OpRisk AIQ, TPPRisk AIQ i Resilience AIQ dostupni su danas u pilot fazi / fazi ranog pristupa. Enterprise Scale razina — multi-tenant i holding arhitektura s grupnom analitikom rizika — ostaje planirano proširenje.</p>
+  <p class="section-sub fade-up">CyberRisk AIQ, OpRisk AIQ, TPPRisk AIQ i Resilience AIQ dostupni su danas u pilot fazi / fazi ranog pristupa, zajedno s Enterprise Scale razinom — multi-tenant i holding arhitekturom s grupnom analitikom rizika.</p>
 
   <div class="roadmap-group">
   <div class="roadmap-group-label fade-up">Pilot / rani pristup</div>
@@ -2652,19 +2652,19 @@ footer {
         <li class="phase-item done"><div class="phase-dot"></div><span>Simulator scenarija — analiza scenarija "što ako" prije konačne odluke</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Ovlašteni predstavnik — delegiranje zadataka BO</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Vlasnička biblioteka kontrola — konfigurabilno mapiranje na eksterne okvire</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>Uvoz kontrola — Framework AI, Document AI, CSV</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Uvoz kontrola — CSV</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Industrijsko referentno poređenje — DBIR, ENISA, Ponemon</span></li>
       </ul>
       <details class="phase-more"><summary>Prikaži sve mogućnosti</summary>
       <ul class="phase-items">
         <li class="phase-item done"><div class="phase-dot"></div><span>Industrijska biblioteka scenarija s referentnim kvantitativnim ulazima</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Optimizator investicija — ROI po kontroli</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>AI svjestan jurisdikcije — 44 europske zemlje s kontekstom lokalnih regulatora</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>AI svjestan jurisdikcije — 40 europskih jurisdikcija, s kontekstom lokalnog regulatora za 15</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Mapa rizika imovine — toplinska karta rizika portfelja</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Smjernice za odluku poslovnog vlasnika s ROI i upravljačkim indikatorima</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Provjera pokrivenosti scenarija — analiza nedostataka u odnosu na industrijsku biblioteku</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Izjava o apetitu za rizik — konfigurabilni pragovi s DORA eskalacijom prema članu 5</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>KRI okvir — 15 unaprijed definiranih KRI-jeva s formulom vođenim izračunom, otkrivanjem povreda, tjednim sažetim e-mail obavijestima</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>KRI okvir — 8 unaprijed definiranih kibernetičkih KRI-jeva (15 ukupno kroz kibernetički, operativni i međumodulski) s formulom vođenim izračunom, otkrivanjem povreda, tjednim sažetim e-mail obavijestima</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Međudomenska analiza rizika — povezivanje Procesa ↔ IKT Imovine otkriva rizike koncentracije</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>CISO sažetak za Upravu — generiran od AI, urediv</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Graditelj prilagođenih izvješća — vidljivost zasnovana na ulozi, AI sažetak</span></li>
@@ -2690,7 +2690,7 @@ footer {
         <li class="phase-item done"><div class="phase-dot"></div><span>Ovlašteni predstavnik — delegiranje zadataka Vlasnika procesa</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Industrijsko referentno poređenje — OR scenariji</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Industrijska biblioteka scenarija s referentnim kvantitativnim ulazima</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>AI svjestan jurisdikcije — 44 europske zemlje s kontekstom lokalnih regulatora</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>AI svjestan jurisdikcije — 40 europskih jurisdikcija, s kontekstom lokalnog regulatora za 15</span></li>
       </ul>
       <details class="phase-more"><summary>Prikaži sve mogućnosti</summary>
       <ul class="phase-items">
@@ -2716,7 +2716,7 @@ footer {
         <li class="phase-item done"><div class="phase-dot"></div><span>Registar IKT usluga i funkcija — EBA ITS B_06.01 sa zatvorenom listom tipova usluga</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Registar ugovora s KVF klasifikacijom i statusom procjene</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Praćenje izlazne strategije i zamjenjivosti — DPM zatvorena lista (ZZ:x959–x962)</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>Procjene ključnih ili važnih funkcija (KVF/CIF) — vođeni postupak u pet koraka</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Procjene ključnih ili važnih funkcija (KVF/CIF) — ukupna ocjena, zamjenjivost i alternativni pružatelji, reintegracija, broj nedostataka, datumi revizije i preispitivanja</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Mapiranje ovisnosti — pružatelj → usluga → funkcija → imovina</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Ovisnosti lanca opskrbe — EBA ITS B_03.03 s mapiranjem pružatelj-od-pružatelja</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Intragrupne IKT usluge — EBA ITS B_03.02 tokovi holding/ovisno društvo</span></li>
@@ -2725,7 +2725,7 @@ footer {
       </ul>
       <details class="phase-more"><summary>Prikaži sve mogućnosti</summary>
       <ul class="phase-items">
-        <li class="phase-item done"><div class="phase-dot"></div><span>Registar informacija o IKT aranžmanima — 15 ITS šablona po Provedbenoj uredbi Komisije 2024/2956</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Registar informacija o IKT aranžmanima — maperi za svih 15 ITS šablona Provedbene uredbe Komisije 2024/2956; paket sadrži one koje vaš registar popunjava</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Povijest snimaka stanja, zamrznuti snimci stanja, strukturiran ZIP paket za internu provjeru i pripremu regulatorne dostave</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Okvir kvalitete podataka — Visoka / Srednja / Niska pouzdanost po pružatelju s pregledom konkretnih nedostataka i koraka za ispravku</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>CRO odobravanje i revizijska staza</span></li>
@@ -2756,9 +2756,9 @@ footer {
       </ul>
       <details class="phase-more"><summary>Prikaži sve mogućnosti</summary>
       <ul class="phase-items">
-        <li class="phase-item done"><div class="phase-dot"></div><span>Osam provjera konzistentnosti kroz modul — uključujući otkrivanje regulatorne cirkularnosti i preklapanja kapaciteta između planova</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Osam provjera konzistentnosti kroz modul — uključujući otkrivanje kružnih ovisnosti i preklapanja kapaciteta između planova</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Upravljačke uloge BCM koordinator (1LoD) i BCM menadžer (2LoD)</span></li>
-        <li class="phase-item done"><div class="phase-dot"></div><span>26+ indikatora integriranih u zajedničku KRI kontrolnu tablu uz CR/OR/TPP</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>29 indikatora kontinuiteta, od kojih 24 na zajedničkoj KRI kontrolnoj tabli uz CR/OR/TPP</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Konsolidirani prikaz kontinuiteta na razini grupe — koristi Grupni CISO / ORM / CRO, bez nove uloge</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Izgrađen nad istim registrom poslovnih procesa koji već koristi OpRisk AIQ</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Usklađen s člankom 11. DORA-e — na snazi od 17.1.2025., bez prijelaznog roka</span></li>
@@ -2769,13 +2769,13 @@ footer {
   </div>
 
   <div class="roadmap-group">
-  <div class="roadmap-group-label fade-up">Planirano</div>
-  <div class="roadmap-phases roadmap-phases--planned">
+  <div class="roadmap-group-label fade-up">Enterprise razina</div>
+  <div class="roadmap-phases roadmap-phases--enterprise">
     <div class="phase fade-up">
       <div class="phase-label">Enterprise Scale</div>
-      <span class="phase-status status-planned">● Planirano proširenje</span>
+      <span class="phase-status status-live">● Pilot / rani pristup</span>
       <ul class="phase-items">
-        <li class="phase-item done"><div class="phase-dot"></div><span>Višeklijentska SaaS arhitektura — izolacija shema po klijentu</span></li>
+        <li class="phase-item done"><div class="phase-dot"></div><span>Višeklijentski SaaS — razdvajanje podataka po klijentu, provedeno na svakom upitu</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>Super-admin panel — provizioniranje klijenata, upravljanje licencama, zdravlje sustava</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>RSA-potpisano JWT licenciranje — offline, zasnovano na razini, bez pozivanja vanjskog servisa</span></li>
         <li class="phase-item done"><div class="phase-dot"></div><span>On-premise + SaaS + holding modeli implementacije</span></li>
@@ -2803,6 +2803,7 @@ footer {
   <div class="section-tag">Pogledajte kako radi</div>
   <h2 class="section-title fade-up">Od prijetnje do <em style="color:var(--gold); font-family:'Playfair Display',serif;">P95 izloženosti i materijalnosti</em><br>i od pružatelja do <em style="color:var(--gold); font-family:'Playfair Display',serif;">paketa za regulatornu dostavu.</em></h2>
   <p class="section-sub fade-up">Četiri modula. Ista obranjiva osnova — Monte Carlo simulacija za kibernetički, Kvantitativni RCSA + Monte Carlo za operativni rizik, kvantitativna analitika koncentracije za rizik trećih strana i izvedeni ciljevi oporavka sa strukturiranim dokazima za kontinuitet poslovanja.</p>
+  <p class="section-sub fade-up" style="font-size:0.85rem; color:rgba(255,255,255,0.4); margin-top:-4px;"><em>Ilustrativne vrijednosti. Izračuni, rezultati i zasloni su iz proizvoda; brojevi su primjer, a ne podaci bilo koje institucije.</em></p>
 
   <div style="max-width:900px; margin:16px auto 0; text-align:left; padding:0 4px;" class="fade-up">
     <div style="display:inline-block; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.35); border-bottom:1px solid rgba(201,168,76,0.2); padding-bottom:6px; margin-bottom:4px;">Kibernetički modul — Ransomware scenarij (Monte Carlo simulacija)</div>
@@ -3005,7 +3006,7 @@ footer {
         <div style="display:flex; flex-direction:column; gap:8px; font-size:0.82rem; color:rgba(255,255,255,0.7);">
           <div style="display:flex; justify-content:space-between;"><span>Potpunost</span><strong style="color:#4ade80; font-weight:600;">99,7%</strong></div>
           <div style="display:flex; justify-content:space-between;"><span>Otvoreni kritični validacijski nedostaci</span><strong style="color:#4ade80; font-weight:600;">0</strong></div>
-          <div style="display:flex; justify-content:space-between;"><span>Zamrznuti snimak stanja</span><strong style="color:rgba(255,255,255,0.85); font-weight:600;">2026-Q2</strong></div>
+          <div style="display:flex; justify-content:space-between;"><span>Snimak stanja</span><strong style="color:rgba(255,255,255,0.85); font-weight:600;">Zamrznut (primjer)</strong></div>
           <div style="display:flex; justify-content:space-between;"><span>Sljedeće podnošenje</span><strong style="color:var(--gold-light); font-weight:600;">Spremno za CRO odobrenje</strong></div>
         </div>
       </div>
